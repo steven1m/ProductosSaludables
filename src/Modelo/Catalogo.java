@@ -10,7 +10,7 @@ public class Catalogo {
     private int id;
     private String descripcion;
     private int proveedorId;
-
+    
     public Catalogo(int id, String descripcion, int proveedorId) {
         this.id = id;
         this.descripcion = descripcion;
