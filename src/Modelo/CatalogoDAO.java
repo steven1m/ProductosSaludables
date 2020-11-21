@@ -83,16 +83,18 @@ public class CatalogoDAO {
     public int actualizarCatalogo (Catalogo catalogo){
         
         int resultado = 0;
-        Connection con = null;
-        PreparedStatement ps = null;
-        String sentencia = "UPDATE public.catalogo SET  descripcio=?;"
-                + "WHERE id=?";
+        Connection con ;
+        PreparedStatement ps ;
+        String sentencia = "UPDATE public.catalogo SET  descripcio=?, "
+                + "proveedor_id=? "
+                + "WHERE id=?;";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
             ps.setString(1, catalogo.getDescripcion());
-            ps.setString(2, String.valueOf(catalogo.getId()));
+            ps.setString(2, String.valueOf(catalogo.getProveedorId()));
+            ps.setString(3, String.valueOf(catalogo.getId()));
             
             resultado = ps.executeUpdate();
             
@@ -107,7 +109,21 @@ public class CatalogoDAO {
     public int eliminarCatalogo (int id){
         
         int resultado = 0;
+        Connection con ;
+        PreparedStatement ps ;
+        String sentencia = "DELETE FROM public.catalogo "
+                + "WHERE id=?";
         
+        try{
+            con = Conexion.getConnection();
+            ps = con.prepareStatement(sentencia);
+            ps.setString(1, String.valueOf(id));
+            
+            resultado = ps.executeUpdate();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error : " + 
+                    ex.getMessage());
+        }
         return resultado;
     }
     
