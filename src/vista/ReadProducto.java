@@ -5,6 +5,11 @@
  */
 package vista;
 
+import Modelo.Producto;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Steven
@@ -18,6 +23,34 @@ public class ReadProducto extends java.awt.Dialog {
         super(parent, modal);
         initComponents();
     }
+    
+    public void agregarlistenerconsultar(ActionListener listener){
+        btnconsultar.addActionListener(listener);
+    }
+    
+    public void agregarlistenerlimpiar(ActionListener listener){
+        btnlimpiar.addActionListener(listener);
+    }
+    
+    public void cargarProductos(ArrayList<Producto> listadoProductos){
+        DefaultTableModel modelo;
+        modelo = (DefaultTableModel) tablaconsulta.getModel();        
+        //limpiarListadoTabla();
+        for(int i= 0; i < listadoProductos.size(); i++){
+              modelo.addRow(new Object[]
+              {
+              listadoProductos.get(i).getId(),
+              listadoProductos.get(i).getNombre(),
+              listadoProductos.get(i).getDescripcion(),
+              listadoProductos.get(i).getPrecio(),
+              listadoProductos.get(i).getCantidad(),
+              listadoProductos.get(i).getPrecioVenta()
+              });
+        }
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,7 +62,7 @@ public class ReadProducto extends java.awt.Dialog {
 
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaconsulta = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         btnconsultar = new javax.swing.JButton();
         btnlimpiar = new javax.swing.JButton();
@@ -40,7 +73,7 @@ public class ReadProducto extends java.awt.Dialog {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaconsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -51,10 +84,10 @@ public class ReadProducto extends java.awt.Dialog {
                 "Id", "Nombre", "Descripcion", "Precio", "Cant", "Precio Venta"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(20);
-            jTable1.getColumnModel().getColumn(4).setMaxWidth(60);
+        jScrollPane1.setViewportView(tablaconsulta);
+        if (tablaconsulta.getColumnModel().getColumnCount() > 0) {
+            tablaconsulta.getColumnModel().getColumn(0).setMaxWidth(20);
+            tablaconsulta.getColumnModel().getColumn(4).setMaxWidth(60);
         }
 
         jLabel1.setText("Consulta de Productos");
@@ -135,6 +168,6 @@ public class ReadProducto extends java.awt.Dialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaconsulta;
     // End of variables declaration//GEN-END:variables
 }

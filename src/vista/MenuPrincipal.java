@@ -1,10 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
+import Modelo.Producto;
+import Modelo.ProductoDAO;
+import Controlador.ControladorProducto;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
@@ -12,7 +10,7 @@ import javax.swing.border.TitledBorder;
 
 /**
  *
- * @author Steven
+ * @authors
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
@@ -285,18 +283,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         AddProducto addProducto = new AddProducto(this,true);
         addProducto.setVisible(true);
+        ProductoDAO modeloProducto = new ProductoDAO();
+        ControladorProducto controlPrograma = new ControladorProducto(modeloProducto, addProducto);
+        
     }//GEN-LAST:event_itemCrearActionPerformed
 
     private void itemLeerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLeerActionPerformed
         // TODO add your handling code here:
         ReadProducto readProducto = new ReadProducto(this, true);
         readProducto.setVisible(true);
+        ProductoDAO modeloProducto = new ProductoDAO();
+        ControladorProducto controlPrograma = new ControladorProducto(modeloProducto, readProducto);
     }//GEN-LAST:event_itemLeerActionPerformed
 
     private void itemActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemActualizarActionPerformed
         // TODO add your handling code here:
         UpdateProducto updateProducto = new UpdateProducto(this, true);
         updateProducto.setVisible(true);
+        
+        //ProductoDAO modeloPrograma = new ProductoDAO();
+        
     }//GEN-LAST:event_itemActualizarActionPerformed
 
     
