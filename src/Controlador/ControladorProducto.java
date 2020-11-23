@@ -57,16 +57,12 @@ public class ControladorProducto {
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            /*JOptionPane.showMessageDialog(null, "resultado accion: "+addProducto.accion());
-            System.out.println("resultado accion: "+addProducto.accion());*/
-            
-            if(e.getActionCommand().equalsIgnoreCase("grabar")){
-                //System.out.println("resultado accion: "+addProducto.accion());
-                JOptionPane.showMessageDialog(null, "se van a grabar los datos. ");
+            if(e.getActionCommand().equalsIgnoreCase("Grabar") ){
+                JOptionPane.showMessageDialog(null, "se van a grabar los datos.");
                 crear();
-            }else {
-                JOptionPane.showMessageDialog(null, "no boton grabar ");
-
+            }else if (e.getActionCommand().equalsIgnoreCase("Consultar")){
+                JOptionPane.showMessageDialog(null, "se van a cargar los datos.");
+                leer();
             }
             
                 
@@ -74,25 +70,25 @@ public class ControladorProducto {
         }
         
         private void crear(){
-            if(verificarTexto(addProducto.getID()) && verificarTexto(addProducto.getNombre()) && verificarTexto(addProducto.getDescripcion())
-                    && verificarTexto(addProducto.getPrecio()) && verificarTexto(addProducto.getCantidad()) 
-                            && verificarTexto(addProducto.getPrecioVenta()))
+            if(verificarTexto(String.valueOf(addProducto.getID())) && verificarTexto(addProducto.getNombre()) && verificarTexto(addProducto.getDescripcion())
+                    && verificarTexto(String.valueOf(addProducto.getPrecio())) && verificarTexto(String.valueOf(addProducto.getCantidad())) 
+                            && verificarTexto(String.valueOf(addProducto.getPrecioVenta())))
             {
                 Producto producto = new Producto();
-                producto.setId(Integer.parseInt(addProducto.getID()));
+                producto.setId(addProducto.getID());
                 producto.setNombre(addProducto.getNombre());
                 producto.setDescripcion(addProducto.getDescripcion());
-                producto.setPrecio(Integer.parseInt(addProducto.getPrecio()));
-                producto.setCantidad(Integer.parseInt(addProducto.getCantidad()));
-                producto.setPrecioVenta(Integer.parseInt(addProducto.getPrecioVenta()));
+                producto.setPrecio(addProducto.getPrecio());
+                producto.setCantidad(addProducto.getCantidad());
+                producto.setPrecioVenta(addProducto.getPrecioVenta());
                
                 int resultado = 0;
                 resultado = modeloProducto.crear(producto);
                 if(resultado == 1){ 
-                    JOptionPane.showMessageDialog(null, "Producto Grabado! "+resultado);
+                    JOptionPane.showMessageDialog(null, "Producto Grabado! " +resultado);
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "No Grabado! "+resultado);
+                    JOptionPane.showMessageDialog(null, "No Grabado! " +resultado);
                 }
             }else {
                 JOptionPane.showMessageDialog(null, "verificacion fallida ");

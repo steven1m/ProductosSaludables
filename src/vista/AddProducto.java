@@ -5,6 +5,7 @@
  */
 package vista;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
@@ -22,12 +23,12 @@ public class AddProducto extends java.awt.Dialog {
         initComponents();
     }
     
-    public String getID(){
-        return txtID.getText();
+    public int getID(){
+        return Integer.parseInt(txtID.getText());
     }
     
-    public String getCantidad(){
-        return txtcantidad.getText();
+    public int getCantidad(){
+        return Integer.parseInt(txtcantidad.getText());
     }
     
     public String getNombre(){
@@ -38,12 +39,12 @@ public class AddProducto extends java.awt.Dialog {
         return txtdescripcion.getText();
     }
     
-    public String getPrecio(){
-        return txtprecio.getText();
+    public float getPrecio(){
+        return Float.parseFloat(txtprecio.getText());
     }
     
-    public String getPrecioVenta(){
-        return txtprecioventa.getText();
+    public float getPrecioVenta(){
+        return Float.parseFloat(txtprecioventa.getText());
     }
     
     public void agregarlistenergrabar(ActionListener listener){
@@ -54,9 +55,9 @@ public class AddProducto extends java.awt.Dialog {
         btncancelar.addActionListener(listener);
     }
     
-    public void accion(){
-        btngrabar.setActionCommand("Grabar");
-    }
+    /* public String accion(){
+        return btngrabar.getActionCommand();
+    } */
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -270,7 +271,6 @@ public class AddProducto extends java.awt.Dialog {
 
     private void btngrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngrabarActionPerformed
         // TODO add your handling code here:
-        //JOptionPane.showMessageDialog(null, "ninguna accion ");
     }//GEN-LAST:event_btngrabarActionPerformed
 
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed

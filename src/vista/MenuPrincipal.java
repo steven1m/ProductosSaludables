@@ -282,18 +282,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void itemCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearActionPerformed
         // TODO add your handling code here:
         AddProducto addProducto = new AddProducto(this,true);
-        addProducto.setVisible(true);
         ProductoDAO modeloProducto = new ProductoDAO();
         ControladorProducto controlPrograma = new ControladorProducto(modeloProducto, addProducto);
+        addProducto.setVisible(true);
         
     }//GEN-LAST:event_itemCrearActionPerformed
 
     private void itemLeerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLeerActionPerformed
         // TODO add your handling code here:
         ReadProducto readProducto = new ReadProducto(this, true);
-        readProducto.setVisible(true);
         ProductoDAO modeloProducto = new ProductoDAO();
         ControladorProducto controlPrograma = new ControladorProducto(modeloProducto, readProducto);
+        
+        readProducto.setVisible(true);
     }//GEN-LAST:event_itemLeerActionPerformed
 
     private void itemActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemActualizarActionPerformed

@@ -37,4 +37,21 @@ public class Conexion {
         
         return  con;
     }
+    
+    static class MiShDwnHook extends Thread{
+        //Justo antes de finaliza el programa la JVM invocará
+        //este método donde podemos cerra la conexión
+        @Override
+        public void run(){
+            try{
+                Connection con = Conexion.getConnection();
+                con.close();                     
+            }
+            catch (Exception ex){
+                JOptionPane.showMessageDialog(null,"Error : " + 
+                        ex.getMessage());
+            }
+        }
+    }
+    
 }

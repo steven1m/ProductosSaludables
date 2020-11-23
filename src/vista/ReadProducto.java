@@ -36,7 +36,7 @@ public class ReadProducto extends java.awt.Dialog {
         DefaultTableModel modelo;
         modelo = (DefaultTableModel) tablaconsulta.getModel();        
         //limpiarListadoTabla();
-        for(int i= 0; i < listadoProductos.size(); i++){
+        for(int i=0; i<listadoProductos.size(); i++){
               modelo.addRow(new Object[]
               {
               listadoProductos.get(i).getId(),
@@ -49,7 +49,9 @@ public class ReadProducto extends java.awt.Dialog {
         }
     }
     
-    
+    /* public String accion(){
+        return btnconsultar.getActionCommand();
+    } */
     
 
     /**
@@ -75,10 +77,7 @@ public class ReadProducto extends java.awt.Dialog {
 
         tablaconsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Id", "Nombre", "Descripcion", "Precio", "Cant", "Precio Venta"

@@ -21,20 +21,19 @@ public class ProductoDAO {
     public int crear (Producto producto){
         int resultado = 0;
         
-        Connection con;
+        Connection con = null;
         PreparedStatement ps;
-        String sentencia = "INSERT INTO public.producto( id, nombre, descripcion, precio, cantidad, precio_venta"
-                + "VALUES (?, ?, ?, ?, ?, ?);";
+        String sentencia = "INSERT INTO public.producto(id, nombre, descripcion, precio, cantidad, precio_venta) VALUES (?, ?, ?, ?, ?, ?)";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(producto.getId()));
+            ps.setInt(1, producto.getId());
             ps.setString(2, producto.getNombre());
             ps.setString(3, producto.getDescripcion());
-            ps.setString(4, String.valueOf(producto.getPrecio()));
-            ps.setString(5, String.valueOf(producto.getCantidad()));
-            ps.setString(6, String.valueOf(producto.getPrecioVenta()));
+            ps.setFloat(4, producto.getPrecio());
+            ps.setInt(5, producto.getCantidad());
+            ps.setFloat(6, producto.getPrecioVenta());
             
             resultado = ps.executeUpdate();
             
