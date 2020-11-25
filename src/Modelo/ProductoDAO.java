@@ -18,12 +18,13 @@ import javax.swing.JOptionPane;
  * @author Universidad
  */
 public class ProductoDAO {
-    public int crear (Producto producto){
+    public int crear(Producto producto){
         int resultado = 0;
         
         Connection con = null;
         PreparedStatement ps;
-        String sentencia = "INSERT INTO public.producto(id, nombre, descripcion, precio, cantidad, precio_venta) VALUES (?, ?, ?, ?, ?, ?)";
+        String sentencia = "INSERT INTO public.producto(id, nombre, descripcion, precio, cantidad, precio_venta) "
+                + "VALUES (?, ?, ?, ?, ?, ?)";
         
         try{
             con = Conexion.getConnection();
@@ -44,8 +45,8 @@ public class ProductoDAO {
         return resultado;
     }
     
-    public ArrayList <Producto> leer (int id){
-        ArrayList <Producto>  lista = new ArrayList<>();
+    public ArrayList<Producto> leer(int id){
+        ArrayList<Producto>  lista = new ArrayList<>();
         
         Connection con = null;
         PreparedStatement ps = null;
@@ -80,13 +81,52 @@ public class ProductoDAO {
         return lista;
     }
     
-    public int actualizar (Producto producto){
+    public int actualizar(Producto producto){
         int resultado = 0;
+        
+        Connection con ;
+        PreparedStatement ps ;
+        String sentencia = "UPDATE public.producto SET id=?, "
+                + "nombre=?, descripcion=?, precio=?, cantidad=?, precio_venta=? WHERE id=?";
+        
+        try{
+            con = Conexion.getConnection();
+            ps = con.prepareStatement(sentencia);
+            ps.setInt(1, producto.getId());
+            ps.setString(2, producto.getNombre());
+            ps.setString(3, producto.getDescripcion());
+            ps.setFloat(1, producto.getPrecio());
+            ps.setInt(1, producto.getCantidad());
+            ps.setFloat(1, producto.getPrecioVenta());
+            
+            resultado = ps.executeUpdate();
+            
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error : " + 
+                    ex.getMessage());
+        }
+        
         return resultado;
     }
     
-    public int borrar (int id){
+    public int borrar(int id){
         int resultado = 0;
+        
+        Connection con ;
+        PreparedStatement ps ;
+        String sentencia = "DELETE FROM public.producto "
+                + "WHERE id=?";
+        
+        try{
+            con = Conexion.getConnection();
+            ps = con.prepareStatement(sentencia);
+            ps.setInt(1, id);
+            
+            resultado = ps.executeUpdate();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error : " + 
+                    ex.getMessage());
+        }
         return resultado;
     }
 }
