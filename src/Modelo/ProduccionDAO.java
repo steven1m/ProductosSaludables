@@ -23,7 +23,7 @@ public class ProduccionDAO {
         
         Connection con = null;
         PreparedStatement ps;
-        String sentencia = "INSERT INTO public.produccion(id, nombre, costo, produccion_id) "
+        String sentencia = "INSERT INTO public.produccion(id, nombre, costo, producto_id) "
                 + "VALUES (?, ?, ?, ?)";
         
         try{
@@ -65,7 +65,7 @@ public class ProduccionDAO {
                 produccion.setId(rs.getInt("id"));
                 produccion.setNombre(rs.getString("nombre"));
                 produccion.setCosto(rs.getFloat("costo"));
-                produccion.setProductoId(rs.getInt("produccion_id"));
+                produccion.setProductoId(rs.getInt("producto_id"));
                 lista.add(produccion);
             }
         }
@@ -81,7 +81,7 @@ public class ProduccionDAO {
         Connection con ;
         PreparedStatement ps ;
         String sentencia = "UPDATE public.produccion SET id=?, "
-                + "nombre=?, costo=?, produccion_id=?";
+                + "nombre=?, costo=?, producto_id=?";
         
         try{
             con = Conexion.getConnection();

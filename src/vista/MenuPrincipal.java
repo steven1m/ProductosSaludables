@@ -1,8 +1,8 @@
 package vista;
 
-import Modelo.Producto;
-import Modelo.ProductoDAO;
-import Controlador.ControladorProducto;
+import Modelo.Produccion;
+import Modelo.ProduccionDAO;
+import Controlador.ControladorProduccion;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
@@ -35,30 +35,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         buttonGroup3 = new javax.swing.ButtonGroup();
         buttonGroup4 = new javax.swing.ButtonGroup();
         jFrame1 = new javax.swing.JFrame();
-        ventasycompras = new javax.swing.JPanel();
-        btncompras = new javax.swing.JButton();
-        btnventas = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        clientesyempleados = new javax.swing.JPanel();
-        btnclientes = new javax.swing.JButton();
-        btnempleados = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuControlProductos = new javax.swing.JMenu();
-        menuProductos = new javax.swing.JMenu();
-        itemCrear = new javax.swing.JMenuItem();
-        itemLeer = new javax.swing.JMenuItem();
-        itemActualizar = new javax.swing.JMenuItem();
-        itemBorrar = new javax.swing.JMenuItem();
-        menuProduccion = new javax.swing.JMenu();
-        itemCrear1 = new javax.swing.JMenuItem();
-        itemLeer1 = new javax.swing.JMenuItem();
-        itemActualizar1 = new javax.swing.JMenuItem();
-        itemBorrar1 = new javax.swing.JMenuItem();
-        itemIngredientes = new javax.swing.JMenu();
-        itemCrear2 = new javax.swing.JMenuItem();
-        itemLeer2 = new javax.swing.JMenuItem();
-        itemActualizar2 = new javax.swing.JMenuItem();
-        itemBorrar2 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        MenuItemProduccion = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         menuControlMateriaPrima = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
 
@@ -75,34 +57,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ventasycompras.setBorder(javax.swing.BorderFactory.createTitledBorder("Transacciones"));
-        ventasycompras.setName("Transacciones"); // NOI18N
-
-        btncompras.setText("Compras");
-
-        btnventas.setText("Ventas");
-
-        javax.swing.GroupLayout ventasycomprasLayout = new javax.swing.GroupLayout(ventasycompras);
-        ventasycompras.setLayout(ventasycomprasLayout);
-        ventasycomprasLayout.setHorizontalGroup(
-            ventasycomprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ventasycomprasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ventasycomprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btncompras)
-                    .addComponent(btnventas))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-        ventasycomprasLayout.setVerticalGroup(
-            ventasycomprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ventasycomprasLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(btnventas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btncompras)
-                .addGap(28, 28, 28))
-        );
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,112 +68,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        clientesyempleados.setBorder(javax.swing.BorderFactory.createTitledBorder("Control"));
-
-        btnclientes.setText("Clientes");
-
-        btnempleados.setText("Empleados");
-
-        javax.swing.GroupLayout clientesyempleadosLayout = new javax.swing.GroupLayout(clientesyempleados);
-        clientesyempleados.setLayout(clientesyempleadosLayout);
-        clientesyempleadosLayout.setHorizontalGroup(
-            clientesyempleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(clientesyempleadosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnclientes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnempleados)
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-        clientesyempleadosLayout.setVerticalGroup(
-            clientesyempleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(clientesyempleadosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(clientesyempleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnclientes)
-                    .addComponent(btnempleados))
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
-
         menuControlProductos.setText("Control de Productos");
 
-        menuProductos.setText("Productos");
+        jMenuItem1.setText("Producto");
+        menuControlProductos.add(jMenuItem1);
 
-        itemCrear.setText("Crear");
-        itemCrear.addActionListener(new java.awt.event.ActionListener() {
+        MenuItemProduccion.setText("Produccion");
+        MenuItemProduccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemCrearActionPerformed(evt);
+                MenuItemProduccionActionPerformed(evt);
             }
         });
-        menuProductos.add(itemCrear);
+        menuControlProductos.add(MenuItemProduccion);
 
-        itemLeer.setText("Leer");
-        itemLeer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemLeerActionPerformed(evt);
-            }
-        });
-        menuProductos.add(itemLeer);
-
-        itemActualizar.setText("Actualizar");
-        itemActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemActualizarActionPerformed(evt);
-            }
-        });
-        menuProductos.add(itemActualizar);
-
-        itemBorrar.setText("Borrar");
-        itemBorrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemBorrarActionPerformed(evt);
-            }
-        });
-        menuProductos.add(itemBorrar);
-
-        menuControlProductos.add(menuProductos);
-
-        menuProduccion.setText("Produccion");
-
-        itemCrear1.setText("Crear");
-        menuProduccion.add(itemCrear1);
-
-        itemLeer1.setText("Leer");
-        menuProduccion.add(itemLeer1);
-
-        itemActualizar1.setText("Actualizar");
-        menuProduccion.add(itemActualizar1);
-
-        itemBorrar1.setText("Borrar");
-        itemBorrar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemBorrar1ActionPerformed(evt);
-            }
-        });
-        menuProduccion.add(itemBorrar1);
-
-        menuControlProductos.add(menuProduccion);
-
-        itemIngredientes.setText("Ingredientes");
-
-        itemCrear2.setText("Crear");
-        itemIngredientes.add(itemCrear2);
-
-        itemLeer2.setText("Leer");
-        itemIngredientes.add(itemLeer2);
-
-        itemActualizar2.setText("Actualizar");
-        itemIngredientes.add(itemActualizar2);
-
-        itemBorrar2.setText("Borrar");
-        itemBorrar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemBorrar2ActionPerformed(evt);
-            }
-        });
-        itemIngredientes.add(itemBorrar2);
-
-        menuControlProductos.add(itemIngredientes);
+        jMenuItem2.setText("Ingredientes");
+        menuControlProductos.add(jMenuItem2);
 
         jMenuBar1.add(menuControlProductos);
 
@@ -237,74 +100,28 @@ public class MenuPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(clientesyempleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ventasycompras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(252, 252, 252)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(157, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ventasycompras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(clientesyempleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(168, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void itemBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBorrarActionPerformed
+    private void MenuItemProduccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemProduccionActionPerformed
         // TODO add your handling code here:
-        DeleteProducto deleteProducto = new DeleteProducto(this, true);
-        deleteProducto.setVisible(true);
-    }//GEN-LAST:event_itemBorrarActionPerformed
-
-    private void itemBorrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBorrar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemBorrar1ActionPerformed
-
-    private void itemBorrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBorrar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemBorrar2ActionPerformed
-
-    private void itemCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearActionPerformed
-        // TODO add your handling code here:
-        AddProducto addProducto = new AddProducto(this,true);
-        ProductoDAO modeloProducto = new ProductoDAO();
-        ControladorProducto controlPrograma = new ControladorProducto(modeloProducto, addProducto);
-        addProducto.setVisible(true);
-        
-    }//GEN-LAST:event_itemCrearActionPerformed
-
-    private void itemLeerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLeerActionPerformed
-        // TODO add your handling code here:
-        ReadProducto readProducto = new ReadProducto(this, true);
-        ProductoDAO modeloProducto = new ProductoDAO();
-        ControladorProducto controlPrograma = new ControladorProducto(modeloProducto, readProducto);
-        
-        readProducto.setVisible(true);
-    }//GEN-LAST:event_itemLeerActionPerformed
-
-    private void itemActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemActualizarActionPerformed
-        // TODO add your handling code here:
-        UpdateProducto updateProducto = new UpdateProducto(this, true);
-        updateProducto.setVisible(true);
-        
-        //ProductoDAO modeloPrograma = new ProductoDAO();
-        
-    }//GEN-LAST:event_itemActualizarActionPerformed
+        PanelProduccion vistaProduccion = new PanelProduccion();
+        ProduccionDAO modeloProduccion = new ProduccionDAO();
+        ControladorProduccion controladorProduccion = new ControladorProduccion(modeloProduccion, vistaProduccion);
+        vistaProduccion.setVisible(true);
+    }//GEN-LAST:event_MenuItemProduccionActionPerformed
 
     
     
@@ -349,36 +166,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnclientes;
-    private javax.swing.JButton btncompras;
-    private javax.swing.JButton btnempleados;
-    private javax.swing.JButton btnventas;
+    private javax.swing.JMenuItem MenuItemProduccion;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.JPanel clientesyempleados;
-    private javax.swing.JMenuItem itemActualizar;
-    private javax.swing.JMenuItem itemActualizar1;
-    private javax.swing.JMenuItem itemActualizar2;
-    private javax.swing.JMenuItem itemBorrar;
-    private javax.swing.JMenuItem itemBorrar1;
-    private javax.swing.JMenuItem itemBorrar2;
-    private javax.swing.JMenuItem itemCrear;
-    private javax.swing.JMenuItem itemCrear1;
-    private javax.swing.JMenuItem itemCrear2;
-    private javax.swing.JMenu itemIngredientes;
-    private javax.swing.JMenuItem itemLeer;
-    private javax.swing.JMenuItem itemLeer1;
-    private javax.swing.JMenuItem itemLeer2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu menuControlMateriaPrima;
     private javax.swing.JMenu menuControlProductos;
-    private javax.swing.JMenu menuProduccion;
-    private javax.swing.JMenu menuProductos;
-    private javax.swing.JPanel ventasycompras;
     // End of variables declaration//GEN-END:variables
 }
