@@ -15,17 +15,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PanelProducto extends javax.swing.JFrame {
 
-   
+    private final  String[] datosProducto;
+    
     public PanelProducto() {
+        this.datosProducto = new String[6];
         initComponents();
         iniciarVentana();
-        
     }
     
     private void iniciarVentana(){
+        this.setLocationRelativeTo(null);
+        this.setTitle("Inventario de Productos");
         operacionesCrud("");
-        selecionTabla();
-        
+        selecionTabla(); 
+        this.setVisible(true);
     }
     public void agregarListener( ActionListener listener){
         
@@ -45,10 +48,11 @@ public class PanelProducto extends javax.swing.JFrame {
     public Producto crearObjetoProducto(){
         Producto producto = new Producto();
         try{
-            producto.setId(Integer.getInteger(this.txtCrudCodigo.getText()));
+            
+            producto.setId(Integer.parseInt(this.txtCrudCodigo.getText()));
             producto.setNombre(this.txtCrudNombre.getText());
             producto.setDescripcion(this.txtAreaCrudDescripcion.getText());
-            producto.setCantidad(Integer.getInteger(this.txtCrudCantidad.getText()));
+            producto.setCantidad(Integer.parseInt(this.txtCrudCantidad.getText()));
             producto.setPrecio(Float.valueOf(this.txtCrudPrecio.getText()));
             producto.setPrecioVenta(Float.valueOf(this.txtCrudPrecioVenta.getText()));
         }catch (NumberFormatException ex ){
@@ -73,34 +77,48 @@ public class PanelProducto extends javax.swing.JFrame {
         this.jTableProductos.setModel(dtmProductos);
         
         Iterator <Producto> iterador = lista.iterator();
-        int fila = 0;
         
         while(iterador.hasNext()){
             Producto producto = iterador.next();
-            dtmProductos.setValueAt(producto.getId(), fila, 0);
-            dtmProductos.setValueAt(producto.getNombre(), fila, 1);
-            dtmProductos.setValueAt(producto.getDescripcion(), fila, 2);
-            dtmProductos.setValueAt(producto.getPrecio(), fila, 3);
-            dtmProductos.setValueAt(producto.getCantidad(), fila, 4);
-            dtmProductos.setValueAt(producto.getPrecioVenta(), fila, 5);
+            dtmProductos.addRow(new Object[]
+              {
+              producto.getId(),
+              producto.getNombre(),
+              producto.getDescripcion(),
+              producto.getPrecio(),
+              producto.getCantidad(),
+              producto.getPrecioVenta()
+              });
         }
         this.jTableProductos.setModel(dtmProductos);
     }
     
     private void selecionTabla(){
         // agregar metodeo de escucha a la tabla 
-       jTableProductos.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
-           if (jTableProductos.getSelectedRow()!= -1) 
-           {
+        this.jTableProductos.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
+           if (this.jTableProductos.getSelectedRow()!= -1){
                int fila  = jTableProductos.getSelectedRow();
-               lblCodigoSelectProd.setText(jTableProductos.getValueAt(fila, 0).toString());
-               lblNombreSelectProd.setText(jTableProductos.getValueAt(fila, 1).toString());
+               this.lblCodigoSelectProd.setText(this.jTableProductos.getValueAt
+                                               (fila, 0).toString());
+               this.lblNombreSelectProd.setText(this.jTableProductos.getValueAt
+                                                (fila, 1).toString());
+               this.txtAreaDescripcion.setText(this.jTableProductos.getValueAt
+                                                (fila, 2).toString());
                
+               
+               for (int i = 0; i < 6; i++){
+                   this.datosProducto[i] = 
+                           this.jTableProductos.getValueAt(fila, i).toString();
+               }
+              
+               this.btnCrudAplicar.setEnabled(false);
+               this.btnCrudCancelar.setEnabled(false);
+               this.btnCrudAplicar.setText("Aplicar");
             }
        });
     }
     
-    private void operacionesCrud (String operacion){
+    public void operacionesCrud (String operacion){
         switch (operacion){
             
             case "Agregar" -> {
@@ -146,6 +164,10 @@ public class PanelProducto extends javax.swing.JFrame {
                 this.txtCrudPrecio.setText("");
                 this.txtCrudCantidad.setText("");
                 this.txtCrudPrecioVenta.setText("");
+                this.txtBuscar.setText("");
+                this.txtAreaDescripcion.setText("");
+                this.lblNombreSelectProd.setText("");
+                this.lblCodigoSelectProd.setText("");
                 
                 this.txtCrudCodigo.setEnabled(false);
                 this.txtCrudNombre.setEnabled(false);
@@ -160,6 +182,30 @@ public class PanelProducto extends javax.swing.JFrame {
         }
     }
     
+    private void setearDatos(){
+        this.txtCrudCodigo.setText(this.datosProducto[0]);
+        this.txtCrudNombre.setText(this.datosProducto[1]);
+        this.txtAreaCrudDescripcion.setText(this.datosProducto[2]);
+        this.txtCrudPrecio.setText(this.datosProducto[3]);
+        this.txtCrudCantidad.setText(this.datosProducto[4]);
+        this.txtCrudPrecioVenta.setText(this.datosProducto[5]);
+    }
+    
+    public String[] datosBuscar(){
+        
+        String[] datos = new String[2];
+        String clave ;
+        String valor = this.txtBuscar.getText();
+        if (this.cajaTipoBusquedad.getSelectedIndex() == 1){
+            clave = "id";
+        }else {
+            clave = "nombre";
+        }
+        datos[0] = clave;
+        datos[1] = valor;
+       
+        return datos;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -582,13 +628,20 @@ public class PanelProducto extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
         operacionesCrud("");
-        operacionesCrud("Editar");
+        if (this.jTableProductos.getSelectedRow()!= -1){
+            operacionesCrud("Editar");
+            setearDatos();
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         operacionesCrud("");
-        operacionesCrud("Eliminar");
+        if (this.jTableProductos.getSelectedRow()!= -1){
+            operacionesCrud("Eliminar");
+            setearDatos();
+        }
+        
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnCrudCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudCancelarActionPerformed

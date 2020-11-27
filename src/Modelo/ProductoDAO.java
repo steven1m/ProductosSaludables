@@ -21,7 +21,7 @@ public class ProductoDAO {
     public int crear(Producto producto){
         int resultado = 0;
         
-        Connection con = null;
+        Connection con ;
         PreparedStatement ps;
         String sentencia = "INSERT INTO public.producto(id, nombre, descripcion, precio, cantidad, precio_venta) "
                 + "VALUES (?, ?, ?, ?, ?, ?)";
@@ -45,24 +45,35 @@ public class ProductoDAO {
         return resultado;
     }
     
-    public ArrayList<Producto> leer(int id){
+    public ArrayList<Producto> leer(String clave, String valor){
         ArrayList<Producto>  lista = new ArrayList<>();
         
-        Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
+        Connection con ;
+        PreparedStatement ps ;
+        ResultSet rs ;
         
         try{
             con = Conexion.getConnection();
-            String sentencia = "";
+            String sentencia;
             
-            sentencia = "SELECT * FROM producto ORDER BY id";            
-                                 
+            if ("".equals(clave)|| "".equals(valor)){
+                sentencia = "SELECT * FROM producto;";
+            }else if("nombre".equals(clave)) {
+                sentencia = "SELECT * FROM producto WHERE nombre =?;";
+                
+            }else{
+                sentencia = "SELECT * FROM producto where id=?";
+            }
+            
+           
             ps = con.prepareStatement(sentencia);
             
+            if (!"".equals(clave) && !"".equals(valor) ){
+                ps.setInt(1, Integer.parseInt(valor));
+            }
             rs = ps.executeQuery();
                         
-            Producto producto = null;
+            Producto producto;
             while(rs.next()){
                 producto = new Producto();
                 producto.setId(rs.getInt("id"));
@@ -72,6 +83,7 @@ public class ProductoDAO {
                 producto.setCantidad(rs.getInt("cantidad"));
                 producto.setPrecioVenta(rs.getInt("precio_venta"));
                 lista.add(producto);
+                
             }
         }
         catch(SQLException ex){
@@ -86,19 +98,20 @@ public class ProductoDAO {
         
         Connection con ;
         PreparedStatement ps ;
-        String sentencia = "UPDATE public.producto SET id=?, "
-                + "nombre=?, descripcion=?, precio=?, cantidad=?, precio_venta=? WHERE id=?";
+        String sentencia = "UPDATE public.producto SET  "
+                + "nombre=?, descripcion=?, precio=?, cantidad=?, precio_venta=? "
+                + "WHERE id=?";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setInt(1, producto.getId());
-            ps.setString(2, producto.getNombre());
-            ps.setString(3, producto.getDescripcion());
-            ps.setFloat(1, producto.getPrecio());
-            ps.setInt(1, producto.getCantidad());
-            ps.setFloat(1, producto.getPrecioVenta());
             
+            ps.setString(1, producto.getNombre());
+            ps.setString(2, producto.getDescripcion());
+            ps.setFloat(3, producto.getPrecio());
+            ps.setInt(4, producto.getCantidad());
+            ps.setFloat(5, producto.getPrecioVenta());
+            ps.setInt(6, producto.getId());
             resultado = ps.executeUpdate();
             
         }catch(SQLException ex){

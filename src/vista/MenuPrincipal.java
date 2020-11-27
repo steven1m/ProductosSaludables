@@ -3,6 +3,8 @@ package vista;
 import Modelo.Produccion;
 import Modelo.ProduccionDAO;
 import Controlador.ControladorProduccion;
+import Controlador.ControladorProducto;
+import Modelo.ProductoDAO;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
@@ -71,6 +73,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuControlProductos.setText("Control de Productos");
 
         jMenuItem1.setText("Producto");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         menuControlProductos.add(jMenuItem1);
 
         MenuItemProduccion.setText("Produccion");
@@ -122,6 +129,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ControladorProduccion controladorProduccion = new ControladorProduccion(modeloProduccion, vistaProduccion);
         vistaProduccion.setVisible(true);
     }//GEN-LAST:event_MenuItemProduccionActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        PanelProducto vista = new PanelProducto();
+        ProductoDAO modelo = new ProductoDAO();
+        ControladorProducto control = new ControladorProducto(modelo, vista);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     
     
