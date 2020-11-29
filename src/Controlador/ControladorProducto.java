@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
  */
 public class ControladorProducto implements ActionListener{
     
-    private ProductoDAO modeloProducto;
-    private PanelProducto panelProducto;
+    private final ProductoDAO modeloProducto;
+    private final PanelProducto panelProducto;
 
     public ControladorProducto(ProductoDAO modeloProducto, PanelProducto panelProducto) {
         this.modeloProducto = modeloProducto;
@@ -59,6 +59,7 @@ public class ControladorProducto implements ActionListener{
         ArrayList<Producto> lista = this.modeloProducto.leer(clave, valor);
         this.panelProducto.cargarTablaProductos(lista);
         this.panelProducto.operacionesCrud("");
+       
     }
     
     @Override
