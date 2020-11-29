@@ -111,7 +111,7 @@ public class ClienteDAO {
         return resultado;
     }
     
-    public int borrar (int id){
+    public int borrarCliente (int id){
         int resultado = 0;
          Connection con ;
         PreparedStatement ps ;
