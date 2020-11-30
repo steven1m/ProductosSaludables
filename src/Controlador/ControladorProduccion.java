@@ -1,67 +1,86 @@
 package Controlador;
 import Modelo.Produccion;
 import Modelo.ProduccionDAO;
+import vista.PanelProduccion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import vista.PanelProduccion;
 /**
  *
  * @author Steven
  */
-public class ControladorProduccion {
-    private ProduccionDAO modeloProduccion;
-    private PanelProduccion vistaProduccion;
+public class ControladorProduccion implements ActionListener{
+    
+    private final ProduccionDAO modeloProduccion;
+    private final PanelProduccion vistaProduccion;
 
     public ControladorProduccion(ProduccionDAO modeloProduccion, PanelProduccion vistaProduccion) {
         this.modeloProduccion = modeloProduccion;
         this.vistaProduccion = vistaProduccion;
-        vistaProduccion.agregarlistenerAgregar(new ListenerProduccion());
-        vistaProduccion.agregarlistenerAplicar(new ListenerProduccion());
-        vistaProduccion.agregarlistenerLeer(new ListenerProduccion());
+        
+        vistaProduccion.agregarlistenerAgregar(this);
+        vistaProduccion.agregarlistenerAplicar(this);
+        vistaProduccion.agregarlistenerLeer(this);
+        buscarProduccion("", "");
     }
     
-    class ListenerProduccion implements ActionListener{
+    private void buscarProduccion (String clave, String valor){
+        ArrayList<Produccion> lista = modeloProduccion.leer(clave, valor);
+        vistaProduccion.cargarTablaProduccion(lista);
+        vistaProduccion.operacionesCrud("");
+    }
+    
+    private void agregarProduccion (Produccion produccion){
+        int resultado = modeloProduccion.crear(produccion);
+        if (resultado != 0){
+            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
+            vistaProduccion.operacionesCrud("");
+            buscarProduccion("", "");
+        }
+    }
 
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getActionCommand().equalsIgnoreCase("Agregar") ){
-                vistaProduccion.nuevaAccion();
-            }else if (e.getActionCommand().equalsIgnoreCase("Aplicar")){
-                JOptionPane.showMessageDialog(null, "se van a introducir los datos.");
-                crear();
-            }else if (e.getActionCommand().equalsIgnoreCase("Leer")){
-                JOptionPane.showMessageDialog(null, "se van a cargar los datos.");
-                leer();
+                
+                agregarProduccion(this.vistaProduccion.crearObjetoProduccion());
+               
+            }else if (e.getActionCommand().equalsIgnoreCase("Editar")){
+                editarProduccion(vistaProduccion.crearObjetoProduccion());
+               
+            }else if (e.getActionCommand().equalsIgnoreCase("Eliminar")){
+                eliminarProduccion(vistaProduccion.getID());
+               
+            }else if (e.getActionCommand().equalsIgnoreCase("Actualizar")){
+               buscarProduccion("", "");
+               
+            }else if (e.getActionCommand().equalsIgnoreCase("Buscar")){
+                
+               String[] datosBuscar = vistaProduccion.datosBuscar();
+                buscarProduccion(datosBuscar[0], datosBuscar[1]);
+               
             }
         }
         
-        private void crear(){
-            Produccion produccion = new Produccion();
-            produccion.setId(vistaProduccion.getID());
-            produccion.setNombre(vistaProduccion.getNombre());
-            produccion.setCosto(vistaProduccion.getCosto());
-            produccion.setProductoId(vistaProduccion.getIdProducto());
+        
 
-            int resultado = 0;
-            resultado = modeloProduccion.crear(produccion);
-            if(resultado == 1){ 
-                JOptionPane.showMessageDialog(null, "Produccion Grabada! " +resultado);
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "No se Grabó! " +resultado);
+        private void editarProduccion (Produccion producto){
+            int resultado = modeloProduccion.actualizar(producto);
+            if (resultado != 0){
+                JOptionPane.showMessageDialog(null, "Operacion Exitosa");
+                vistaProduccion.operacionesCrud("");
+                buscarProduccion("", "");
             }
         }
-        
-        private void leer(){
-            ArrayList<Produccion> listadoProduccion;
-            listadoProduccion = modeloProduccion.leer(0);
-            vistaProduccion.cargarProduccion(listadoProduccion);
+
+        private void eliminarProduccion (int codigo){
+            int resultado = modeloProduccion.borrar(codigo);
+            if (resultado != 0){
+                JOptionPane.showMessageDialog(null, "Operacion Exitosa");
+                vistaProduccion.operacionesCrud("");
+                buscarProduccion("", "");
+            }
         }
-        
-        
-        
-    }
     
 }

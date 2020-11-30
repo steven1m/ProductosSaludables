@@ -1,6 +1,6 @@
 package vista;
 
-import Modelo.Produccion;
+
 import Modelo.ProduccionDAO;
 import Controlador.ControladorProduccion;
 import Controlador.ControladorProducto;
@@ -127,7 +127,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         PanelProduccion vistaProduccion = new PanelProduccion();
         ProduccionDAO modeloProduccion = new ProduccionDAO();
         ControladorProduccion controladorProduccion = new ControladorProduccion(modeloProduccion, vistaProduccion);
-        vistaProduccion.setVisible(true);
+        //vistaProduccion.setVisible(true);
     }//GEN-LAST:event_MenuItemProduccionActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed

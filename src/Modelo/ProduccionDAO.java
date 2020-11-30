@@ -23,7 +23,7 @@ public class ProduccionDAO {
         
         Connection con = null;
         PreparedStatement ps;
-        String sentencia = "INSERT INTO public.produccion(id, nombre, costo, producto_id) "
+        String sentencia = "INSERT INTO produccion(id, nombre, costo, producto_id) "
                 + "VALUES (?, ?, ?, ?)";
         
         try{
@@ -43,7 +43,7 @@ public class ProduccionDAO {
         return resultado;
     }
     
-    public ArrayList<Produccion> leer(int id){
+    public ArrayList<Produccion> leer(String clave, String valor){
         ArrayList<Produccion>  lista = new ArrayList<>();
         Connection con = null;
         PreparedStatement ps = null;
@@ -53,9 +53,20 @@ public class ProduccionDAO {
             con = Conexion.getConnection();
             String sentencia = "";
             
-            sentencia = "SELECT * FROM produccion ORDER BY id";            
+            if ("".equals(clave) || "".equals(valor)){
+                sentencia = "SELECT * FROM produccion;";
+            }else if("nombre".equals(clave)) {
+                sentencia = "SELECT * FROM produccion WHERE nombre =?;";
+                
+            }else{
+                sentencia = "SELECT * FROM produccion where id=?";
+            }          
                                  
             ps = con.prepareStatement(sentencia);
+            
+            if (!"".equals(clave) && !"".equals(valor) ){
+                ps.setString(1, valor);
+            }
             
             rs = ps.executeQuery();
                         
@@ -89,7 +100,7 @@ public class ProduccionDAO {
             ps.setInt(1, produccion.getId());
             ps.setString(2, produccion.getNombre());
             ps.setFloat(3, produccion.getCosto());
-            ps.setInt(1, produccion.getProductoId());
+            ps.setInt(4, produccion.getProductoId());
             
             resultado = ps.executeUpdate();
             
