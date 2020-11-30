@@ -56,7 +56,7 @@ public class ProductoDAO {
             con = Conexion.getConnection();
             String sentencia;
             
-            if ("".equals(clave)|| "".equals(valor)){
+            if ("".equals(clave) || "".equals(valor)){
                 sentencia = "SELECT * FROM producto;";
             }else if("nombre".equals(clave)) {
                 sentencia = "SELECT * FROM producto WHERE nombre =?;";
@@ -69,7 +69,7 @@ public class ProductoDAO {
             ps = con.prepareStatement(sentencia);
             
             if (!"".equals(clave) && !"".equals(valor) ){
-                ps.setInt(1, Integer.parseInt(valor));
+                ps.setString(1, valor);
             }
             rs = ps.executeQuery();
                         
