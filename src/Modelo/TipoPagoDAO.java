@@ -41,6 +41,7 @@ public class TipoPagoDAO {
     }
     
     public ArrayList<TipoPago> leer(int id){
+       
         ArrayList<TipoPago>  lista = new ArrayList<>();
         Connection con = null;
         PreparedStatement ps = null;
@@ -50,10 +51,17 @@ public class TipoPagoDAO {
             con = Conexion.getConnection();
             String sentencia = "";
             
-            sentencia = "SELECT * FROM tipo_pago ORDER BY id";            
-                                 
+            if (id == 0){
+                sentencia = "SELECT * FROM tipo_pago ORDER BY id";
+            }else {
+                sentencia = "SELECT * FROM tipo_pago WHERE id=?";
+            }
             ps = con.prepareStatement(sentencia);
             
+            if (id != 0){
+                ps.setInt(1, id);
+            }
+                        
             rs = ps.executeQuery();
                         
             TipoPago tipo = null;
