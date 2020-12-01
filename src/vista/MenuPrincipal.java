@@ -1,10 +1,12 @@
 package vista;
 
 
+import Controlador.ControladorCatalogo;
 import Modelo.ProduccionDAO;
 import Controlador.ControladorProduccion;
 import Controlador.ControladorProducto;
 import Controlador.ControladorTipoPago;
+import Modelo.CatalogoDAO;
 import Modelo.ProductoDAO;
 import Modelo.TipoPagoDAO;
 import java.awt.Color;
@@ -51,6 +53,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -123,6 +126,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem6);
 
+        jMenuItem5.setText("Catalogos");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
         jMenu1.add(jMenu2);
 
         jMenuBar1.add(jMenu1);
@@ -173,6 +184,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ControladorTipoPago control = new ControladorTipoPago(modeloTipoPago, panelTipoPago);
         
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        
+        CatalogoDAO modeloCatalogo = new CatalogoDAO();
+        PanelCatalogo panelCatalogo = new PanelCatalogo();
+        ControladorCatalogo control = new ControladorCatalogo(modeloCatalogo, panelCatalogo);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     
     
@@ -230,6 +249,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenu menuControlMateriaPrima;

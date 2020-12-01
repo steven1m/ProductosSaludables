@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class CatalogoDAO {
     
-    public int crearCatalogo (Catalogo catalogo){
+    public int crear (Catalogo catalogo){
         
         int resultado = 0;
         Connection con ;
@@ -25,12 +25,13 @@ public class CatalogoDAO {
                 + "proveedor_id ) "
                 + "VALUES (?, ?, ?);";
         
+        System.out.println(catalogo.getProveedorId());
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(catalogo.getId()));
+            ps.setInt(1, catalogo.getId());
             ps.setString(2, catalogo.getDescripcion());
-            ps.setString(3, String.valueOf(catalogo.getProveedorId()));
+            ps.setInt(3, catalogo.getProveedorId());
             
             resultado = ps.executeUpdate();
             
@@ -42,7 +43,7 @@ public class CatalogoDAO {
         return resultado;
     }
     
-    public ArrayList <Catalogo> leerCatalogo (int id){
+    public ArrayList <Catalogo> leer (String clave, String valor){
         
         ArrayList <Catalogo> lista = new ArrayList<>();
         
@@ -50,17 +51,19 @@ public class CatalogoDAO {
         PreparedStatement ps;
         ResultSet rs;
         String sentencia;
-        if (id == -1){
-            sentencia ="SELECT * FROM public.catalogo;";
+        if ("".equals(clave) || "".equals(valor) ){
+            sentencia ="SELECT * FROM catalogo;";
+        }else if (clave.equals("id")){
+            sentencia ="SELECT * FROM catalogo WHERE id=?;";
         }else {
-            sentencia ="SELECT * FROM public.catalogo WHERE id=?;";
+            sentencia ="SELECT * FROM catalogo WHERE proveedor_id=?;";
         }
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            if (id != -1){
-               ps.setString(1, String.valueOf(id));
+            if (!clave.equals("") && !"".equals(valor)){
+               ps.setInt(1, Integer.parseInt(valor));
             }
             
             rs = ps.executeQuery();
@@ -68,11 +71,12 @@ public class CatalogoDAO {
             while (rs.next()){
                 Catalogo catalogo = new Catalogo();
                 catalogo.setId(rs.getInt("id"));
-                catalogo.setDescripcion("descripcion");
+                catalogo.setDescripcion(rs.getString("descripcion"));
                 catalogo.setProveedorId(rs.getInt("proveedor_id"));
+                lista.add(catalogo);
             }
 
-        }catch(SQLException ex){
+        }catch(SQLException | NumberFormatException ex ){
             JOptionPane.showMessageDialog(null,"Error : " + 
                     ex.getMessage());
         }
@@ -80,21 +84,19 @@ public class CatalogoDAO {
         return lista;
     }
      
-    public int actualizarCatalogo (Catalogo catalogo){
+    public int actualizar (Catalogo catalogo){
         
         int resultado = 0;
         Connection con ;
         PreparedStatement ps ;
-        String sentencia = "UPDATE public.catalogo SET  descripcio=?, "
-                + "proveedor_id=? "
+        String sentencia = "UPDATE public.catalogo SET  descripcion=? "
                 + "WHERE id=?;";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
             ps.setString(1, catalogo.getDescripcion());
-            ps.setString(2, String.valueOf(catalogo.getProveedorId()));
-            ps.setString(3, String.valueOf(catalogo.getId()));
+            ps.setInt(2, catalogo.getId());
             
             resultado = ps.executeUpdate();
             
@@ -106,7 +108,7 @@ public class CatalogoDAO {
         return resultado;
     }
     
-    public int eliminarCatalogo (int id){
+    public int borrar (int id){
         
         int resultado = 0;
         Connection con ;
@@ -117,7 +119,7 @@ public class CatalogoDAO {
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(id));
+            ps.setInt(1, id);
             
             resultado = ps.executeUpdate();
         }catch(SQLException ex){

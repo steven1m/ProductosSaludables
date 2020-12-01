@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author Universidad
  */
 public class ProveedorDAO {
-    public int crearProveedor (Proveedor proveedor){
+    public int crear (Proveedor proveedor){
         int resultado = 0;
         Connection con ;
         PreparedStatement ps;
@@ -45,7 +45,7 @@ public class ProveedorDAO {
     }
     
     
-    public ArrayList <Proveedor> leerProveedor (int id){
+    public ArrayList <Proveedor> leer (int id){
          ArrayList <Proveedor> lista = new ArrayList<>();
         
         Connection con ;
@@ -90,7 +90,7 @@ public class ProveedorDAO {
      
     
     
-    public int actualizarProveedor (Proveedor proveedor){
+    public int actualizar(Proveedor proveedor){
          
         int resultado = 0;
         Connection con ;
@@ -122,7 +122,7 @@ public class ProveedorDAO {
     }
     
     
-    public int borrarProveedor (int id){
+    public int borrar (int id){
         
            
         int resultado = 0;
