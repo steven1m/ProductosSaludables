@@ -31,8 +31,8 @@ public class PanelProduccion extends javax.swing.JFrame {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     
-    public int getID(){
-        return Integer.parseInt(txtCrudCodigo.getText());
+    public String getID(){
+        return this.txtCrudCodigo.getText();
     }
     
     public String getNombre(){
