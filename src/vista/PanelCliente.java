@@ -18,7 +18,7 @@ public class PanelCliente extends javax.swing.JFrame {
     private final  String[] datosCliente;
     
     public PanelCliente() {
-        this.datosCliente = new String[6];
+        this.datosCliente = new String[7];
         initComponents();
         iniciarVentana();
     }
@@ -42,14 +42,12 @@ public class PanelCliente extends javax.swing.JFrame {
        return this.txtCrudCodigo.getText();
     }
     
-    public String getCrudNombre (){
-       return this.txtCrudCodigo.getText();
-    }
+   
     
-    public Cliente crearObjetoCliente(){
+    public Cliente crearObjeto(){
         Cliente cliente = new Cliente();
         try{
-            cliente.setId(this.txtCrudCodigo.getSelectedText());
+            cliente.setId(this.txtCrudCodigo.getText());
             cliente.setNombre(this.txtCrudNombre.getText());
             cliente.setApellido(this.txtCrudApellido.getText());
             cliente.setTelefono(this.txtCrudTelefono.getText());
@@ -64,7 +62,7 @@ public class PanelCliente extends javax.swing.JFrame {
        
         return cliente;
     }
-    public void cargarTablaClientes(ArrayList<Cliente> lista){
+    public void cargarTabla(ArrayList<Cliente> lista){
         
         DefaultTableModel dtmCliente =(DefaultTableModel)this.jTableClientes.getModel();
         // eliminar los datos que exinten en el modelo de la tabla antes de agregar los datos 
@@ -108,7 +106,7 @@ public class PanelCliente extends javax.swing.JFrame {
                
                
                
-               for (int i = 0; i < 6; i++){
+               for (int i = 0; i < 7; i++){
                    this.datosCliente[i] = 
                            this.jTableClientes.getValueAt(fila, i).toString();
                }
@@ -126,10 +124,11 @@ public class PanelCliente extends javax.swing.JFrame {
             case "Agregar" -> {
                 this.txtCrudCodigo.setEnabled(true);
                 this.txtCrudNombre.setEnabled(true);
-                
+                this.txtCrudApellido.setEnabled(true);
                 this.txtCrudTelefono.setEnabled(true);
                 this.txtCrudDireccion.setEnabled(true);
                 this.txtCrudCorreo.setEnabled(true);
+                this.txtCrudRazonSocial.setEnabled(true);
                 this.btnCrudAplicar.setText(operacion);
                 this.btnCrudAplicar.setEnabled(true);
                 this.btnCrudCancelar.setEnabled(true);
@@ -138,10 +137,11 @@ public class PanelCliente extends javax.swing.JFrame {
             case "Editar" -> {
                 this.txtCrudCodigo.setEnabled(false);
                 this.txtCrudNombre.setEnabled(true);
-                
+                this.txtCrudApellido.setEnabled(true);
                 this.txtCrudTelefono.setEnabled(true);
                 this.txtCrudDireccion.setEnabled(true);
                 this.txtCrudCorreo.setEnabled(true);
+                this.txtCrudRazonSocial.setEnabled(true);
                 this.btnCrudAplicar.setText(operacion);
                 this.btnCrudAplicar.setEnabled(true);
                 this.btnCrudCancelar.setEnabled(true);
@@ -150,10 +150,11 @@ public class PanelCliente extends javax.swing.JFrame {
             case "Eliminar" -> {
                 this.txtCrudCodigo.setEnabled(false);
                 this.txtCrudNombre.setEnabled(false);
-                
+                this.txtCrudApellido.setEnabled(false);
                 this.txtCrudTelefono.setEnabled(false);
                 this.txtCrudDireccion.setEnabled(false);
                 this.txtCrudCorreo.setEnabled(false);
+                this.txtCrudRazonSocial.setEnabled(false);
                 this.btnCrudAplicar.setText(operacion);
                 this.btnCrudAplicar.setEnabled(true);
                 this.btnCrudCancelar.setEnabled(true);
@@ -162,10 +163,11 @@ public class PanelCliente extends javax.swing.JFrame {
             default -> {
                 this.txtCrudCodigo.setText("");
                 this.txtCrudNombre.setText("");
-               
+                this.txtCrudApellido.setText("");
                 this.txtCrudTelefono.setText("");
                 this.txtCrudDireccion.setText("");
                 this.txtCrudCorreo.setText("");
+                this.txtCrudRazonSocial.setText("");
                 this.txtBuscar.setText("");
                 
                 this.lblNombreSelectCliente.setText("");
@@ -173,10 +175,11 @@ public class PanelCliente extends javax.swing.JFrame {
                 
                 this.txtCrudCodigo.setEnabled(false);
                 this.txtCrudNombre.setEnabled(false);
-                
+                this.txtCrudApellido.setEnabled(false);
                 this.txtCrudTelefono.setEnabled(false);
                 this.txtCrudDireccion.setEnabled(false);
                 this.txtCrudCorreo.setEnabled(false);
+                this.txtCrudRazonSocial.setEnabled(false);
                 this.btnCrudAplicar.setEnabled(false);
                 this.btnCrudCancelar.setEnabled(false);
                 this.btnCrudAplicar.setText("Aplicar");
@@ -187,10 +190,11 @@ public class PanelCliente extends javax.swing.JFrame {
     private void setearDatos(){
         this.txtCrudCodigo.setText(this.datosCliente[0]);
         this.txtCrudNombre.setText(this.datosCliente[1]);
-        
+        this.txtCrudApellido.setText(this.datosCliente[2]);
         this.txtCrudTelefono.setText(this.datosCliente[3]);
         this.txtCrudDireccion.setText(this.datosCliente[4]);
         this.txtCrudCorreo.setText(this.datosCliente[5]);
+        this.txtCrudRazonSocial.setText(this.datosCliente[6]);
     }
     
     public String[] datosBuscar(){
@@ -198,11 +202,22 @@ public class PanelCliente extends javax.swing.JFrame {
         String[] datos = new String[2];
         String clave ;
         String valor = this.txtBuscar.getText();
-        if (this.cajaTipoBusquedad.getSelectedIndex() == 1){
-            clave = "id";
-        }else {
-            clave = "nombre";
+        int op = this.cajaTipoBusquedad.getSelectedIndex();
+        
+        switch (op){
+            case 0:
+                    clave = "apellido";
+                break;
+                
+            case 1:
+                    clave = "nombre";
+                break;
+                
+            default:
+                    clave = "id";
+                break;
         }
+        
         datos[0] = clave;
         datos[1] = valor;
        
@@ -414,19 +429,9 @@ public class PanelCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtCrudDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelCrudLayout.createSequentialGroup()
-                        .addComponent(btnCrudAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCrudCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17))
-                    .addGroup(jPanelCrudLayout.createSequentialGroup()
                         .addComponent(lblCrudlPrecio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtCrudTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelCrudLayout.createSequentialGroup()
-                        .addComponent(lblCrudPrecioVenta1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCrudRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
                         .addComponent(lblCrudPrecioVenta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -442,7 +447,17 @@ public class PanelCliente extends javax.swing.JFrame {
                     .addGroup(jPanelCrudLayout.createSequentialGroup()
                         .addComponent(lblCrudCodigo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCrudCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtCrudCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelCrudLayout.createSequentialGroup()
+                        .addComponent(lblCrudPrecioVenta1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCrudRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanelCrudLayout.createSequentialGroup()
+                        .addComponent(btnCrudAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCrudCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)))
                 .addContainerGap())
         );
         jPanelCrudLayout.setVerticalGroup(
@@ -476,18 +491,26 @@ public class PanelCliente extends javax.swing.JFrame {
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCrudRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudPrecioVenta1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrudAplicar)
                     .addComponent(btnCrudCancelar))
-                .addContainerGap())
+                .addContainerGap(22, Short.MAX_VALUE))
         );
+
+        txtCrudCodigo.getAccessibleContext().setAccessibleDescription("");
+        txtCrudNombre.getAccessibleContext().setAccessibleDescription("");
+        txtCrudCorreo.getAccessibleContext().setAccessibleDescription("");
+        txtCrudDireccion.getAccessibleContext().setAccessibleDescription("");
+        txtCrudTelefono.getAccessibleContext().setAccessibleDescription("");
+        txtCrudApellido.getAccessibleContext().setAccessibleDescription("");
+        txtCrudRazonSocial.getAccessibleContext().setAccessibleDescription("");
 
         panelBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         panelBuscar.setToolTipText("");
 
         cajaTipoBusquedad.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        cajaTipoBusquedad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Codigo Producto" }));
+        cajaTipoBusquedad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apellido", "Nombre", "Codigo" }));
 
         btnBuscar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnBuscar.setText("Buscar");
@@ -550,14 +573,16 @@ public class PanelCliente extends javax.swing.JFrame {
                     .addComponent(panelProductoSelect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGeneralLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelCrud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -573,17 +598,25 @@ public class PanelCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelGeneralLayout.createSequentialGroup()
-                                .addComponent(btnAgregar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEditar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnActualizar))
+                                .addGap(23, 23, 23)
+                                .addGroup(panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnAgregar)
+                                    .addComponent(btnEditar))
+                                .addGap(27, 27, 27)
+                                .addGroup(panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnEliminar)
+                                    .addComponent(btnActualizar))
+                                .addGap(22, 22, 22))
                             .addComponent(panelBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jPanelCrud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
+
+        btnEditar.getAccessibleContext().setAccessibleName("");
+        btnAgregar.getAccessibleContext().setAccessibleName("");
+        btnAgregar.getAccessibleContext().setAccessibleDescription("");
+        btnEliminar.getAccessibleContext().setAccessibleName("");
+        btnActualizar.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

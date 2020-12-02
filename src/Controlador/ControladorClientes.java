@@ -4,6 +4,7 @@ import Modelo.Cliente;
 import Modelo.ClienteDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import vista.PanelCliente;
 /**
@@ -12,14 +13,14 @@ import vista.PanelCliente;
  */
 public class ControladorClientes implements ActionListener{
     
-    private ClienteDAO modeloCliente;
-    private PanelCliente panelCliente;
+    private final ClienteDAO modeloCliente;
+    private final PanelCliente panelCliente;
 
     public ControladorClientes(ClienteDAO modeloCliente, PanelCliente panelCliente) {
         this.modeloCliente = modeloCliente;
         this.panelCliente = panelCliente;
         setListeners();
-        
+        buscar("","");
     }
     
     private void setListeners(){
@@ -27,37 +28,37 @@ public class ControladorClientes implements ActionListener{
         this.panelCliente.agregarListener(this);
     }
     
-    private void agregarCliente(Cliente cliente){
-       int resultado = modeloCliente.crearCliente(cliente);
+    private void agregar(Cliente cliente){
+       int resultado = modeloCliente.crear(cliente);
        if (resultado != 0){
            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
            this.panelCliente.operacionesCrud("");
-           
+            buscar("","");
        }
     }
    
-    private void editarCliente (Cliente cliente){
-       int resultado = modeloCliente.actualizarCliente(cliente);
+    private void editar (Cliente cliente){
+       int resultado = modeloCliente.actualizar(cliente);
        if (resultado != 0){
            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
            this.panelCliente.operacionesCrud("");
-         
+          buscar("","");
        }
     }
     
-    private void eliminarCliente (int codigo){
-        int resultado = this.modeloCliente.borrarCliente(codigo);
+    private void eliminar (int codigo){
+        int resultado = this.modeloCliente.borrar(codigo);
        if (resultado != 0){
            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
            this.panelCliente.operacionesCrud("");
-           
+            buscar("","");
        }
     }
     
-    private void buscarCliente (String clave, String valor){
-//        ArrayList<Producto> lista = this.modeloCliente.leer(clave, valor);
-//        this.paneCliente.cargarTablaClientes(lista);
-//        this.paneCliente.operacionesCrud("");
+    private void buscar (String clave, String valor){
+        ArrayList<Cliente> lista = this.modeloCliente.leer(clave, valor);
+        this.panelCliente.cargarTabla(lista);
+        this.panelCliente.operacionesCrud("");
     }
     
     @Override
@@ -65,21 +66,21 @@ public class ControladorClientes implements ActionListener{
             
             if(e.getActionCommand().equalsIgnoreCase("Agregar") ){
                 
-                agregarCliente(this.panelCliente.crearObjetoCliente());
+                agregar(this.panelCliente.crearObjeto());
                
             }else if (e.getActionCommand().equalsIgnoreCase("Editar")){
-                editarCliente(this.panelCliente.crearObjetoCliente());
+                editar(this.panelCliente.crearObjeto());
                
             }else if (e.getActionCommand().equalsIgnoreCase("Eliminar")){
-                eliminarCliente(Integer.valueOf(this.panelCliente.getCrudCodigo()));
+                eliminar(Integer.valueOf(this.panelCliente.getCrudCodigo()));
                
             }else if (e.getActionCommand().equalsIgnoreCase("Actualizar")){
-               
+               buscar("","");
                
             }else if (e.getActionCommand().equalsIgnoreCase("Buscar")){
                 
                String[] datosBuscar = this.panelCliente.datosBuscar();
-              
+                buscar(datosBuscar[0], datosBuscar[1]);
                
             }
            

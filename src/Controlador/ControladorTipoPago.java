@@ -20,7 +20,7 @@ public class ControladorTipoPago implements ActionListener{
         this.modeloTipoPago = modeloTipoPago;
         this.panelTipoPago = panelTipoPago;
         setListeners();
-        buscarProducto();
+        buscar();
     }
     
     private void setListeners(){
@@ -28,41 +28,41 @@ public class ControladorTipoPago implements ActionListener{
         this.panelTipoPago.agregarListener(this);
     }
     
-    private void agregarProducto (TipoPago tipoPago){
+    private void agregar (TipoPago tipoPago){
        int resultado = modeloTipoPago.crear(tipoPago);
        if (resultado != 0){
            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
            this.panelTipoPago.operacionesCrud("");
-           buscarProducto();
+           buscar();
        }
     }
    
-    private void editarProducto (TipoPago tipoPago){
+    private void editar (TipoPago tipoPago){
        int resultado = modeloTipoPago.actualizar(tipoPago);
        if (resultado != 0){
            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
            this.panelTipoPago.operacionesCrud("");
-           buscarProducto();
+           buscar();
        }
     }
     
-    private void eliminarProducto (int codigo){
+    private void borrar (int codigo){
         int resultado = this.modeloTipoPago.borrar(codigo);
        if (resultado != 0){
            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
            this.panelTipoPago.operacionesCrud("");
-           buscarProducto();
+           buscar();
        }
     }
     
-    private void buscarProducto (){
+    private void buscar (){
         try{
             int id =0;
             if (!"".equals(this.panelTipoPago.getCrudCodigo())){
                 id = Integer.parseInt(this.panelTipoPago.getCrudCodigo());
             }
             ArrayList<TipoPago> lista = this.modeloTipoPago.leer(id);
-            this.panelTipoPago.cargarTablaProductos(lista);
+            this.panelTipoPago.cargarTabla(lista);
             this.panelTipoPago.operacionesCrud("");
         }catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(null, "Error");
@@ -76,20 +76,20 @@ public class ControladorTipoPago implements ActionListener{
             
             if(e.getActionCommand().equalsIgnoreCase("Agregar") ){
                 
-                agregarProducto(this.panelTipoPago.crearObjetoProducto());
+                agregar(this.panelTipoPago.crearObjetoProducto());
                
             }else if (e.getActionCommand().equalsIgnoreCase("Editar")){
-                editarProducto(this.panelTipoPago.crearObjetoProducto());
+                editar(this.panelTipoPago.crearObjetoProducto());
                
             }else if (e.getActionCommand().equalsIgnoreCase("Eliminar")){
-                eliminarProducto(Integer.valueOf(this.panelTipoPago.getCrudCodigo()));
+                borrar(Integer.valueOf(this.panelTipoPago.getCrudCodigo()));
                
             }else if (e.getActionCommand().equalsIgnoreCase("Actualizar")){
-               buscarProducto();
+               buscar();
                
             }else if (e.getActionCommand().equalsIgnoreCase("Buscar")){
                 
-               buscarProducto();
+               buscar();
                
             }
            

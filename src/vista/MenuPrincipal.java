@@ -3,12 +3,14 @@ package vista;
 
 import Controlador.ControladorCatalogo;
 import Controlador.ControladorCategoriaMateriaPrima;
+import Controlador.ControladorClientes;
 import Modelo.ProduccionDAO;
 import Controlador.ControladorProduccion;
 import Controlador.ControladorProducto;
 import Controlador.ControladorTipoPago;
 import Modelo.CatalogoDAO;
 import Modelo.CategoriaMateriaPrimaDAO;
+import Modelo.ClienteDAO;
 import Modelo.ProductoDAO;
 import Modelo.TipoPagoDAO;
 import java.awt.Color;
@@ -60,6 +62,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -160,6 +163,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu2.add(jMenu5);
 
+        jMenuItem8.setText("Clientes");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem8);
+
         jMenu1.add(jMenu2);
 
         jMenuBar1.add(jMenu1);
@@ -228,6 +239,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         ControladorCategoriaMateriaPrima(modeloCategoria, panelCategotia);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        ClienteDAO modeloCliente = new ClienteDAO();
+        PanelCliente panelCliente = new PanelCliente();
+        ControladorClientes controlCliente = new ControladorClientes(modeloCliente, panelCliente);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
     
     
     
@@ -290,6 +308,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenu menuControlMateriaPrima;
     private javax.swing.JMenu menuControlProductos;

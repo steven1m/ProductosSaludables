@@ -42,9 +42,7 @@ public class PanelTipoPago extends javax.swing.JFrame {
        return this.txtCrudCodigo.getText();
     }
     
-    public String getCrudNombre (){
-       return this.txtCrudCodigo.getText();
-    }
+   
     
     public TipoPago crearObjetoProducto(){
         TipoPago tipoPago = new TipoPago();
@@ -60,7 +58,7 @@ public class PanelTipoPago extends javax.swing.JFrame {
        
         return tipoPago;
     }
-    public void cargarTablaProductos(ArrayList<TipoPago> lista){
+    public void cargarTabla(ArrayList<TipoPago> lista){
         
         DefaultTableModel dtmTipoPagos =(DefaultTableModel)this.jTableTipoPagos.getModel();
         // eliminar los datos que exinten en el modelo de la tabla antes de agregar los datos 
@@ -93,9 +91,9 @@ public class PanelTipoPago extends javax.swing.JFrame {
         this.jTableTipoPagos.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
            if (this.jTableTipoPagos.getSelectedRow()!= -1){
                int fila  = jTableTipoPagos.getSelectedRow();
-               this.lblCodigoSelectTipo.setText(this.jTableTipoPagos.getValueAt
+               this.lblCodigoSelect.setText(this.jTableTipoPagos.getValueAt
                                                (fila, 0).toString());
-               this.lblSelectDescripTipo.setText(this.jTableTipoPagos.getValueAt
+               this.lblSelectDescri.setText(this.jTableTipoPagos.getValueAt
                                                 (fila, 1).toString());
                
                
@@ -145,8 +143,8 @@ public class PanelTipoPago extends javax.swing.JFrame {
             default -> {
                 this.txtCrudCodigo.setText("");
                 this.txtCrudDescricion.setText("");
-                this.lblSelectDescripTipo.setText("");
-                this.lblCodigoSelectTipo.setText("");
+                this.lblSelectDescri.setText("");
+                this.lblCodigoSelect.setText("");
                 
                 this.txtCrudCodigo.setEnabled(false);
                 this.txtCrudDescricion.setEnabled(false);
@@ -179,10 +177,10 @@ public class PanelTipoPago extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableTipoPagos = new javax.swing.JTable();
         panelProductoSelect = new javax.swing.JPanel();
+        etiquetalCodigo = new javax.swing.JLabel();
+        etiquetaDescrip = new javax.swing.JLabel();
         lblCodigoSelect = new javax.swing.JLabel();
-        lblSelectDescrip = new javax.swing.JLabel();
-        lblCodigoSelectTipo = new javax.swing.JLabel();
-        lblSelectDescripTipo = new javax.swing.JLabel();
+        lblSelectDescri = new javax.swing.JLabel();
         jPanelCrud = new javax.swing.JPanel();
         lblCrudCodigo = new javax.swing.JLabel();
         txtCrudCodigo = new javax.swing.JTextField();
@@ -201,7 +199,7 @@ public class PanelTipoPago extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelGeneral.setBackground(new java.awt.Color(203, 240, 220));
-        panelGeneral.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Inventario de productos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        panelGeneral.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Panel Principal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
         btnEditar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnEditar.setText("Editar");
@@ -249,19 +247,19 @@ public class PanelTipoPago extends javax.swing.JFrame {
         panelProductoSelect.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Producto selecionado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         panelProductoSelect.setToolTipText("");
 
+        etiquetalCodigo.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        etiquetalCodigo.setText("Código:");
+        etiquetalCodigo.setToolTipText("");
+
+        etiquetaDescrip.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        etiquetaDescrip.setText("Descripcion:");
+        etiquetaDescrip.setToolTipText("");
+
         lblCodigoSelect.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        lblCodigoSelect.setText("Código:");
-        lblCodigoSelect.setToolTipText("");
+        lblCodigoSelect.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lblSelectDescrip.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        lblSelectDescrip.setText("Descripcion:");
-        lblSelectDescrip.setToolTipText("");
-
-        lblCodigoSelectTipo.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        lblCodigoSelectTipo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        lblSelectDescripTipo.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        lblSelectDescripTipo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lblSelectDescri.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        lblSelectDescri.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout panelProductoSelectLayout = new javax.swing.GroupLayout(panelProductoSelect);
         panelProductoSelect.setLayout(panelProductoSelectLayout);
@@ -269,13 +267,13 @@ public class PanelTipoPago extends javax.swing.JFrame {
             panelProductoSelectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProductoSelectLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCodigoSelect)
+                .addComponent(etiquetalCodigo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblCodigoSelectTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblCodigoSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lblSelectDescrip)
+                .addComponent(etiquetaDescrip)
                 .addGap(18, 18, 18)
-                .addComponent(lblSelectDescripTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblSelectDescri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelProductoSelectLayout.setVerticalGroup(
@@ -283,11 +281,11 @@ public class PanelTipoPago extends javax.swing.JFrame {
             .addGroup(panelProductoSelectLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelProductoSelectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCodigoSelect)
+                    .addComponent(etiquetalCodigo)
                     .addGroup(panelProductoSelectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lblCodigoSelectTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblSelectDescripTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblSelectDescrip, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(lblCodigoSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblSelectDescri, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(etiquetaDescrip, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -553,16 +551,16 @@ public class PanelTipoPago extends javax.swing.JFrame {
     private javax.swing.JButton btnCrudCancelar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JLabel etiquetaDescrip;
+    private javax.swing.JLabel etiquetalCodigo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanelCrud;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableTipoPagos;
     private javax.swing.JLabel lblCodigoSelect;
-    private javax.swing.JLabel lblCodigoSelectTipo;
     private javax.swing.JLabel lblCrudCodigo;
     private javax.swing.JLabel lblCruddescripcion;
-    private javax.swing.JLabel lblSelectDescrip;
-    private javax.swing.JLabel lblSelectDescripTipo;
+    private javax.swing.JLabel lblSelectDescri;
     private javax.swing.JPanel panelBuscar;
     private javax.swing.JPanel panelGeneral;
     private javax.swing.JPanel panelProductoSelect;

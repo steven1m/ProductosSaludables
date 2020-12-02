@@ -15,17 +15,19 @@ import javax.swing.JOptionPane;
  * @author Universidad
  */
 public class ClienteDAO {
-    public int crearCliente (Cliente cliente){
+    public int crear (Cliente cliente){
           int resultado = 0;
         Connection con ;
         PreparedStatement ps;
-        String sentencia = "INSERT INTO public.cliente( id, nombre,apellido,telefono,direccion,correo,razonSocial"
-                + "VALUES (?, ?, ?,?,?,?,?);";
+        String sentencia = "INSERT INTO cliente( id, nombre ,apellido ,telefono ,"
+                + "direccion,correo,razon_social) "
+                + " VALUES (?, ?, ?,?,?,?,?);";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(cliente.getId()));
+            
+            ps.setString(1, cliente.getId());
             ps.setString(2, cliente.getNombre());
             ps.setString(3, cliente.getApellido());
             ps.setString(4, cliente.getTelefono());
@@ -44,23 +46,32 @@ public class ClienteDAO {
         return resultado;
     }
     
-    public ArrayList <Cliente> leerCliente (int id){
+    public ArrayList <Cliente> leer (String clave, String valor){
         ArrayList <Cliente>  lista = new ArrayList<>();
         Connection con ;
         PreparedStatement ps;
         ResultSet rs;
         String sentencia;
-        if (id == -1){
-            sentencia ="SELECT * FROM public.cliente;";
-        }else {
-            sentencia ="SELECT * FROM public.cliente WHERE id=?;";
-        }
         
+        if ("".equals(clave) || "".equals(valor)){
+                sentencia = "SELECT * FROM cliente;";
+            }else if("nombre".equals(clave)) {
+                sentencia = "SELECT * FROM cliente WHERE nombre =?;";
+                
+            }else if("apellido".equals(clave)){
+                sentencia = "SELECT * FROM cliente where apellido=?";
+            }else {
+                sentencia = "SELECT * FROM cliente where id=?";
+            }
+        System.out.println(sentencia);
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            if (id != -1){
-               ps.setString(1, String.valueOf(id));
+           
+            if (!"".equals(clave) && !"".equals(valor) &&  !"id".equals(clave)){
+                ps.setString(1, valor);
+            }else if (!"".equals(clave) && !"".equals(valor) &&  "id".equals(clave)){
+                ps.setInt(1, Integer.parseInt(valor));
             }
             
             rs = ps.executeQuery();
@@ -73,21 +84,22 @@ public class ClienteDAO {
                 cliente.setTelefono(rs.getString("telefono"));
                 cliente.setDireccion(rs.getString("direccion"));
                 cliente.setCorreo(rs.getString("correo"));
-                cliente.setRazonSocial(rs.getString("razonSocial"));  
+                cliente.setRazonSocial(rs.getString("razon_social")); 
+                lista.add(cliente);
             }
 
-        }catch(SQLException ex){
+        }catch(SQLException | NumberFormatException ex){
             JOptionPane.showMessageDialog(null,"Error : " + 
                     ex.getMessage());
         }
         return lista;
     }
     
-    public int actualizarCliente (Cliente cliente){
+    public int actualizar (Cliente cliente){
         int resultado = 0;
          Connection con ;
         PreparedStatement ps ;
-        String sentencia = "UPDATE public.cliente SET  nombre=?,apellido=?,telefono=?,direccion=?,correo=?,razonSocial=? "
+        String sentencia = "UPDATE public.cliente SET  nombre=?,apellido=?,telefono=?,direccion=?,correo=?,razon_social=? "
                 + "proveedor_id=? "
                 + "WHERE id=?;";
         
@@ -111,7 +123,7 @@ public class ClienteDAO {
         return resultado;
     }
     
-    public int borrarCliente (int id){
+    public int borrar (int id){
         int resultado = 0;
          Connection con ;
         PreparedStatement ps ;
@@ -131,25 +143,3 @@ public class ClienteDAO {
         return resultado;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

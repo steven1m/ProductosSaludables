@@ -48,7 +48,7 @@
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="2" position="2" title="Inventario de productos">
+            <TitledBorder justification="2" position="2" title="Panel Principal">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                 <EtchetBorder/>
               </Border>
@@ -189,13 +189,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblCodigoSelect" min="-2" max="-2" attributes="0"/>
+                      <Component id="etiquetalCodigo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lblCodigoSelectTipo" min="-2" pref="114" max="-2" attributes="0"/>
+                      <Component id="lblCodigoSelect" min="-2" pref="114" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblSelectDescrip" min="-2" max="-2" attributes="0"/>
+                      <Component id="etiquetaDescrip" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblSelectDescripTipo" max="32767" attributes="0"/>
+                      <Component id="lblSelectDescri" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -205,11 +205,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblCodigoSelect" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetalCodigo" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblCodigoSelectTipo" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="lblSelectDescripTipo" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="lblSelectDescrip" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCodigoSelect" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="lblSelectDescri" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="etiquetaDescrip" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -218,7 +218,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblCodigoSelect">
+            <Component class="javax.swing.JLabel" name="etiquetalCodigo">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Aharoni" size="14" style="0"/>
@@ -227,7 +227,7 @@
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblSelectDescrip">
+            <Component class="javax.swing.JLabel" name="etiquetaDescrip">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Aharoni" size="14" style="0"/>
@@ -236,7 +236,7 @@
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblCodigoSelectTipo">
+            <Component class="javax.swing.JLabel" name="lblCodigoSelect">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Aharoni" size="14" style="0"/>
@@ -248,7 +248,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblSelectDescripTipo">
+            <Component class="javax.swing.JLabel" name="lblSelectDescri">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Aharoni" size="14" style="0"/>
