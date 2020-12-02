@@ -57,7 +57,7 @@ public class ControladorPago implements ActionListener{
     
     private void buscarProducto (String clave, String valor){
         ArrayList<Producto> lista = this.modeloProducto.leer(clave, valor);
-        this.panelProducto.cargarTablaProductos(lista);
+        this.panelProducto.cargarTabla(lista);
         this.panelProducto.operacionesCrud("");
        
     }
@@ -67,10 +67,10 @@ public class ControladorPago implements ActionListener{
             
             if(e.getActionCommand().equalsIgnoreCase("Agregar") ){
                 
-                agregarProducto(this.panelProducto.crearObjetoProducto());
+                agregarProducto(this.panelProducto.crearObjeto());
                
             }else if (e.getActionCommand().equalsIgnoreCase("Editar")){
-                editarProducto(this.panelProducto.crearObjetoProducto());
+                editarProducto(this.panelProducto.crearObjeto());
                
             }else if (e.getActionCommand().equalsIgnoreCase("Eliminar")){
                 eliminarProducto(Integer.valueOf(this.panelProducto.getCrudCodigo()));

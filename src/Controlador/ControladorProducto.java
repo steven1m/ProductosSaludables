@@ -20,7 +20,7 @@ public class ControladorProducto implements ActionListener{
         this.modeloProducto = modeloProducto;
         this.panelProducto = panelProducto;
         setListeners();
-        buscarProducto("", "");
+        buscar("", "");
     }
     
     private void setListeners(){
@@ -28,36 +28,36 @@ public class ControladorProducto implements ActionListener{
         this.panelProducto.agregarListener(this);
     }
     
-    private void agregarProducto (Producto producto){
+    private void agregar (Producto producto){
        int resultado = modeloProducto.crear(producto);
        if (resultado != 0){
            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
            this.panelProducto.operacionesCrud("");
-           buscarProducto("", "");
+           buscar("", "");
        }
     }
    
-    private void editarProducto (Producto producto){
+    private void editar (Producto producto){
        int resultado = modeloProducto.actualizar(producto);
        if (resultado != 0){
            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
            this.panelProducto.operacionesCrud("");
-           buscarProducto("", "");
+           buscar("", "");
        }
     }
     
-    private void eliminarProducto (int codigo){
+    private void eliminar (int codigo){
         int resultado = this.modeloProducto.borrar(codigo);
        if (resultado != 0){
            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
            this.panelProducto.operacionesCrud("");
-           buscarProducto("", "");
+           buscar("", "");
        }
     }
     
-    private void buscarProducto (String clave, String valor){
+    private void buscar (String clave, String valor){
         ArrayList<Producto> lista = this.modeloProducto.leer(clave, valor);
-        this.panelProducto.cargarTablaProductos(lista);
+        this.panelProducto.cargarTabla(lista);
         this.panelProducto.operacionesCrud("");
        
     }
@@ -67,21 +67,21 @@ public class ControladorProducto implements ActionListener{
             
             if(e.getActionCommand().equalsIgnoreCase("Agregar") ){
                 
-                agregarProducto(this.panelProducto.crearObjetoProducto());
+                agregar(this.panelProducto.crearObjeto());
                
             }else if (e.getActionCommand().equalsIgnoreCase("Editar")){
-                editarProducto(this.panelProducto.crearObjetoProducto());
+                editar(this.panelProducto.crearObjeto());
                
             }else if (e.getActionCommand().equalsIgnoreCase("Eliminar")){
-                eliminarProducto(Integer.valueOf(this.panelProducto.getCrudCodigo()));
+                eliminar(Integer.valueOf(this.panelProducto.getCrudCodigo()));
                
             }else if (e.getActionCommand().equalsIgnoreCase("Actualizar")){
-               buscarProducto("", "");
+               buscar("", "");
                
             }else if (e.getActionCommand().equalsIgnoreCase("Buscar")){
                 
                String[] datosBuscar = this.panelProducto.datosBuscar();
-                buscarProducto(datosBuscar[0], datosBuscar[1]);
+                buscar(datosBuscar[0], datosBuscar[1]);
                
             }
            

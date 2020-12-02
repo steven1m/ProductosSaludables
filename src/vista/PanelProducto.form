@@ -48,7 +48,7 @@
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="2" position="2" title="Inventario de productos">
+            <TitledBorder justification="2" position="2" title="Panel Principal">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                 <EtchetBorder/>
               </Border>
@@ -138,7 +138,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTableProductos">
+            <Component class="javax.swing.JTable" name="jTablePrincipal">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -200,7 +200,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder justification="2" title="Producto selecionado">
+                <TitledBorder justification="2" title="Selecci&#xf3;n ">
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                     <EtchetBorder/>
                   </Border>
@@ -218,11 +218,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblCodigoSelect" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lblCodigoSelectProd" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="etiquetaCodigoSelect" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblNombreSelect" min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="etiquetaNombre" min="-2" pref="53" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblNombreSelectProd" min="-2" pref="282" max="-2" attributes="0"/>
+                      <Component id="lblNombreSelect" min="-2" pref="282" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -234,9 +234,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblCodigoSelect" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblCodigoSelectProd" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="lblNombreSelectProd" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="lblNombreSelect" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="etiquetaCodigoSelect" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="lblNombreSelect" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="etiquetaNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -254,7 +254,7 @@
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblNombreSelect">
+            <Component class="javax.swing.JLabel" name="etiquetaNombre">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Aharoni" size="14" style="0"/>
@@ -263,7 +263,7 @@
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblCodigoSelectProd">
+            <Component class="javax.swing.JLabel" name="etiquetaCodigoSelect">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Aharoni" size="14" style="0"/>
@@ -275,7 +275,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblNombreSelectProd">
+            <Component class="javax.swing.JLabel" name="lblNombreSelect">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Aharoni" size="14" style="0"/>
@@ -619,7 +619,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Descripci&#xf3;n del producto"/>
+                <TitledBorder title="Descripci&#xf3;n"/>
               </Border>
             </Property>
           </Properties>
