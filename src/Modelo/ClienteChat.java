@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -38,14 +39,14 @@ public class ClienteChat extends JFrame implements ActionListener{
         add( campoIntroducir, BorderLayout.NORTH );
         areaPantalla = new JTextArea(); // crea objeto areaPantalla
         add( new JScrollPane( areaPantalla ), BorderLayout.CENTER );
-        //this.archivo = new FileWriter("src/Archivos/chat-c.txt");
+        //archivo = new FileWriter("src/Archivos/chat-c.txt",true);
 
         setSize( 300, 150 ); 
         setVisible( true ); 
     }
     
     // se conecta al servidor, obtiene flujos, procesa la conexión
-    public void ejecutarClienteChat()
+    public void ejecutarClienteChat() throws IOException
     {
         try 
         {   
@@ -93,11 +94,19 @@ public class ClienteChat extends JFrame implements ActionListener{
         {
             try // lee el mensaje y lo muestra
             {
+                FileWriter archivo = new FileWriter("src/Archivos/chat-s.txt",true);
+                
                 mensaje = ( String ) entrada.readObject(); // lee nuevo mensaje
                 
-                //PrintWriter pw = new PrintWriter(this.archivo);
+                PrintWriter pw = new PrintWriter(archivo);
                 
-                //pw.println("cliente: "+mensaje); // Escribir mensaje 
+                pw.println("en cliente chat: "+mensaje); // Escribir mensaje 
+                
+                if (archivo!=null){
+                    archivo.close();
+                }else {
+                    JOptionPane.showMessageDialog(null, "archivo no existe");
+                }
                 
                 mostrarMensaje( "\n" + mensaje ); // muestra el mensaje
             } catch ( ClassNotFoundException excepcionClaseNoEncontrada ){
@@ -123,11 +132,6 @@ public class ClienteChat extends JFrame implements ActionListener{
         try // envía un objeto al servidor
         {
             salida.writeObject( "CLIENTE>>> " + mensaje );
-            
-            //PrintWriter pw = new PrintWriter(this.archivo);
-                
-            //pw.println("cliente: "+mensaje); // Escribir mensaje 
-            
             salida.flush(); // envía todos los datos a la salida
             mostrarMensaje( "\nCLIENTE>>> " + mensaje );
         } catch ( IOException excepcionES ) {

@@ -9,6 +9,7 @@ package Modelo;
  import java.awt.BorderLayout;
  import java.awt.event.ActionEvent;
  import java.awt.event.ActionListener;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -41,7 +42,7 @@ import javax.swing.JOptionPane;
         add( campoIntroducir, BorderLayout.NORTH );
         areaPantalla = new JTextArea(); // crea objeto areaPantalla
         add( new JScrollPane( areaPantalla ), BorderLayout.CENTER );
-        //this.archivo = new FileWriter("src/Archivos/chat-s.txt");
+        //archivo = new FileWriter("src/Archivos/chat-s.txt",true);
 
         setSize( 300, 150 ); 
         setVisible( true ); 
@@ -64,6 +65,7 @@ import javax.swing.JOptionPane;
                 } // fin de catch
                 finally {
                     cerrarConexion(); // cierra la conexión
+                    
                     contador++;
                 } // fin de finally
              } // fin de while
@@ -115,19 +117,19 @@ import javax.swing.JOptionPane;
         {
             try // lee el mensaje y lo muestra en pantalla
             {
-                FileWriter archivo = new FileWriter("src/Archivos/chat-s.txt");
-                PrintWriter pw = new PrintWriter(archivo);
+                FileWriter archivo = new FileWriter("src/Archivos/chat-c.txt",true);
+                
                 mensaje = ( String ) entrada.readObject(); // lee el nuevo mensaje
                 
+                PrintWriter pw = new PrintWriter(archivo);
                 
+                pw.println("en server chat: "+mensaje); // Escribir mensaje en el archivo de texto
                 
-                pw.println("servidor: "+mensaje); // Escribir mensaje 
-                
-                if (archivo!=null){
-                    archivo.close();
-                }else {
-                    JOptionPane.showMessageDialog(null, "archivo no existe");
-                }
+                    if (archivo!=null){
+                        archivo.close();
+                    }else {
+                        JOptionPane.showMessageDialog(null, "archivo no existe");
+                    }
                 
                 mostrarMensaje( "\n" + mensaje ); // muestra el mensaje
             }catch ( ClassNotFoundException excepcionClaseNoEncontrada ) {
@@ -146,6 +148,7 @@ import javax.swing.JOptionPane;
         {
             salida.close(); // cierra flujo de salida
             entrada.close(); // cierra flujo de entrada
+            
             conexion.close(); // cierra el socket
         } catch ( IOException exepcionES ){
             exepcionES.printStackTrace();
@@ -158,17 +161,11 @@ import javax.swing.JOptionPane;
         try
         {
             salida.writeObject( "SERVIDOR>>> " + mensaje );
-            
-            //PrintWriter pw = new PrintWriter(this.archivo);
-                
-            //pw.println("servidor: "+mensaje); // Escribir mensaje 
-            
-            
             salida.flush(); // envía toda la salida al cliente
             mostrarMensaje( "\nSERVIDOR>>> " + mensaje );
         }catch ( IOException exepcionES ){
              areaPantalla.append( "\nError al escribir objeto" );
-        } // fin de catch
+        } 
      } // fin del método enviarDatos
  
     @Override
@@ -184,6 +181,7 @@ public static void main(String[] args) throws IOException {
         ServidorChat aplicacion = new ServidorChat(); // crea el servidor
         aplicacion.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         aplicacion.ejecutarServidor(); // ejecuta la aplicación servidor
+        
     }
 
    
