@@ -47,7 +47,7 @@ public class CategoriaMateriaPrimaDAO {
         PreparedStatement ps;
         ResultSet rs;
         String sentencia;
-        if (id == -1){
+        if (id == 0){
             sentencia ="SELECT * FROM public.CategoriaMateriaPrima;";
         }else {
             sentencia ="SELECT * FROM public.CategoriaMateriaPrima WHERE id=?;";
@@ -63,9 +63,9 @@ public class CategoriaMateriaPrimaDAO {
             rs = ps.executeQuery();
 
             while (rs.next()){
-                CategoriaMateriaPrima CMPrima = new CategoriaMateriaPrima();
-                CMPrima.setId(rs.getInt("id"));
-                CMPrima.setDescripcion("descripcion");
+                CategoriaMateriaPrima categoria = new CategoriaMateriaPrima();
+                categoria.setId(rs.getInt("id"));
+                categoria.setDescripcion("descripcion");
                
             }
 
