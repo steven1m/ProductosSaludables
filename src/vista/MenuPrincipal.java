@@ -2,11 +2,13 @@ package vista;
 
 
 import Controlador.ControladorCatalogo;
+import Controlador.ControladorCategoriaMateriaPrima;
 import Modelo.ProduccionDAO;
 import Controlador.ControladorProduccion;
 import Controlador.ControladorProducto;
 import Controlador.ControladorTipoPago;
 import Modelo.CatalogoDAO;
+import Modelo.CategoriaMateriaPrimaDAO;
 import Modelo.ProductoDAO;
 import Modelo.TipoPagoDAO;
 import java.awt.Color;
@@ -52,7 +54,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
@@ -118,13 +124,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Administrar");
 
+        jMenu3.setText("Pagos");
+
         jMenuItem6.setText("Tipo de Pagos");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem6);
+        jMenu3.add(jMenuItem6);
+
+        jMenu2.add(jMenu3);
+
+        jMenu4.setText("Materia Prima");
+
+        jMenuItem7.setText("Categoria Materia Prima");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem7);
+
+        jMenu2.add(jMenu4);
+
+        jMenu5.setText("Proveedores");
 
         jMenuItem5.setText("Catalogos");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +156,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem5);
+        jMenu5.add(jMenuItem5);
+
+        jMenu2.add(jMenu5);
 
         jMenu1.add(jMenu2);
 
@@ -193,6 +219,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ControladorCatalogo control = new ControladorCatalogo(modeloCatalogo, panelCatalogo);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        CategoriaMateriaPrimaDAO modeloCategoria = new CategoriaMateriaPrimaDAO();
+        PanelCategoriaMateriaPrima panelCategotia = new PanelCategoriaMateriaPrima();
+        
+        ControladorCategoriaMateriaPrima controlMP = new 
+                        ControladorCategoriaMateriaPrima(modeloCategoria, panelCategotia);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     
     
     
@@ -244,6 +279,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JFrame jFrame1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -251,6 +289,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenu menuControlMateriaPrima;
     private javax.swing.JMenu menuControlProductos;

@@ -18,7 +18,7 @@ public class PanelCategoriaMateriaPrima extends javax.swing.JFrame {
     private final  String[] datos;
     
     public PanelCategoriaMateriaPrima() {
-        this.datos = new String[3];
+        this.datos = new String[2];
         initComponents();
         iniciarVentana();
     }
@@ -99,7 +99,7 @@ public class PanelCategoriaMateriaPrima extends javax.swing.JFrame {
                                                 (fila, 1).toString());
                
                
-               for (int i = 0; i < 3; i++){
+               for (int i = 0; i < 2; i++){
                    this.datos[i] = 
                            this.jTableCategorias.getValueAt(fila, i).toString();
                }

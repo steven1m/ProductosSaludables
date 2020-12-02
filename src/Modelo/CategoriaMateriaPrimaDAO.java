@@ -21,13 +21,13 @@ public class CategoriaMateriaPrimaDAO {
          int resultado = 0;
         Connection con ;
         PreparedStatement ps;
-        String sentencia = "INSERT INTO public.categoriaMateriPrima( id, descripcion,"
+        String sentencia = "INSERT INTO categoria_materia_prima ( id, descripcion) "
                 + "VALUES (?, ?);";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(categoria.getId()));
+            ps.setInt(1, categoria.getId());
             ps.setString(2, categoria.getDescripcion());
             
             
@@ -48,16 +48,16 @@ public class CategoriaMateriaPrimaDAO {
         ResultSet rs;
         String sentencia;
         if (id == 0){
-            sentencia ="SELECT * FROM public.CategoriaMateriaPrima;";
+            sentencia ="SELECT * FROM categoria_materia_prima;";
         }else {
-            sentencia ="SELECT * FROM public.CategoriaMateriaPrima WHERE id=?;";
+            sentencia ="SELECT * FROM categoria_materia_prima WHERE id=?;";
         }
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            if (id != -1){
-               ps.setString(1, String.valueOf(id));
+            if (id != 0){
+               ps.setInt(1, id);
             }
             
             rs = ps.executeQuery();
@@ -65,8 +65,8 @@ public class CategoriaMateriaPrimaDAO {
             while (rs.next()){
                 CategoriaMateriaPrima categoria = new CategoriaMateriaPrima();
                 categoria.setId(rs.getInt("id"));
-                categoria.setDescripcion("descripcion");
-               
+                categoria.setDescripcion(rs.getString("descripcion"));
+                lista.add(categoria);
             }
 
         }catch(SQLException ex){
@@ -80,14 +80,14 @@ public class CategoriaMateriaPrimaDAO {
         int resultado = 0;
         Connection con ;
         PreparedStatement ps ;
-        String sentencia = "UPDATE public.CategoriaMateriaPrima SET  descripcio=?, "            
+        String sentencia = "UPDATE categoria_materia_prima SET  descripcion=?  "            
                 + "WHERE id=?;";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
             ps.setString(1, categoria.getDescripcion());
-            ps.setString(3, String.valueOf(categoria.getId()));
+            ps.setInt(2,categoria.getId());
             
             resultado = ps.executeUpdate();
             
@@ -103,13 +103,13 @@ public class CategoriaMateriaPrimaDAO {
         int resultado = 0;
         Connection con ;
         PreparedStatement ps ;
-        String sentencia = "DELETE FROM public.CategproaMateriaPrima "
+        String sentencia = "DELETE FROM categoria_materia_prima "
                 + "WHERE id=?";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(id));
+            ps.setInt(1, id);
             
             resultado = ps.executeUpdate();
         }catch(SQLException ex){
