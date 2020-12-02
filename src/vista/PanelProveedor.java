@@ -59,9 +59,9 @@ public class PanelProveedor extends javax.swing.JFrame {
             proveedor.setId(Integer.parseInt(this.txtCrudCodigo.getText()));
             proveedor.setNit(this.txtCrudNombre.getText());
             proveedor.setRazonSocial(this.txtAreaCrudDescripcion.getText());
-            proveedor.setDireccion(Integer.parseInt(this.txtCrudCantidad.getText()));
-            proveedor.setPrecio(Float.valueOf(this.txtCrudEncargo.getText()));
-            proveedor.setPrecioVenta(Float.valueOf(this.txtCrudPrecioVenta.getText()));
+//            proveedor.setDireccion(Integer.parseInt(this.txtCrudCantidad.getText()));
+//            proveedor.setPrecio(Float.valueOf(this.txtCrudEncargo.getText()));
+//            proveedor.setPrecioVenta(Float.valueOf(this.txtCrudPrecioVenta.getText()));
         }catch (NumberFormatException ex ){
             JOptionPane.showMessageDialog(null,"Error : " + 
                     ex.getMessage());

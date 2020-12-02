@@ -62,8 +62,8 @@ public class ControladorProveedor implements ActionListener{
     }
     
     private void buscarProveedor (String clave, String valor){
-        ArrayList<Proveedor> lista = this.modeloProveedor.leer(clave, valor);
-        this.panelProveedor.cargarTablaProveedors(lista);
+//        ArrayList<Proveedor> lista = this.modeloProveedor.leer(clave, valor);
+//        this.panelProveedor.cargarTablaProveedors(lista);
         this.panelProveedor.operacionesCrud("");
        
     }
