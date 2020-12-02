@@ -65,23 +65,23 @@ public class PanelProducto extends javax.swing.JFrame {
     }
     public void cargarTabla(ArrayList<Producto> lista){
         
-        DefaultTableModel dtmProductos =(DefaultTableModel)this.jTablePrincipal.getModel();
+        DefaultTableModel dtmTabla =(DefaultTableModel)this.jTablePrincipal.getModel();
         // eliminar los datos que exinten en el modelo de la tabla antes de agregar los datos 
-        if (dtmProductos.getRowCount() != 0)
+        if (dtmTabla.getRowCount() != 0)
             {
-              int d = dtmProductos.getRowCount();
+              int d = dtmTabla.getRowCount();
               for (int y = 0; y < d; y++)
                 {
-                  dtmProductos.removeRow(0);
+                  dtmTabla.removeRow(0);
                 }
             }
-        this.jTablePrincipal.setModel(dtmProductos);
+        this.jTablePrincipal.setModel(dtmTabla);
         
         Iterator <Producto> iterador = lista.iterator();
         
         while(iterador.hasNext()){
             Producto producto = iterador.next();
-            dtmProductos.addRow(new Object[]
+            dtmTabla.addRow(new Object[]
               {
               producto.getId(),
               producto.getNombre(),
@@ -91,7 +91,7 @@ public class PanelProducto extends javax.swing.JFrame {
               producto.getPrecioVenta()
               });
         }
-        this.jTablePrincipal.setModel(dtmProductos);
+        this.jTablePrincipal.setModel(dtmTabla);
     }
     
     private void selecionTabla(){

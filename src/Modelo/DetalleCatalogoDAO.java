@@ -18,23 +18,24 @@ import javax.swing.JOptionPane;
  * @author Universidad
  */
 public class DetalleCatalogoDAO {
-    public int crearDCatalogo (DetalleCatalogo detalle){
+    
+    public int crear(DetalleCatalogo detalle){
         int resultado = 0;
         Connection con;
         PreparedStatement ps;
-        String sentencia = "INSERT INTO public.catalogo( id, nombre,descripcion,precio"
-                + "catalogoId ) "+ "materiaPrimaId ) "
-                + "VALUES (?, ?, ?,?, ?, ?);";
+        String sentencia = "INSERT INTO detalle_catalogo( id, catalogo_id, nombre,"
+                + " descripcion, precio, materia_prima_id) "
+                + "VALUES (?, ?, ?, ?, ?, ?);";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(detalle.getId()));
-            ps.setString(2, detalle.getNombre());
-            ps.setString(2, detalle.getDescripcion());
-            ps.setString(3, String.valueOf(detalle.getPrecio()));
-            ps.setString(3, String.valueOf(detalle.getCatalogoId()));
-            ps.setString(3, String.valueOf(detalle.getMateriaPrimaId()));
+            ps.setInt(1, detalle.getId());
+            ps.setInt(2,detalle.getCatalogoId());
+            ps.setString(3, detalle.getNombre());
+            ps.setString(4, detalle.getDescripcion());
+            ps.setFloat(5, detalle.getPrecio());
+            ps.setInt(6, detalle.getMateriaPrimaId());
             
             resultado = ps.executeUpdate();
             
@@ -45,36 +46,45 @@ public class DetalleCatalogoDAO {
         return resultado;
     }
     
-    public ArrayList <DetalleCatalogo> leerDCatalogo (int id){
+    public ArrayList <DetalleCatalogo> leer (String clave, String valor){
         ArrayList <DetalleCatalogo>  lista = new ArrayList<>();
          
         Connection con ;
         PreparedStatement ps;
         ResultSet rs;
         String sentencia;
-        if (id == -1){
-            sentencia ="SELECT * FROM public.DetalleCatalogo;";
-        }else {
-            sentencia ="SELECT * FROM public.DetalleCatalogo WHERE id=?;";
-        }
+        
+        if ("".equals(clave) || "".equals(valor)){
+                sentencia = "SELECT * FROM detalle_catalogo;";
+            }else if("nombre".equals(clave)) {
+                sentencia = "SELECT * FROM detalle_catalogo WHERE nombre =?;";
+                
+            }else if("catalogo".equals(clave)){
+                sentencia = "SELECT * FROM detalle_catalogo where catalogo_id=?";
+            }else {
+                sentencia = "SELECT * FROM detalle_catalogo where id=?";
+            }
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            if (id != -1){
-               ps.setString(1, String.valueOf(id));
+           
+            if (!"".equals(clave) && !"".equals(valor) && !"id".equals(clave)){
+                ps.setString(1, valor);
+            }else if (!"".equals(clave) && !"".equals(valor)){
+                ps.setInt(1, Integer.parseInt(valor));
             }
             
             rs = ps.executeQuery();
 
             while (rs.next()){
-                DetalleCatalogo Dcatalogo = new DetalleCatalogo();
-                Dcatalogo.setId(rs.getInt("id"));
-                Dcatalogo.setCatalogoId(rs.getInt("catalogoId"));
-                Dcatalogo.setNombre(rs.getString("nombre"));
-                Dcatalogo.setDescripcion(rs.getString("descripcion"));
-                Dcatalogo.setPrecio(rs.getFloat("precio"));
-                Dcatalogo.setMateriaPrimaId(rs.getInt("materiaPrimaId"));
+                DetalleCatalogo detalle = new DetalleCatalogo();
+                detalle.setId(rs.getInt("id"));
+                detalle.setCatalogoId(rs.getInt("catalogoId"));
+                detalle.setNombre(rs.getString("nombre"));
+                detalle.setDescripcion(rs.getString("descripcion"));
+                detalle.setPrecio(rs.getFloat("precio"));
+                detalle.setMateriaPrimaId(rs.getInt("materiaPrimaId"));
             }
 
         }catch(SQLException ex){
@@ -84,23 +94,24 @@ public class DetalleCatalogoDAO {
         return lista;
     }
     
-    public int actualizarDCatalogo (DetalleCatalogo detalle){
+    public int actualizar (DetalleCatalogo detalle){
         int resultado = 0;
         Connection con ;
         PreparedStatement ps ;
-        String sentencia = "UPDATE public.detalleCatalogo SET  nombre=?, descripcio=?, precio=? "
-                + "catalogoId=? " + "materiaPrimaId=? "
+        String sentencia = "UPDATE detalle_catalogo SET  nombre=?, descripcio=?, precio=? "
+                + "catalogo_id=? " + "materia_prima_id=? "
                 + "WHERE id=?;";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setInt(1, detalle.getId());
-            ps.setString(2, detalle.getNombre());
+            
+            ps.setString(1, detalle.getNombre());
             ps.setString(2, detalle.getDescripcion());
             ps.setFloat(3, detalle.getPrecio());
-            ps.setInt(3, detalle.getCatalogoId());
-            ps.setInt(3, detalle.getMateriaPrimaId());
+            ps.setInt(4, detalle.getCatalogoId());
+            ps.setInt(5, detalle.getMateriaPrimaId());
+            ps.setInt(6, detalle.getId());
             
             resultado = ps.executeUpdate();
             
@@ -111,17 +122,17 @@ public class DetalleCatalogoDAO {
         return resultado;
     }
     
-    public int borrarDCatalogo (int id){
+    public int borrar (int id){
         int resultado = 0;
         Connection con ;
         PreparedStatement ps ;
-        String sentencia = "DELETE FROM public.detalleCatalogo "
+        String sentencia = "DELETE FROM detalle_catalogo "
                 + "WHERE id=?";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(id));
+            ps.setInt(1,id);
             
             resultado = ps.executeUpdate();
         }catch(SQLException ex){

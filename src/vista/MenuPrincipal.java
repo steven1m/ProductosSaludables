@@ -4,6 +4,7 @@ package vista;
 import Controlador.ControladorCatalogo;
 import Controlador.ControladorCategoriaMateriaPrima;
 import Controlador.ControladorClientes;
+import Controlador.ControladorDetalleCatalogo;
 import Modelo.ProduccionDAO;
 import Controlador.ControladorProduccion;
 import Controlador.ControladorProducto;
@@ -11,6 +12,7 @@ import Controlador.ControladorTipoPago;
 import Modelo.CatalogoDAO;
 import Modelo.CategoriaMateriaPrimaDAO;
 import Modelo.ClienteDAO;
+import Modelo.DetalleCatalogoDAO;
 import Modelo.ProductoDAO;
 import Modelo.TipoPagoDAO;
 import java.awt.Color;
@@ -62,6 +64,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
@@ -161,6 +164,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu5.add(jMenuItem5);
 
+        jMenuItem9.setText("Detalle Catalogos");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem9);
+
         jMenu2.add(jMenu5);
 
         jMenuItem8.setText("Clientes");
@@ -246,6 +257,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ControladorClientes controlCliente = new ControladorClientes(modeloCliente, panelCliente);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        
+        DetalleCatalogoDAO modeloDetalleCatalogo = new DetalleCatalogoDAO();
+        PanelDetalleCatalogo panelDetalleCatalogo = new PanelDetalleCatalogo();
+        ControladorDetalleCatalogo controlDetalle = new ControladorDetalleCatalogo
+                            (modeloDetalleCatalogo, panelDetalleCatalogo);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
     
     
     
@@ -309,6 +329,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenu menuControlMateriaPrima;
     private javax.swing.JMenu menuControlProductos;

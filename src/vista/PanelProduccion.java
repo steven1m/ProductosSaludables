@@ -3,7 +3,6 @@ import Modelo.Produccion;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
@@ -257,7 +256,6 @@ public class PanelProduccion extends javax.swing.JFrame {
 
         btnEditar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnEditar.setText("Editar");
-        btnEditar.setToolTipText("");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -290,7 +288,6 @@ public class PanelProduccion extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTableProduccion.setToolTipText("Productos existente en nuestro inventario");
         jTableProduccion.setName("Inventario de zapatos"); // NOI18N
         jScrollPane2.setViewportView(jTableProduccion);
         if (jTableProduccion.getColumnModel().getColumnCount() > 0) {
@@ -352,7 +349,6 @@ public class PanelProduccion extends javax.swing.JFrame {
         lblCrudCodigo.setText("Código:");
 
         txtCrudCodigo.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        txtCrudCodigo.setToolTipText("Codigo unico de cada producto");
 
         lblCrudNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCrudNombre.setText("Nombre:");
@@ -369,11 +365,9 @@ public class PanelProduccion extends javax.swing.JFrame {
 
         btnCrudAplicar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnCrudAplicar.setText("Aplicar");
-        btnCrudAplicar.setToolTipText("Aplicar la operacion selecionada ");
 
         btnCrudCancelar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnCrudCancelar.setText("cancelar");
-        btnCrudCancelar.setToolTipText("Aplicar la operacion selecionada ");
         btnCrudCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrudCancelarActionPerformed(evt);
@@ -474,7 +468,6 @@ public class PanelProduccion extends javax.swing.JFrame {
 
         btnAgregar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnAgregar.setText("Agregar");
-        btnAgregar.setToolTipText("Agregar un nuevo producto al inventario");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -483,7 +476,6 @@ public class PanelProduccion extends javax.swing.JFrame {
 
         btnEliminar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
-        btnEliminar.setToolTipText("");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -515,7 +507,6 @@ public class PanelProduccion extends javax.swing.JFrame {
 
         btnLeer.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnLeer.setText("Actualizar");
-        btnLeer.setToolTipText("Agregar un nuevo producto al inventario");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -581,8 +572,6 @@ public class PanelProduccion extends javax.swing.JFrame {
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        jPanel11.getAccessibleContext().setAccessibleName("Inventario de produccion");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

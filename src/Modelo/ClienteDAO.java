@@ -63,15 +63,13 @@ public class ClienteDAO {
             }else {
                 sentencia = "SELECT * FROM cliente where id=?";
             }
-        System.out.println(sentencia);
+        
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
            
-            if (!"".equals(clave) && !"".equals(valor) &&  !"id".equals(clave)){
+            if (!"".equals(clave) && !"".equals(valor) ){
                 ps.setString(1, valor);
-            }else if (!"".equals(clave) && !"".equals(valor) &&  "id".equals(clave)){
-                ps.setInt(1, Integer.parseInt(valor));
             }
             
             rs = ps.executeQuery();

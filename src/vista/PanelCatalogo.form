@@ -67,7 +67,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="panelDescripcion" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="panelBuscar" pref="0" max="32767" attributes="0"/>
+                          <Component id="panelBuscar" pref="185" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane2" pref="415" max="32767" attributes="0"/>
                       <Component id="panelProductoSelect" max="32767" attributes="0"/>
@@ -129,7 +129,6 @@
               <Font name="Aharoni" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Editar"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarActionPerformed"/>
@@ -157,7 +156,6 @@
                     <Column editable="false" title="Descripci&#xf3;n" type="java.lang.String"/>
                   </Table>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Productos existente en nuestro inventario"/>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
@@ -367,7 +365,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Aharoni" size="14" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Codigo unico de cada producto"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblCrudNombre">
@@ -391,7 +388,6 @@
                   <Font name="Aharoni" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Aplicar"/>
-                <Property name="toolTipText" type="java.lang.String" value="Aplicar la operacion selecionada "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnCrudCancelar">
@@ -400,7 +396,6 @@
                   <Font name="Aharoni" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
-                <Property name="toolTipText" type="java.lang.String" value="Aplicar la operacion selecionada "/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrudCancelarActionPerformed"/>
@@ -510,7 +505,6 @@
               <Font name="Aharoni" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Agregar"/>
-            <Property name="toolTipText" type="java.lang.String" value="Agregar un nuevo producto al inventario"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarActionPerformed"/>
@@ -522,7 +516,6 @@
               <Font name="Aharoni" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
@@ -581,7 +574,6 @@
               <Font name="Aharoni" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Actualizar "/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
       </SubComponents>

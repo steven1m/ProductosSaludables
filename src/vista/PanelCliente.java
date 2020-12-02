@@ -274,7 +274,6 @@ public class PanelCliente extends javax.swing.JFrame {
 
         btnEditar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnEditar.setText("Editar");
-        btnEditar.setToolTipText("");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -307,7 +306,6 @@ public class PanelCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTableClientes.setToolTipText("Productos existente en nuestro inventario");
         jTableClientes.setName("Inventario de zapatos"); // NOI18N
         jScrollPane2.setViewportView(jTableClientes);
         if (jTableClientes.getColumnModel().getColumnCount() > 0) {
@@ -319,6 +317,8 @@ public class PanelCliente extends javax.swing.JFrame {
             jTableClientes.getColumnModel().getColumn(5).setResizable(false);
             jTableClientes.getColumnModel().getColumn(6).setResizable(false);
         }
+        jTableClientes.getAccessibleContext().setAccessibleName("");
+        jTableClientes.getAccessibleContext().setAccessibleDescription("");
 
         panelProductoSelect.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Producto selecionado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         panelProductoSelect.setToolTipText("");
@@ -365,6 +365,9 @@ public class PanelCliente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        lblCodigoSelectCliente.getAccessibleContext().setAccessibleDescription("");
+        lblNombreSelectCliente.getAccessibleContext().setAccessibleDescription("");
+
         jPanelCrud.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Panel de Opciones", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanelCrud.setToolTipText("");
 
@@ -372,7 +375,6 @@ public class PanelCliente extends javax.swing.JFrame {
         lblCrudCodigo.setText("Código:");
 
         txtCrudCodigo.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        txtCrudCodigo.setToolTipText("Codigo unico de cada producto");
 
         lblCrudNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCrudNombre.setText("Nombre:");
@@ -396,11 +398,9 @@ public class PanelCliente extends javax.swing.JFrame {
 
         btnCrudAplicar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnCrudAplicar.setText("Aplicar");
-        btnCrudAplicar.setToolTipText("Aplicar la operacion selecionada ");
 
         btnCrudCancelar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnCrudCancelar.setText("Cancelar");
-        btnCrudCancelar.setToolTipText("Aplicar la operacion selecionada ");
         btnCrudCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrudCancelarActionPerformed(evt);
@@ -498,12 +498,23 @@ public class PanelCliente extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
+        txtCrudCodigo.getAccessibleContext().setAccessibleName("");
         txtCrudCodigo.getAccessibleContext().setAccessibleDescription("");
+        txtCrudNombre.getAccessibleContext().setAccessibleName("");
         txtCrudNombre.getAccessibleContext().setAccessibleDescription("");
+        txtCrudCorreo.getAccessibleContext().setAccessibleName("");
         txtCrudCorreo.getAccessibleContext().setAccessibleDescription("");
+        txtCrudDireccion.getAccessibleContext().setAccessibleName("");
         txtCrudDireccion.getAccessibleContext().setAccessibleDescription("");
+        txtCrudTelefono.getAccessibleContext().setAccessibleName("");
         txtCrudTelefono.getAccessibleContext().setAccessibleDescription("");
+        btnCrudAplicar.getAccessibleContext().setAccessibleName("");
+        btnCrudAplicar.getAccessibleContext().setAccessibleDescription("");
+        btnCrudCancelar.getAccessibleContext().setAccessibleName("");
+        btnCrudCancelar.getAccessibleContext().setAccessibleDescription("");
+        txtCrudApellido.getAccessibleContext().setAccessibleName("");
         txtCrudApellido.getAccessibleContext().setAccessibleDescription("");
+        txtCrudRazonSocial.getAccessibleContext().setAccessibleName("");
         txtCrudRazonSocial.getAccessibleContext().setAccessibleDescription("");
 
         panelBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
@@ -541,9 +552,15 @@ public class PanelCliente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        cajaTipoBusquedad.getAccessibleContext().setAccessibleName("");
+        cajaTipoBusquedad.getAccessibleContext().setAccessibleDescription("");
+        btnBuscar.getAccessibleContext().setAccessibleName("");
+        btnBuscar.getAccessibleContext().setAccessibleDescription("");
+        txtBuscar.getAccessibleContext().setAccessibleName("");
+        txtBuscar.getAccessibleContext().setAccessibleDescription("");
+
         btnAgregar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnAgregar.setText("Agregar");
-        btnAgregar.setToolTipText("Agregar un nuevo producto al inventario");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -552,7 +569,6 @@ public class PanelCliente extends javax.swing.JFrame {
 
         btnEliminar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
-        btnEliminar.setToolTipText("");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -561,7 +577,6 @@ public class PanelCliente extends javax.swing.JFrame {
 
         btnActualizar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnActualizar.setText("Actualizar ");
-        btnActualizar.setToolTipText("");
 
         javax.swing.GroupLayout panelGeneralLayout = new javax.swing.GroupLayout(panelGeneral);
         panelGeneral.setLayout(panelGeneralLayout);
