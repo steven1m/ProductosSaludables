@@ -10,6 +10,7 @@ package Modelo;
  * @author Universidad
  */
 public class Proveedor {
+    
     private int id;
     private String nit;
     private String razonSocial;
@@ -18,27 +19,26 @@ public class Proveedor {
     private String telefono;
     private String descripcion;
     private String encargado;
+    private int catalogoID;
 
     public Proveedor() {
+        
     }
-
-    public Proveedor(int id, String nit, String razonSocial, String direccion, String correo, String telefono, String descripcion, String encargado) {
-        this.id = id;
-        this.nit = nit;
-        this.razonSocial = razonSocial;
-        this.direccion = direccion;
-        this.correo = correo;
-        this.telefono = telefono;
-        this.descripcion = descripcion;
-        this.encargado = encargado;
-    }
-
+    
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public int getCatalogoID() {
+        return catalogoID;
+    }
+
+    public void setCatalogoID(int catalogoID) {
+        this.catalogoID = catalogoID;
     }
 
     public String getNit() {

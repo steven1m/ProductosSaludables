@@ -544,6 +544,11 @@ public class PanelProducto extends javax.swing.JFrame {
 
         btnActualizar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnActualizar.setText("Actualizar ");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelGeneralLayout = new javax.swing.GroupLayout(panelGeneral);
         panelGeneral.setLayout(panelGeneralLayout);
@@ -641,6 +646,10 @@ public class PanelProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
         operacionesCrud("");
     }//GEN-LAST:event_btnCrudCancelarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
