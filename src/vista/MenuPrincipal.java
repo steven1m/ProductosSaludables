@@ -14,6 +14,7 @@ import Controlador.ControladorMateriaPrima;
 import Controlador.ControladorPedido;
 import Controlador.ControladorEmpleado;
 import Controlador.ControladorEstadoPedido;
+import Controlador.ControladorPago;
 
 import Modelo.ProveedorDAO;
 import Modelo.ProduccionDAO;
@@ -30,6 +31,7 @@ import Modelo.MateriaPrimaDAO;
 import Modelo.PedidoDAO;
 import Modelo.EmpleadoDAO;
 import Modelo.EstadoPedidoDAO;
+import Modelo.PagoDAO;
         
 import java.awt.Color;
 import java.awt.Font;
@@ -80,6 +82,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItemPagos = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -225,6 +228,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Administrar");
 
         jMenu3.setText("Pagos");
+
+        jMenuItemPagos.setText("Pagos");
+        jMenuItemPagos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPagosActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemPagos);
 
         jMenuItem6.setText("Tipo de Pagos");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -460,6 +471,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ControladorPedido controladorPedido = new ControladorPedido(pedidoDAO, panelPedido);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
+    private void jMenuItemPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPagosActionPerformed
+        // TODO add your handling code here:
+        PanelPagos panelPagos = new PanelPagos();
+        PagoDAO pagoDAO = new PagoDAO();
+        ControladorPago controladorPago = new ControladorPago(pagoDAO, panelPagos);
+    }//GEN-LAST:event_jMenuItemPagosActionPerformed
+
     
     
     
@@ -533,6 +551,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem jMenuItemEmpleados;
+    private javax.swing.JMenuItem jMenuItemPagos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

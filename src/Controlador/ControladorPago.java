@@ -1,8 +1,8 @@
 package Controlador;
 
-import Modelo.ProductoDAO;
-import Modelo.Producto;
-import vista.PanelProducto;
+import Modelo.PagoDAO;
+import Modelo.Pago;
+import vista.PanelPagos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,52 +13,52 @@ import javax.swing.JOptionPane;
  */
 public class ControladorPago implements ActionListener{
     
-    private final ProductoDAO modeloProducto;
-    private final PanelProducto panelProducto;
+    private final PagoDAO modeloPago;
+    private final PanelPagos panelPago;
 
-    public ControladorPago(ProductoDAO modeloProducto, PanelProducto panelProducto) {
-        this.modeloProducto = modeloProducto;
-        this.panelProducto = panelProducto;
+    public ControladorPago(PagoDAO modeloPago, PanelPagos panelPago) {
+        this.modeloPago = modeloPago;
+        this.panelPago = panelPago;
         setListeners();
-        buscarProducto("", "");
+        buscarPago("", "");
     }
     
     private void setListeners(){
         
-        this.panelProducto.agregarListener(this);
+        this.panelPago.agregarListener(this);
     }
     
-    private void agregarProducto (Producto producto){
-       int resultado = modeloProducto.crear(producto);
+    private void agregarPago (Pago pago){
+       int resultado = modeloPago.crear(pago);
        if (resultado != 0){
            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
-           this.panelProducto.operacionesCrud("");
-           buscarProducto("", "");
+           this.panelPago.operacionesCrud("");
+           buscarPago("", "");
        }
     }
    
-    private void editarProducto (Producto producto){
-       int resultado = modeloProducto.actualizar(producto);
+    private void editarPago (Pago pago){
+       int resultado = modeloPago.actualizar(pago);
        if (resultado != 0){
            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
-           this.panelProducto.operacionesCrud("");
-           buscarProducto("", "");
+           this.panelPago.operacionesCrud("");
+           buscarPago("", "");
        }
     }
     
-    private void eliminarProducto (int codigo){
-        int resultado = this.modeloProducto.borrar(codigo);
+    private void eliminarPago (int codigo){
+        int resultado = this.modeloPago.borrar(codigo);
        if (resultado != 0){
            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
-           this.panelProducto.operacionesCrud("");
-           buscarProducto("", "");
+           this.panelPago.operacionesCrud("");
+           buscarPago("", "");
        }
     }
     
-    private void buscarProducto (String clave, String valor){
-        ArrayList<Producto> lista = this.modeloProducto.leer(clave, valor);
-        this.panelProducto.cargarTabla(lista);
-        this.panelProducto.operacionesCrud("");
+    private void buscarPago (String clave, String valor){
+        ArrayList<Pago> lista = this.modeloPago.leer(clave, valor);
+        this.panelPago.cargarTabla(lista);
+        this.panelPago.operacionesCrud("");
        
     }
     
@@ -67,21 +67,21 @@ public class ControladorPago implements ActionListener{
             
             if(e.getActionCommand().equalsIgnoreCase("Agregar") ){
                 
-                agregarProducto(this.panelProducto.crearObjeto());
+                agregarPago(this.panelPago.crearObjeto());
                
             }else if (e.getActionCommand().equalsIgnoreCase("Editar")){
-                editarProducto(this.panelProducto.crearObjeto());
+                editarPago(this.panelPago.crearObjeto());
                
             }else if (e.getActionCommand().equalsIgnoreCase("Eliminar")){
-                eliminarProducto(Integer.valueOf(this.panelProducto.getCrudCodigo()));
+                eliminarPago(Integer.valueOf(this.panelPago.getCrudCodigo()));
                
             }else if (e.getActionCommand().equalsIgnoreCase("Actualizar")){
-               buscarProducto("", "");
+               buscarPago("", "");
                
             }else if (e.getActionCommand().equalsIgnoreCase("Buscar")){
                 
-               String[] datosBuscar = this.panelProducto.datosBuscar();
-                buscarProducto(datosBuscar[0], datosBuscar[1]);
+               String[] datosBuscar = this.panelPago.datosBuscar();
+                buscarPago(datosBuscar[0], datosBuscar[1]);
                
             }
            
