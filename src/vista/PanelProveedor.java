@@ -64,7 +64,7 @@ public class PanelProveedor extends javax.swing.JFrame {
             proveedor.setTelefono(this.txtCrudTelefono.getText());
             proveedor.setDescripcion(this.txtAreaCrudDescripcion.getText());
             proveedor.setEncargado(this.txtCrudEncargado.getText());
-            
+            proveedor.setCatalogoID(Integer.valueOf( this.txtCrudCatalogo.getText() ));
             
         }catch (NumberFormatException ex ){
             JOptionPane.showMessageDialog(null,"Error : " + 
