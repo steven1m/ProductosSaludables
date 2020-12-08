@@ -51,24 +51,26 @@ public class ClienteDAO {
         Connection con ;
         PreparedStatement ps;
         ResultSet rs;
-        String sentencia;
+        String sentencia = "";
         
         if ("".equals(clave) || "".equals(valor)){
                 sentencia = "SELECT * FROM cliente;";
             }else if("nombre".equals(clave)) {
-                sentencia = "SELECT * FROM cliente WHERE nombre =?;";
+                sentencia = "SELECT * FROM cliente WHERE nombre=?";
                 
             }else if("apellido".equals(clave)){
                 sentencia = "SELECT * FROM cliente where apellido=?";
-            }else {
+            }else if("codigo".equals(clave)){
                 sentencia = "SELECT * FROM cliente where id=?";
             }
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-           
-            if (!"".equals(clave) && !"".equals(valor) ){
+            
+            if ("codigo".equals(clave) && !"".equals(valor)){
+                ps.setInt(1, Integer.parseInt(valor));
+            } else if (!"".equals(clave) && !"".equals(valor) ){
                 ps.setString(1, valor);
             }
             
@@ -97,20 +99,20 @@ public class ClienteDAO {
         int resultado = 0;
          Connection con ;
         PreparedStatement ps ;
-        String sentencia = "UPDATE public.cliente SET  nombre=?,apellido=?,telefono=?,direccion=?,correo=?,razon_social=? "
-                + "proveedor_id=? "
-                + "WHERE id=?;";
+        String sentencia = "UPDATE cliente SET nombre=?,apellido=?,telefono=?,direccion=?,correo=?,razon_social=?"
+                +" WHERE id=?;";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(cliente.getId()));
-            ps.setString(2, cliente.getNombre());
-            ps.setString(3, cliente.getApellido());
-            ps.setString(4, cliente.getTelefono());
-            ps.setString(5, cliente.getDireccion());
-            ps.setString(6, cliente.getCorreo());
-            ps.setString(7, cliente.getRazonSocial());
+            //ps.setString(1, String.valueOf(cliente.getId()));
+            ps.setString(1, cliente.getNombre());
+            ps.setString(2, cliente.getApellido());
+            ps.setString(3, cliente.getTelefono());
+            ps.setString(4, cliente.getDireccion());
+            ps.setString(5, cliente.getCorreo());
+            ps.setString(6, cliente.getRazonSocial());
+            ps.setInt(7, Integer.parseInt( cliente.getId() ));
             
             resultado = ps.executeUpdate();
             
@@ -125,8 +127,8 @@ public class ClienteDAO {
         int resultado = 0;
          Connection con ;
         PreparedStatement ps ;
-        String sentencia = "DELETE FROM public.cliente "
-                + "WHERE id=?";
+        String sentencia = "DELETE FROM cliente"
+                + " WHERE id=?";
         
         try{
             con = Conexion.getConnection();

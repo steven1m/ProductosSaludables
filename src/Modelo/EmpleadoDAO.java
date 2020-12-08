@@ -19,21 +19,20 @@ public class EmpleadoDAO {
         int resultado = 0;
          Connection con ;
         PreparedStatement ps;
-        String sentencia = "INSERT INTO public.empleado( id, nombre,apellido,telefono,direccion,correo,cargo,salario"
-            
-                + "VALUES (?, ?, ?,?,?,?,?,?);";
+        String sentencia = "INSERT INTO empleado( id, nombre, apellido, telefono, direccion, correo, cargo, salario)"
+                           +" VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(empleado.getId()));
+            ps.setInt(1, empleado.getId());
             ps.setString(2, empleado.getNombre());
             ps.setString(3, empleado.getApellido());
-            ps.setString(4, empleado.getDireccion());
-            ps.setString(5, empleado.getCargo());
+            ps.setString(4, empleado.getTelefono());
+            ps.setString(5, empleado.getDireccion());
             ps.setString(6, empleado.getCorreo());
-            ps.setString(7, empleado.getTelefono());
-            ps.setString(8, String.valueOf(empleado.getSalario()));
+            ps.setString(7, empleado.getCargo());
+            ps.setFloat(8, empleado.getSalario());
             
             resultado = ps.executeUpdate();
             
@@ -50,17 +49,18 @@ public class EmpleadoDAO {
         PreparedStatement ps;
         ResultSet rs;
         String sentencia;
-        if (id == -1){
-            sentencia ="SELECT * FROM public.emplado;";
+        if (id == 0){
+            sentencia ="SELECT * FROM empleado;";
         }else {
-            sentencia ="SELECT * FROM public.empleado WHERE id=?;";
+            sentencia ="SELECT * FROM empleado where id=? order by id;";
         }
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            if (id != -1){
-               ps.setString(1, String.valueOf(id));
+            
+            if (id != 0){
+               ps.setInt(1, id);
             }
             
             rs = ps.executeQuery();
@@ -68,12 +68,12 @@ public class EmpleadoDAO {
             while (rs.next()){
                 Empleado empleado = new Empleado();
                 empleado.setId(rs.getInt("id"));
-                empleado.setNombre("descripcion");
+                empleado.setNombre("nombre");
                 empleado.setApellido("apellido");
-                empleado.setCorreo("correo");
+                empleado.setCorreo("telefono");
                 empleado.setDireccion("direccion");
-                empleado.setCargo("cargi");
-                empleado.setTelefono("telefono");
+                empleado.setCargo("correo");
+                empleado.setTelefono("cargo");
                 empleado.setSalario(rs.getFloat("salario"));
                 lista.add(empleado);
             }
@@ -89,21 +89,21 @@ public class EmpleadoDAO {
         int resultado = 0;
         Connection con ;
         PreparedStatement ps ;
-        String sentencia = "UPDATE public.empleado SET  descripcio=?, "
-               
-                + "WHERE id=?;";
+        String sentencia = "UPDATE public.empleado SET" 
+                            +" nombre=?, apellido=?, telefono=?, direccion=?, correo=?, cargo=?, salario=?"
+                            +" WHERE id=?;";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
             ps.setString(1, empleado.getNombre());
-            ps.setString(2, String.valueOf(empleado.getId()));
-            ps.setString(3, empleado.getApellido());
+            ps.setString(2, empleado.getApellido());
+            ps.setString(3, empleado.getTelefono());
             ps.setString(4, empleado.getDireccion());
-            ps.setString(5, empleado.getTelefono());
+            ps.setString(5, empleado.getCorreo());
             ps.setString(6, empleado.getCargo());
             ps.setFloat(7, empleado.getSalario());
-            ps.setString(8, empleado.getCorreo());
+            ps.setInt(7, empleado.getId());
             
             resultado = ps.executeUpdate();
             

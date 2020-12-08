@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,11 +31,14 @@ public class PedidoDAO {
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
             ps.setInt(1, pedido.getId());
-            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String fechaPedido = sdf.format(pedido.getFechaPedido());
-            ps.setString(2, fechaPedido);
-            String fechaDespacho = sdf.format(pedido.getFechaDespacho());
-            ps.setString(3, fechaDespacho);
+            
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd-MM-yyyy");
+            String fp = sdf.format(pedido.getFechaPedido());
+            ps.setString(2, fp);
+            
+            String fd = sdf.format(pedido.getFechaDespacho());
+            ps.setString(3, fd);
+            
             ps.setInt(4, pedido.getEmpleadoId());
             ps.setInt(5, Integer.valueOf( pedido.getClienteId() ));
             ps.setInt(6, pedido.getEstadoPedidoId());
@@ -110,10 +114,13 @@ public class PedidoDAO {
             ps = con.prepareStatement(sentencia);
             
             java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            
             String fechaPedido = sdf.format(pedido.getFechaPedido());
             ps.setString(1, fechaPedido);
+            
             String fechaDespacho = sdf.format(pedido.getFechaDespacho());
             ps.setString(2, fechaDespacho);
+            
             ps.setInt(3, pedido.getEmpleadoId());
             ps.setInt(4, Integer.valueOf( pedido.getClienteId() ));
             ps.setInt(5, pedido.getEstadoPedidoId());

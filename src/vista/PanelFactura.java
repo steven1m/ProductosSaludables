@@ -23,13 +23,13 @@ public class PanelFactura extends javax.swing.JFrame {
       
     public PanelFactura() {
          
-         this.datosFactura = new String[6];
+         this.datosFactura = new String[5];
         initComponents();
         iniciarVentana();
     }
       private void iniciarVentana(){
         this.setLocationRelativeTo(null);
-        this.setTitle("Inventario de Productos");
+        this.setTitle("Facturas");
         operacionesCrud("");
         selecionTabla(); 
         this.setVisible(true);
@@ -42,22 +42,23 @@ public class PanelFactura extends javax.swing.JFrame {
         this.btnActualizar.addActionListener(listener);
     }
       public String getCrudCodigo (){
-       return this.panelOpcionId.getText();
+       return this.txtCrudId.getText();
     }
     
     public String getCrudNombre (){
-       return this.panelOpcionId.getText();
+       return this.txtCrudId.getText();
     }
     public Factura crearObjetoFactura(){
         Factura factura = new Factura();
         try{
             
-            factura.setId(Integer.parseInt(this.panelOpcionId.getText()));
-            factura.setClienteId(this.txtNumeroFactura.getText());
-            //factura.setFecha(this.txtDescripcion.getText()); // casting de String a Date
-            factura.setEmpleadoId(Integer.parseInt(this.txtCantidad.getText()));
-            factura.setPadoId(Integer.parseInt(this.txtPrecio.getText()));
-            factura.setTipoVentaId(Integer.parseInt(this.txtPrecioVenta.getText()));
+            factura.setId(Integer.valueOf(this.txtCrudId.getText()));
+            factura.setClienteId(this.txtClienteId.getText());
+            factura.setEmpleadoId(Integer.valueOf(this.txtEmpleadoId.getText()));
+            factura.setPadoId(Integer.valueOf(this.txtPagoId.getText()));
+            factura.setTipoVentaId(Integer.valueOf(this.txtTipoVentaId.getText()));
+            factura.setFecha(this.jDateFecha.getDate());
+            
         }catch (NumberFormatException ex ){
             JOptionPane.showMessageDialog(null,"Error : " + 
                     ex.getMessage());
@@ -123,59 +124,55 @@ public class PanelFactura extends javax.swing.JFrame {
         switch (operacion){
             
             case "Agregar" : {
-                this.panelOpcionId.setEnabled(true);
-                this.txtNumeroFactura.setEnabled(true);
-                this.txtDescripcion.setEnabled(true);
-                this.txtPrecio.setEnabled(true);
-                this.txtCantidad.setEnabled(true);
-                this.txtPrecioVenta.setEnabled(true);
+                this.txtCrudId.setEnabled(true);
+                this.txtClienteId.setEnabled(true);
+                this.txtEmpleadoId.setEnabled(true);
+                this.txtPagoId.setEnabled(true);
+                this.txtTipoVentaId.setEnabled(true);
+                
                 this.BtnAplicar.setText(operacion);
                 this.BtnAplicar.setEnabled(true);
                 this.btnCancelar.setEnabled(true);
             }
             
             case "Editar" : {
-                this.panelOpcionId.setEnabled(false);
-                this.txtNumeroFactura.setEnabled(true);
-                this.txtDescripcion.setEnabled(true);
-                this.txtPrecio.setEnabled(true);
-                this.txtCantidad.setEnabled(true);
-                this.txtPrecioVenta.setEnabled(true);
+                this.txtCrudId.setEnabled(false);
+                this.txtClienteId.setEnabled(true);
+                this.txtEmpleadoId.setEnabled(true);
+                this.txtPagoId.setEnabled(true);
+                this.txtTipoVentaId.setEnabled(true);
                 this.BtnAplicar.setText(operacion);
                 this.BtnAplicar.setEnabled(true);
                 this.btnCancelar.setEnabled(true);
             }
             
             case "Eliminar" : {
-                this.panelOpcionId.setEnabled(false);
-                this.txtNumeroFactura.setEnabled(false);
-                this.txtDescripcion.setEnabled(false);
-                this.txtPrecio.setEnabled(false);
-                this.txtCantidad.setEnabled(false);
-                this.txtPrecioVenta.setEnabled(false);
+                this.txtCrudId.setEnabled(false);
+                this.txtClienteId.setEnabled(false);
+                this.txtEmpleadoId.setEnabled(false);
+                this.txtPagoId.setEnabled(false);
+                this.txtTipoVentaId.setEnabled(false);
                 this.BtnAplicar.setText(operacion);
                 this.BtnAplicar.setEnabled(true);
                 this.btnCancelar.setEnabled(true);
             }
             
             default : {
-                this.panelOpcionId.setText("");
-                this.txtNumeroFactura.setText("");
-                this.txtDescripcion.setText("");
-                this.txtPrecio.setText("");
-                this.txtCantidad.setText("");
-                this.txtPrecioVenta.setText("");
+                this.txtCrudId.setText("");
+                this.txtClienteId.setText("");
+                this.txtEmpleadoId.setText("");
+                this.txtPagoId.setText("");
+                this.txtTipoVentaId.setText("");
                 this.txtBuscar.setText("");
                 this.txtAreaDescripcion.setText("");
                 this.lblNombreSelectProd.setText("");
                 this.lblCodigoSelectProd.setText("");
                 
-                this.panelOpcionId.setEnabled(false);
-                this.txtNumeroFactura.setEnabled(false);
-                this.txtDescripcion.setEnabled(false);
-                this.txtPrecio.setEnabled(false);
-                this.txtCantidad.setEnabled(false);
-                this.txtPrecioVenta.setEnabled(false);
+                this.txtCrudId.setEnabled(false);
+                this.txtClienteId.setEnabled(false);
+                this.txtEmpleadoId.setEnabled(false);
+                this.txtPagoId.setEnabled(false);
+                this.txtTipoVentaId.setEnabled(false);
                 this.BtnAplicar.setEnabled(false);
                 this.btnCancelar.setEnabled(false);
                 this.BtnAplicar.setText("Aplicar");
@@ -183,12 +180,12 @@ public class PanelFactura extends javax.swing.JFrame {
         }
     }
        private void setearDatos(){
-        this.panelOpcionId.setText(this.datosFactura[0]);
-        this.txtNumeroFactura.setText(this.datosFactura[1]);
-        this.txtDescripcion.setText(this.datosFactura[2]);
-        this.txtPrecio.setText(this.datosFactura[3]);
-        this.txtCantidad.setText(this.datosFactura[4]);
-        this.txtPrecioVenta.setText(this.datosFactura[5]);
+        this.txtCrudId.setText(this.datosFactura[0]);
+        this.txtClienteId.setText(this.datosFactura[1]);
+        this.txtEmpleadoId.setText(this.datosFactura[2]);
+        this.txtPagoId.setText(this.datosFactura[3]);
+        this.txtTipoVentaId.setText(this.datosFactura[4]);
+        this.jDateFecha.setDateFormatString(this.datosFactura[5]);
     }
     
     public String[] datosBuscar(){
@@ -226,20 +223,19 @@ public class PanelFactura extends javax.swing.JFrame {
         lblNombreSelectProd = new javax.swing.JLabel();
         jPanelCrud = new javax.swing.JPanel();
         lblCrudCodigo = new javax.swing.JLabel();
-        panelOpcionId = new javax.swing.JTextField();
+        txtCrudId = new javax.swing.JTextField();
         lblCrudNombre = new javax.swing.JLabel();
-        txtNumeroFactura = new javax.swing.JTextField();
+        txtClienteId = new javax.swing.JTextField();
         lblCrudCantidad = new javax.swing.JLabel();
-        txtPrecioVenta = new javax.swing.JTextField();
+        txtTipoVentaId = new javax.swing.JTextField();
         lblCrudlPrecio = new javax.swing.JLabel();
-        txtCantidad = new javax.swing.JTextField();
+        txtPagoId = new javax.swing.JTextField();
         lblCrudPrecioVenta = new javax.swing.JLabel();
-        txtPrecio = new javax.swing.JTextField();
+        txtEmpleadoId = new javax.swing.JTextField();
         BtnAplicar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtDescripcion = new javax.swing.JTextArea();
-        lblCrudDescripcion = new javax.swing.JLabel();
+        lblCrudPrecioVenta1 = new javax.swing.JLabel();
+        jDateFecha = new com.toedter.calendar.JDateChooser();
         panelBuscar = new javax.swing.JPanel();
         cajaTipoBusquedad = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
@@ -259,6 +255,11 @@ public class PanelFactura extends javax.swing.JFrame {
         btnEditar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.setToolTipText("");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setToolTipText("");
 
@@ -339,30 +340,30 @@ public class PanelFactura extends javax.swing.JFrame {
         jPanelCrud.setToolTipText("");
 
         lblCrudCodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblCrudCodigo.setText("Id");
+        lblCrudCodigo.setText("Id:");
 
-        panelOpcionId.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        panelOpcionId.setToolTipText("Codigo unico de cada producto");
+        txtCrudId.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        txtCrudId.setToolTipText("Codigo unico de cada producto");
 
         lblCrudNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblCrudNombre.setText("Numero factura");
+        lblCrudNombre.setText("Id Cliente:");
 
-        txtNumeroFactura.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        txtClienteId.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
 
         lblCrudCantidad.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblCrudCantidad.setText("Cantidad:");
+        lblCrudCantidad.setText("Id Pago:");
 
-        txtPrecioVenta.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        txtTipoVentaId.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
 
         lblCrudlPrecio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblCrudlPrecio.setText("Precio:");
+        lblCrudlPrecio.setText("Id Empleado:");
 
-        txtCantidad.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        txtPagoId.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
 
         lblCrudPrecioVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblCrudPrecioVenta.setText("Precio V. :");
+        lblCrudPrecioVenta.setText("Id Tipo Venta:");
 
-        txtPrecio.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        txtEmpleadoId.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
 
         BtnAplicar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         BtnAplicar.setText("Aplicar");
@@ -371,13 +372,14 @@ public class PanelFactura extends javax.swing.JFrame {
         btnCancelar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnCancelar.setText("cancelar");
         btnCancelar.setToolTipText("Aplicar la operacion selecionada ");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
-        txtDescripcion.setColumns(20);
-        txtDescripcion.setRows(5);
-        jScrollPane3.setViewportView(txtDescripcion);
-
-        lblCrudDescripcion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblCrudDescripcion.setText("Descripción:");
+        lblCrudPrecioVenta1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblCrudPrecioVenta1.setText("Fecha:");
 
         javax.swing.GroupLayout jPanelCrudLayout = new javax.swing.GroupLayout(jPanelCrud);
         jPanelCrud.setLayout(jPanelCrudLayout);
@@ -387,67 +389,65 @@ public class PanelFactura extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblCrudNombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
-                        .addComponent(lblCrudDescripcion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
-                        .addComponent(lblCrudCodigo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panelOpcionId, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelCrudLayout.createSequentialGroup()
-                        .addComponent(lblCrudPrecioVenta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtPrecioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelCrudLayout.createSequentialGroup()
-                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanelCrudLayout.createSequentialGroup()
-                                .addComponent(lblCrudlPrecio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelCrudLayout.createSequentialGroup()
-                                .addComponent(lblCrudCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
                         .addComponent(BtnAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
+                        .addComponent(lblCrudNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtClienteId, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelCrudLayout.createSequentialGroup()
+                        .addComponent(lblCrudCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPagoId, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
+                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCrudPrecioVenta)
+                            .addComponent(lblCrudPrecioVenta1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jDateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtTipoVentaId, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
+                            .addComponent(lblCrudCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtCrudId, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(lblCrudlPrecio)
+                            .addGap(11, 11, 11)
+                            .addComponent(txtEmpleadoId, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         jPanelCrudLayout.setVerticalGroup(
             jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCrudLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(panelOpcionId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCrudId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudCodigo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtClienteId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudNombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCrudDescripcion)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCrudlPrecio)
-                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmpleadoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPagoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPrecioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTipoVentaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudPrecioVenta))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblCrudPrecioVenta1)
+                    .addComponent(jDateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(BtnAplicar))
@@ -492,10 +492,20 @@ public class PanelFactura extends javax.swing.JFrame {
         btnAgregar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.setToolTipText("Agregar un nuevo producto al inventario");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.setToolTipText("");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         panelDescripcion.setBorder(javax.swing.BorderFactory.createTitledBorder("Descripción del producto"));
 
@@ -598,6 +608,35 @@ public class PanelFactura extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+        operacionesCrud("");
+        operacionesCrud("Agregar");
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        operacionesCrud("");
+        if (this.jTableFactura.getSelectedRow()!= -1){
+            operacionesCrud("Editar");
+            setearDatos();
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        operacionesCrud("");
+        if (this.jTableFactura.getSelectedRow()!= -1){
+            operacionesCrud("Eliminar");
+            setearDatos();
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        operacionesCrud("");
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -642,32 +681,31 @@ public class PanelFactura extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JComboBox<String> cajaTipoBusquedad;
+    private com.toedter.calendar.JDateChooser jDateFecha;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanelCrud;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTableFactura;
     private javax.swing.JLabel lblCodigoSelect;
     private javax.swing.JLabel lblCodigoSelectProd;
     private javax.swing.JLabel lblCrudCantidad;
     private javax.swing.JLabel lblCrudCodigo;
-    private javax.swing.JLabel lblCrudDescripcion;
     private javax.swing.JLabel lblCrudNombre;
     private javax.swing.JLabel lblCrudPrecioVenta;
+    private javax.swing.JLabel lblCrudPrecioVenta1;
     private javax.swing.JLabel lblCrudlPrecio;
     private javax.swing.JLabel lblNombreSelect;
     private javax.swing.JLabel lblNombreSelectProd;
     private javax.swing.JPanel panelBuscar;
     private javax.swing.JPanel panelDescripcion;
     private javax.swing.JPanel panelFacturaSelect;
-    private javax.swing.JTextField panelOpcionId;
     private javax.swing.JTextArea txtAreaDescripcion;
     private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtCantidad;
-    private javax.swing.JTextArea txtDescripcion;
-    private javax.swing.JTextField txtNumeroFactura;
-    private javax.swing.JTextField txtPrecio;
-    private javax.swing.JTextField txtPrecioVenta;
+    private javax.swing.JTextField txtClienteId;
+    private javax.swing.JTextField txtCrudId;
+    private javax.swing.JTextField txtEmpleadoId;
+    private javax.swing.JTextField txtPagoId;
+    private javax.swing.JTextField txtTipoVentaId;
     // End of variables declaration//GEN-END:variables
 }

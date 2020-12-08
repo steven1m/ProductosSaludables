@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
 /**
@@ -16,30 +11,31 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
+
 public class PanelEmpleado extends javax.swing.JFrame {
 
     /**
      * Creates new form PanelEmpleado
      */
-    private final  String[] datosProducto;
+    private final String[] datosProducto;
     
     public PanelEmpleado() {
         this.datosProducto = new String[6];
         initComponents();
         iniciarVentana();
     }
-     private void iniciarVentana(){
+    
+    private void iniciarVentana(){
         this.setLocationRelativeTo(null);
-        this.setTitle("Inventario de Productos");
+        this.setTitle("Control Empleados");
         operacionesCrud("");
         selecionTabla(); 
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
-    public void agregarListener( ActionListener listener){
-        
-        
-         this.btnCrudAplicar.addActionListener(listener);
+     
+    public void agregarListener(ActionListener listener){
+        this.btnCrudAplicar.addActionListener(listener);
         this.btnBuscar.addActionListener(listener);
         this.btnActualizar.addActionListener(listener);
         this.btnEditar.addActionListener(listener);
@@ -47,37 +43,16 @@ public class PanelEmpleado extends javax.swing.JFrame {
         this.btnCrudCancelar.addActionListener(listener);
         this.btnAgregar.addActionListener(listener);
     }
-      public String getCrudId (){
-       return this.txtId.getText();
-    }
     
-    public String getNombre (){
-       return this.txtNombre.getText();
-    }
-     public String getApellido (){
-       return this.txtApellido.getText();
-    }
-      public String getDireccion (){
-       return this.txtDireccion.getText();
-    }
-       public String getTelefono (){
-       return this.txtTelefono.getText();
-    }
-        public String getCorreo (){
-       return this.txtCorreo.getText();
-    }
-         public String getCargo (){
-       return this.txtCargo.getText();
-    }
-          public String getSalario (){
-       return this.txtSalario.getText();
+    public String getId(){
+        return this.txtId.getText();
     }
     
     public Empleado crearObjetoEmpleado(){
         Empleado empleado = new Empleado();
         try{
             
-            empleado.setId(Integer.parseInt(this.txtId.getText()));
+            empleado.setId(Integer.valueOf(this.txtId.getText()));
             empleado.setNombre(this.txtNombre.getText());
             empleado.setApellido(this.txtApellido.getText());
             empleado.setDireccion(this.txtDireccion.getText());
@@ -92,10 +67,11 @@ public class PanelEmpleado extends javax.swing.JFrame {
        
         return empleado;
     }
+    
      public void cargarTablaEmpleado(ArrayList<Empleado> lista){
         
         DefaultTableModel dtmEmpleado =(DefaultTableModel)this.jTableEmpleado.getModel();
-        // eliminar los datos que exinten en el modelo de la tabla antes de agregar los datos 
+        // eliminar los datos que existen en el modelo de la tabla antes de agregar los datos 
         if (dtmEmpleado.getRowCount() != 0)
             {
               int d = dtmEmpleado.getRowCount();
@@ -112,18 +88,19 @@ public class PanelEmpleado extends javax.swing.JFrame {
             Empleado empleado = iterador.next();
             dtmEmpleado.addRow(new Object[]
               {
-              empleado.getId(),
-              empleado.getNombre(),
-              empleado.getApellido(),
-              empleado.getDireccion(),
-              empleado.getTelefono(),
-               empleado.getCargo(),
-                empleado.getSalario(),
-              empleado.getCorreo()
+                empleado.getId(),
+                empleado.getNombre(),
+                empleado.getApellido(),
+                empleado.getTelefono(),
+                empleado.getDireccion(),
+                empleado.getCorreo(),
+                empleado.getCargo(),
+                empleado.getSalario()
               });
         }
         this.jTableEmpleado.setModel(dtmEmpleado);
     }
+     
       private void selecionTabla(){
         // agregar metodeo de escucha a la tabla 
         this.jTableEmpleado.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
@@ -220,7 +197,8 @@ public class PanelEmpleado extends javax.swing.JFrame {
             }
         }
     }
-        private void setearDatos(){
+    
+    private void setearDatos(){
         this.txtId.setText(this.datosProducto[0]);
         this.txtNombre.setText(this.datosProducto[1]);
         this.txtApellido.setText(this.datosProducto[2]);
@@ -230,8 +208,8 @@ public class PanelEmpleado extends javax.swing.JFrame {
         this.txtCargo.setText(this.datosProducto[6]);
         this.txtSalario.setText(this.datosProducto[7]);
     }
-         public String[] datosBuscar(){
-        
+    
+    public String[] datosBuscar(){
         String[] datos = new String[2];
         String clave ;
         String valor = this.txtBuscar.getText();
@@ -313,11 +291,11 @@ public class PanelEmpleado extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Nombre", "Apellido", "Direccion", "Telefono", "Correo", "Cargo", "Salario"
+                "Id", "Nombre", "Apellido", "Telefono", "Direccion", "Correo", "Cargo", "Salario"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, true, true
@@ -594,7 +572,7 @@ public class PanelEmpleado extends javax.swing.JFrame {
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(panelProductoSelect, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(panelProductoSelect, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 617, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelCrud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -44,22 +44,13 @@ public class PanelPedido extends javax.swing.JFrame {
        return this.txtCrudCodigo.getText();
     }
     
-    public String getCrudNombre (){
-       return this.txtCrudFechaPedido.getText();
-    }
-    
     public Pedido crearObjeto(){
         Pedido pedido = new Pedido();
         try{
             
             pedido.setId(Integer.parseInt(this.txtCrudCodigo.getText()));
-            
-            Date fechaPedido = new Date(this.txtCrudFechaPedido.getText());
-            pedido.setFechaPedido(fechaPedido);
-            
-            Date fechaDespacho = new Date(this.txtCrudFechaDespacho.getText());
-            pedido.setFechaPedido(fechaDespacho);
-            
+            pedido.setFechaPedido(this.jDatePedido.getDate());
+            pedido.setFechaPedido(this.jDateDespacho.getDate());
             pedido.setEmpleadoId(Integer.parseInt(this.txtCrudEmpleadoId.getText()));
             pedido.setClienteId(this.txtCrudClienteId.getText());
             pedido.setEstadoPedidoId(Integer.parseInt(this.txtCrudEstadoPedido.getText()));
@@ -134,8 +125,8 @@ public class PanelPedido extends javax.swing.JFrame {
             
             case "Agregar" -> {
                 this.txtCrudCodigo.setEnabled(true);
-                this.txtCrudFechaPedido.setEnabled(true);
-                this.txtCrudFechaDespacho.setEnabled(true);
+                this.jDatePedido.setEnabled(true);
+                this.jDateDespacho.setEnabled(true);
                 this.txtCrudEmpleadoId.setEnabled(true);
                 this.txtCrudClienteId.setEnabled(true);
                 this.txtCrudEstadoPedido.setEnabled(true);
@@ -148,8 +139,8 @@ public class PanelPedido extends javax.swing.JFrame {
             
             case "Editar" -> {
                 this.txtCrudCodigo.setEnabled(false);
-                this.txtCrudFechaPedido.setEnabled(true);
-                this.txtCrudFechaDespacho.setEnabled(true);
+                this.jDatePedido.setEnabled(true);
+                this.jDateDespacho.setEnabled(true);
                 this.txtCrudEmpleadoId.setEnabled(true);
                 this.txtCrudClienteId.setEnabled(true);
                 this.txtCrudEstadoPedido.setEnabled(true);
@@ -162,8 +153,8 @@ public class PanelPedido extends javax.swing.JFrame {
             
             case "Eliminar" -> {
                 this.txtCrudCodigo.setEnabled(false);
-                this.txtCrudFechaPedido.setEnabled(false);
-                this.txtCrudFechaDespacho.setEnabled(false);
+                this.jDatePedido.setEnabled(false);
+                this.jDateDespacho.setEnabled(false);
                 this.txtCrudEmpleadoId.setEnabled(false);
                 this.txtCrudClienteId.setEnabled(false);
                 this.txtCrudEstadoPedido.setEnabled(false);
@@ -176,8 +167,8 @@ public class PanelPedido extends javax.swing.JFrame {
             
             default -> {
                 this.txtCrudCodigo.setText("");
-                this.txtCrudFechaPedido.setText("");
-                this.txtCrudFechaDespacho.setText("");
+                //this.jDatePedido.set;
+                //this.jDateDespacho.set;
                 this.txtCrudEmpleadoId.setText("");
                 this.txtCrudClienteId.setText("");
                 this.txtCrudFacturaId.setText("");
@@ -189,8 +180,8 @@ public class PanelPedido extends javax.swing.JFrame {
                 this.etiquetaCodigoSelect.setText("");
                 
                 this.txtCrudCodigo.setEnabled(false);
-                this.txtCrudFechaPedido.setEnabled(false);
-                this.txtCrudFechaDespacho.setEnabled(false);
+                this.jDatePedido.setEnabled(false);
+                this.jDateDespacho.setEnabled(false);
                 this.txtCrudEmpleadoId.setEnabled(false);
                 this.txtCrudClienteId.setEnabled(false);
                 this.txtCrudEstadoPedido.setEnabled(false);
@@ -206,8 +197,8 @@ public class PanelPedido extends javax.swing.JFrame {
     
     private void setearDatos(){
         this.txtCrudCodigo.setText(this.datosParaMostrar[0]);
-        this.txtCrudFechaPedido.setText(this.datosParaMostrar[1]);
-        this.txtCrudFechaDespacho.setText(this.datosParaMostrar[2]);
+        this.jDatePedido.setDateFormatString(this.datosParaMostrar[1]);
+        this.jDateDespacho.setDateFormatString(this.datosParaMostrar[2]);
         this.txtCrudEmpleadoId.setText(this.datosParaMostrar[3]);
         this.txtCrudClienteId.setText(this.datosParaMostrar[4]);
         this.txtCrudEstadoPedido.setText(this.datosParaMostrar[5]);
@@ -252,19 +243,19 @@ public class PanelPedido extends javax.swing.JFrame {
         lblCrudCodigo = new javax.swing.JLabel();
         txtCrudCodigo = new javax.swing.JTextField();
         lblCrudNombre = new javax.swing.JLabel();
-        txtCrudFechaPedido = new javax.swing.JTextField();
         lblCrudCantidad = new javax.swing.JLabel();
         txtCrudClienteId = new javax.swing.JTextField();
         lblCrudlPrecio = new javax.swing.JLabel();
         txtCrudEmpleadoId = new javax.swing.JTextField();
         lblCrudPrecioVenta = new javax.swing.JLabel();
-        txtCrudFechaDespacho = new javax.swing.JTextField();
         btnCrudAplicar = new javax.swing.JButton();
         btnCrudCancelar = new javax.swing.JButton();
         lblCrudPrecioVenta1 = new javax.swing.JLabel();
         txtCrudEstadoPedido = new javax.swing.JTextField();
         lblCrudPrecioVenta2 = new javax.swing.JLabel();
         txtCrudFacturaId = new javax.swing.JTextField();
+        jDatePedido = new com.toedter.calendar.JDateChooser();
+        jDateDespacho = new com.toedter.calendar.JDateChooser();
         panelBuscar = new javax.swing.JPanel();
         cajaTipoBusquedad = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
@@ -382,8 +373,6 @@ public class PanelPedido extends javax.swing.JFrame {
         lblCrudNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCrudNombre.setText("Fecha pedido:");
 
-        txtCrudFechaPedido.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-
         lblCrudCantidad.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCrudCantidad.setText("Empleado:");
 
@@ -396,8 +385,6 @@ public class PanelPedido extends javax.swing.JFrame {
 
         lblCrudPrecioVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCrudPrecioVenta.setText("Cliente:");
-
-        txtCrudFechaDespacho.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
 
         btnCrudAplicar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnCrudAplicar.setText("Aplicar");
@@ -420,6 +407,10 @@ public class PanelPedido extends javax.swing.JFrame {
 
         txtCrudFacturaId.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
 
+        jDatePedido.setDateFormatString("dd/MM/yyyy");
+
+        jDateDespacho.setDateFormatString("dd/MM/yyyy");
+
         javax.swing.GroupLayout jPanelCrudLayout = new javax.swing.GroupLayout(jPanelCrud);
         jPanelCrud.setLayout(jPanelCrudLayout);
         jPanelCrudLayout.setHorizontalGroup(
@@ -428,54 +419,55 @@ public class PanelPedido extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
-                        .addComponent(lblCrudNombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCrudFechaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
-                        .addComponent(lblCrudCodigo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCrudCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
                         .addComponent(btnCrudAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCrudCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
-                        .addComponent(lblCrudlPrecio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCrudFechaDespacho, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
-                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblCrudPrecioVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblCrudCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCrudEmpleadoId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCrudClienteId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
-                        .addComponent(lblCrudPrecioVenta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblCrudPrecioVenta1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCrudEstadoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelCrudLayout.createSequentialGroup()
                         .addComponent(lblCrudPrecioVenta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCrudFacturaId, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtCrudFacturaId, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
+                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCrudCodigo)
+                            .addComponent(lblCrudNombre))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jDatePedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCrudCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
+                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCrudPrecioVenta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblCrudCantidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanelCrudLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(lblCrudlPrecio)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jDateDespacho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCrudEmpleadoId, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                            .addComponent(txtCrudClienteId, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanelCrudLayout.setVerticalGroup(
             jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCrudLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCrudCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCrudCodigo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCrudFechaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCrudNombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelCrudLayout.createSequentialGroup()
+                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCrudCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCrudCodigo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblCrudNombre))
+                    .addComponent(jDatePedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblCrudlPrecio)
-                    .addComponent(txtCrudFechaDespacho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateDespacho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCrudEmpleadoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -725,6 +717,8 @@ public class PanelPedido extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cajaTipoBusquedad;
     private javax.swing.JLabel etiquetaCodigoSelect;
     private javax.swing.JLabel etiquetaNombre;
+    private com.toedter.calendar.JDateChooser jDateDespacho;
+    private com.toedter.calendar.JDateChooser jDatePedido;
     private javax.swing.JPanel jPanelCrud;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -749,7 +743,5 @@ public class PanelPedido extends javax.swing.JFrame {
     private javax.swing.JTextField txtCrudEmpleadoId;
     private javax.swing.JTextField txtCrudEstadoPedido;
     private javax.swing.JTextField txtCrudFacturaId;
-    private javax.swing.JTextField txtCrudFechaDespacho;
-    private javax.swing.JTextField txtCrudFechaPedido;
     // End of variables declaration//GEN-END:variables
 }

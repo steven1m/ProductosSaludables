@@ -12,6 +12,8 @@ import Controlador.ControladorFactura;
 import Controlador.ControladorListaIngredientes;
 import Controlador.ControladorMateriaPrima;
 import Controlador.ControladorPedido;
+import Controlador.ControladorEmpleado;
+import Controlador.ControladorEstadoPedido;
 
 import Modelo.ProveedorDAO;
 import Modelo.ProduccionDAO;
@@ -26,6 +28,8 @@ import Modelo.FacturaDAO;
 import Modelo.ListaIngredientesDAO;
 import Modelo.MateriaPrimaDAO;
 import Modelo.PedidoDAO;
+import Modelo.EmpleadoDAO;
+import Modelo.EstadoPedidoDAO;
         
 import java.awt.Color;
 import java.awt.Font;
@@ -85,7 +89,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItemPedidos = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItemEmpleados = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -285,13 +292,33 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem10);
 
-        jMenuItemPedidos.setText("Pedidos");
-        jMenuItemPedidos.addActionListener(new java.awt.event.ActionListener() {
+        jMenu6.setText("Pedidos");
+
+        jMenuItem11.setText("Pedidos");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemPedidosActionPerformed(evt);
+                jMenuItem11ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemPedidos);
+        jMenu6.add(jMenuItem11);
+
+        jMenuItem12.setText("Estado Pedidos");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem12);
+
+        jMenu2.add(jMenu6);
+
+        jMenuItemEmpleados.setText("Empleados");
+        jMenuItemEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEmpleadosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemEmpleados);
 
         jMenu1.add(jMenu2);
 
@@ -412,12 +439,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ControladorMateriaPrima controladorMateriaPrima = new ControladorMateriaPrima(materiaPrimaDAO, panelMateriaPrima);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jMenuItemPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPedidosActionPerformed
+    private void jMenuItemEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEmpleadosActionPerformed
+        // TODO add your handling code here:
+        PanelEmpleado panelEmpleado = new PanelEmpleado();
+        EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+        ControladorEmpleado controladorEmpleado = new ControladorEmpleado(empleadoDAO, panelEmpleado);
+    }//GEN-LAST:event_jMenuItemEmpleadosActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // TODO add your handling code here:
+        PanelEstadoPedido panelEstadoPedido = new PanelEstadoPedido();
+        EstadoPedidoDAO estadoPedidoDAO = new EstadoPedidoDAO();
+        ControladorEstadoPedido controladorEstadoPedido = new ControladorEstadoPedido(estadoPedidoDAO, panelEstadoPedido);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
         PanelPedido panelPedido = new PanelPedido();
         PedidoDAO pedidoDAO = new PedidoDAO();
         ControladorPedido controladorPedido = new ControladorPedido(pedidoDAO, panelPedido);
-    }//GEN-LAST:event_jMenuItemPedidosActionPerformed
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     
     
@@ -477,9 +518,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -488,7 +532,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JMenuItem jMenuItemPedidos;
+    private javax.swing.JMenuItem jMenuItemEmpleados;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

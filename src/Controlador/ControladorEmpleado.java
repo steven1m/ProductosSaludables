@@ -30,11 +30,10 @@ public class ControladorEmpleado implements ActionListener{
         this.modeloEmpleado = modeloEmpleado;
         this.panelEmpleado = panelEmpleado;
         setListeners();
-        buscarEmpleado("", "");
+        buscarEmpleado(0);
     }
     
     private void setListeners(){
-        
         this.panelEmpleado.agregarListener(this);
     }
     
@@ -43,7 +42,7 @@ public class ControladorEmpleado implements ActionListener{
        if (resultado != 0){
            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
            this.panelEmpleado.operacionesCrud("");
-           buscarEmpleado("", "");
+           buscarEmpleado(0);
        }
     }
    
@@ -52,7 +51,7 @@ public class ControladorEmpleado implements ActionListener{
        if (resultado != 0){
            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
            this.panelEmpleado.operacionesCrud("");
-           buscarEmpleado("", "");
+           buscarEmpleado(0);
        }
     }
     
@@ -61,12 +60,12 @@ public class ControladorEmpleado implements ActionListener{
        if (resultado != 0){
            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
            this.panelEmpleado.operacionesCrud("");
-           buscarEmpleado("", "");
+           buscarEmpleado(0);
        }
     }
     
-    private void buscarEmpleado (String clave, String valor){
-        ArrayList<Empleado> lista = this.modeloEmpleado.leer(Integer.parseInt( panelEmpleado.getCrudId() ));
+    private void buscarEmpleado (int id){
+        ArrayList<Empleado> lista = this.modeloEmpleado.leer( id );
         this.panelEmpleado.cargarTablaEmpleado(lista);
         this.panelEmpleado.operacionesCrud("");
        
@@ -83,15 +82,15 @@ public class ControladorEmpleado implements ActionListener{
                 editarEmpleado(this.panelEmpleado.crearObjetoEmpleado());
                
             }else if (e.getActionCommand().equalsIgnoreCase("Eliminar")){
-                eliminarEmpleado(Integer.valueOf(this.panelEmpleado.getCrudId()));
+                eliminarEmpleado(Integer.valueOf(this.panelEmpleado.getId()));
                
             }else if (e.getActionCommand().equalsIgnoreCase("Actualizar")){
-               buscarEmpleado("", "");
+               buscarEmpleado(0);
                
             }else if (e.getActionCommand().equalsIgnoreCase("Buscar")){
                 
-               String[] datosBuscar = this.panelEmpleado.datosBuscar();
-                buscarEmpleado(datosBuscar[0], datosBuscar[1]);
+               //String[] datosBuscar = this.panelEmpleado.datosBuscar();
+                buscarEmpleado(0);
                
             }
            
