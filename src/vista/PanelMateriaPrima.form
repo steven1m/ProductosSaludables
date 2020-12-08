@@ -24,7 +24,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="panelGeneral" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -33,7 +33,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="panelGeneral" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -48,7 +48,7 @@
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="2" position="2" title="Inventario de productos">
+            <TitledBorder justification="2" position="2" title="Panel Principal">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                 <EtchetBorder/>
               </Border>
@@ -56,13 +56,7 @@
             </TitledBorder>
           </Border>
         </Property>
-        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
-        </Property>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Panel proveedor"/>
-      </AccessibilityProperties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -70,7 +64,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="panelProveedorSelect" alignment="0" max="32767" attributes="0"/>
+                      <Component id="panelProductoSelect" alignment="0" max="32767" attributes="0"/>
                       <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="panelDescripcion" min="-2" max="-2" attributes="0"/>
@@ -79,9 +73,9 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="btnAgregar" alignment="1" min="-2" pref="181" max="-2" attributes="0"/>
-                              <Component id="btnEditar" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
-                              <Component id="btnEliminar" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
-                              <Component id="btnActualizar" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
+                              <Component id="btnEditar" min="-2" pref="181" max="-2" attributes="0"/>
+                              <Component id="btnEliminar" min="-2" pref="181" max="-2" attributes="0"/>
+                              <Component id="btnActualizar" min="-2" pref="181" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -93,29 +87,30 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="panelProveedorSelect" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="btnAgregar" min="-2" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
+                          <Component id="panelProductoSelect" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="btnAgregar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="panelBuscar" alignment="0" max="32767" attributes="0"/>
+                              <Component id="panelDescripcion" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Component id="panelBuscar" alignment="0" max="32767" attributes="0"/>
-                      <Component id="panelDescripcion" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jPanelCrud" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jPanelCrud" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -127,7 +122,6 @@
               <Font name="Aharoni" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Editar"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarActionPerformed"/>
@@ -143,68 +137,49 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTableProveedor">
+            <Component class="javax.swing.JTable" name="jTablePrincipal">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="9" rowCount="0">
-                    <Column editable="false" title="Id" type="java.lang.Integer"/>
-                    <Column editable="false" title="Nit" type="java.lang.String"/>
-                    <Column editable="false" title="Razon social" type="java.lang.String"/>
-                    <Column editable="false" title="Direccion" type="java.lang.String"/>
-                    <Column editable="false" title="Correo" type="java.lang.String"/>
-                    <Column editable="false" title="Telefono" type="java.lang.String"/>
-                    <Column editable="true" title="Descripcion" type="java.lang.String"/>
-                    <Column editable="true" title="Encargado" type="java.lang.String"/>
-                    <Column editable="false" title="Id catalogo" type="java.lang.Integer"/>
+                  <Table columnCount="6" rowCount="0">
+                    <Column editable="false" title="C&#xf3;digo" type="java.lang.String"/>
+                    <Column editable="false" title="Nombre" type="java.lang.String"/>
+                    <Column editable="false" title="Descripci&#xf3;n" type="java.lang.String"/>
+                    <Column editable="false" title="Precio" type="java.lang.Float"/>
+                    <Column editable="false" title="Cantidad" type="java.lang.Float"/>
+                    <Column editable="false" title="Precio Venta" type="java.lang.Float"/>
                   </Table>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -219,11 +194,11 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="panelProveedorSelect">
+        <Container class="javax.swing.JPanel" name="panelProductoSelect">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder justification="2" title="Producto selecionado">
+                <TitledBorder justification="2" title="Selecci&#xf3;n ">
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                     <EtchetBorder/>
                   </Border>
@@ -241,11 +216,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblCodigoSelect" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lblCodigoSelectProd" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="etiquetaCodigoSelect" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblNombreSelect" min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="etiquetaNombre" min="-2" pref="53" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblNombreSelectProd" min="-2" pref="282" max="-2" attributes="0"/>
+                      <Component id="lblNombreSelect" min="-2" pref="282" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -255,11 +230,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblCodigoSelect" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="lblCodigoSelectProd" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="lblNombreSelectProd" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="lblNombreSelect" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCodigoSelect" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="etiquetaCodigoSelect" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="lblNombreSelect" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="etiquetaNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -277,7 +252,7 @@
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblNombreSelect">
+            <Component class="javax.swing.JLabel" name="etiquetaNombre">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Aharoni" size="14" style="0"/>
@@ -286,7 +261,7 @@
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblCodigoSelectProd">
+            <Component class="javax.swing.JLabel" name="etiquetaCodigoSelect">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Aharoni" size="14" style="0"/>
@@ -298,7 +273,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblNombreSelectProd">
+            <Component class="javax.swing.JLabel" name="lblNombreSelect">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Aharoni" size="14" style="0"/>
@@ -330,63 +305,57 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblCrudNombre" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="35" max="32767" attributes="0"/>
-                                      <Component id="txtCrudRazonSocial" min="-2" pref="217" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblCrudNombre1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="txtCrudDireccion" min="-2" pref="217" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="btnCrudAplicar" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblCrudNombre" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnCrudCancelar" min="-2" pref="125" max="-2" attributes="0"/>
-                              <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                              <Component id="txtCrudNombre" min="-2" pref="217" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="lblCrudCodigo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtCrudNit" min="-2" pref="219" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblCrudNombre2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtCrudCorreo" min="-2" pref="217" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblCrudNombre3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtCrudTelefono" min="-2" pref="217" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <Component id="lblCrudDescripcion" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="218" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblCrudNombre4" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCrudCodigo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtCrudEncargado" min="-2" pref="217" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtCrudCodigo" min="-2" pref="219" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblCrudPrecioVenta" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="txtCrudMateriaPrimaId" min="-2" pref="218" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lblCrudCantidad" min="-2" pref="61" max="-2" attributes="0"/>
+                                      <EmptySpace min="236" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblCrudlPrecio" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="txtCrudPrecio" alignment="1" min="-2" pref="218" max="-2" attributes="0"/>
+                                  <Component id="txtCrudCantidad" alignment="1" min="-2" pref="218" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblCrudNombre5" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCrudAplicar" min="-2" pref="125" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtCrudCatalogo" min="-2" pref="217" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnCrudCancelar" min="-2" pref="125" max="-2" attributes="0"/>
                           </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lblCrudPrecioVenta1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtCrudProveedorId" min="-2" pref="218" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -395,50 +364,50 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtCrudNit" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCrudCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblCrudCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtCrudNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblCrudNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCrudRazonSocial" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtCrudDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCrudNombre1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblCrudNombre2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCrudCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblCrudNombre3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCrudTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblCrudDescripcion" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane3" min="-2" pref="54" max="-2" attributes="0"/>
+                          <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblCrudNombre4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCrudEncargado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCrudPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCrudlPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtCrudCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCrudCantidad" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblCrudNombre5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCrudCatalogo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCrudMateriaPrimaId" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCrudPrecioVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="26" max="32767" attributes="0"/>
+                      <EmptySpace pref="53" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnCrudAplicar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnCrudCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="242" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtCrudProveedorId" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCrudPrecioVenta1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -449,15 +418,14 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="12" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Nit:"/>
+                <Property name="text" type="java.lang.String" value="Id:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCrudNit">
+            <Component class="javax.swing.JTextField" name="txtCrudCodigo">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Aharoni" size="14" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Codigo unico de cada producto"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblCrudNombre">
@@ -465,10 +433,55 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="12" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Razon social"/>
+                <Property name="text" type="java.lang.String" value="Nombre:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCrudRazonSocial">
+            <Component class="javax.swing.JTextField" name="txtCrudNombre">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Aharoni" size="14" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblCrudCantidad">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cantidad:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtCrudMateriaPrimaId">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Aharoni" size="14" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblCrudlPrecio">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Precio:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtCrudCantidad">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Aharoni" size="14" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblCrudPrecioVenta">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Categoria de Materia Prima (Id):"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtCrudPrecio">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Aharoni" size="14" style="0"/>
@@ -481,7 +494,6 @@
                   <Font name="Aharoni" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Aplicar"/>
-                <Property name="toolTipText" type="java.lang.String" value="Aplicar la operacion selecionada "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnCrudCancelar">
@@ -490,7 +502,6 @@
                   <Font name="Aharoni" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
-                <Property name="toolTipText" type="java.lang.String" value="Aplicar la operacion selecionada "/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrudCancelarActionPerformed"/>
@@ -519,75 +530,15 @@
                 <Property name="text" type="java.lang.String" value="Descripci&#xf3;n:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblCrudNombre1">
+            <Component class="javax.swing.JLabel" name="lblCrudPrecioVenta1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="12" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Direccion:"/>
+                <Property name="text" type="java.lang.String" value="Id del Proveedor:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCrudDireccion">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Aharoni" size="14" style="0"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblCrudNombre2">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="12" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Correo: "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtCrudCorreo">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Aharoni" size="14" style="0"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblCrudNombre3">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="12" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Telefono:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtCrudTelefono">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Aharoni" size="14" style="0"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblCrudNombre4">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="12" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Encargado:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtCrudEncargado">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Aharoni" size="14" style="0"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblCrudNombre5">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="12" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Catalogo:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtCrudCatalogo">
+            <Component class="javax.swing.JTextField" name="txtCrudProveedorId">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Aharoni" size="14" style="0"/>
@@ -612,8 +563,8 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtBuscar" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                          <Component id="txtBuscar" min="-2" pref="159" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="btnBuscar" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
                               <Component id="cajaTipoBusquedad" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                           </Group>
@@ -648,9 +599,6 @@
                   </StringArray>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cajaTipoBusquedadActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -678,7 +626,6 @@
               <Font name="Aharoni" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Agregar"/>
-            <Property name="toolTipText" type="java.lang.String" value="Agregar un nuevo producto al inventario"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarActionPerformed"/>
@@ -690,7 +637,6 @@
               <Font name="Aharoni" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
@@ -700,7 +646,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Descripci&#xf3;n del producto"/>
+                <TitledBorder title="Descripci&#xf3;n"/>
               </Border>
             </Property>
           </Properties>
@@ -749,8 +695,10 @@
               <Font name="Aharoni" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Actualizar "/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

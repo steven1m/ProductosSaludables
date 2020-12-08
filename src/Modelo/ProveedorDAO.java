@@ -61,7 +61,7 @@ public class ProveedorDAO {
             if ("".equals(clave) || "".equals(valor)){
                     sentencia = "SELECT * FROM proveedor;";
             }else if("nombre".equals(clave)) {
-                sentencia = "SELECT * FROM proveedor WHERE razon_social =?;";
+                sentencia = "SELECT * FROM proveedor WHERE razon_social = ?;";
             }else {
                 sentencia = "SELECT * FROM proveedor WHERE id=?";
             }
@@ -76,16 +76,16 @@ public class ProveedorDAO {
 
             while (rs.next()){
                 Proveedor proveedor = new Proveedor();
-                //proveedor.setId(rs.getInt("id"));
+                proveedor.setId(rs.getInt("id"));
                 proveedor.setNit("nit");
                 proveedor.setRazonSocial("razonSocial");
                 proveedor.setDireccion("direccion");
                 proveedor.setCorreo("correo");
                 proveedor.setTelefono("telefono");
                 proveedor.setDescripcion("descripcion");
-                proveedor.setEncargado("encargo");
-                //
-                
+                proveedor.setEncargado("encargado");
+                proveedor.setCatalogoID(rs.getInt("catalogo_id"));
+                lista.add(proveedor);
             }
 
         }catch(SQLException ex){

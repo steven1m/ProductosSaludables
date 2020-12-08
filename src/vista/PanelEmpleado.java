@@ -216,6 +216,7 @@ public class PanelEmpleado extends javax.swing.JFrame {
                 this.btnCrudAplicar.setEnabled(false);
                 this.btnCrudCancelar.setEnabled(false);
                 this.btnCrudAplicar.setText("Aplicar");
+                this.btnActualizar.setActionCommand("Actualizar");
             }
         }
     }

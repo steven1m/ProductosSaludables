@@ -1,7 +1,7 @@
 
 package vista;
 
-import Modelo.Producto;
+import Modelo.ListaIngredientes;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,19 +13,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Universidad
  */
-public class PanelProducto extends javax.swing.JFrame {
+public class PanelListaIngredientes extends javax.swing.JFrame {
 
     private final  String[] datosParaMostrar;
     
-    public PanelProducto() {
-        this.datosParaMostrar = new String[6];
+    public PanelListaIngredientes() {
+        this.datosParaMostrar = new String[3];
         initComponents();
         iniciarVentana();
     }
     
     private void iniciarVentana(){
         this.setLocationRelativeTo(null);
-        this.setTitle("Inventario de Productos");
+        this.setTitle("Lista de Ingredientes");
         operacionesCrud("");
         selecionTabla(); 
         this.setVisible(true);
@@ -42,31 +42,25 @@ public class PanelProducto extends javax.swing.JFrame {
        return this.txtCrudCodigo.getText();
     }
     
-    public String getCrudNombre (){
-       return this.txtCrudNombre.getText();
-    }
-    
-    public Producto crearObjeto(){
-        Producto producto = new Producto();
+    public ListaIngredientes crearObjeto(){
+        ListaIngredientes listaIngredientes = new ListaIngredientes();
         try{
             
-            producto.setId(Integer.parseInt(this.txtCrudCodigo.getText()));
-            producto.setNombre(this.txtCrudNombre.getText());
-            producto.setDescripcion(this.txtAreaCrudDescripcion.getText());
-            producto.setCantidad(Integer.parseInt(this.txtCrudCantidad.getText()));
-            producto.setPrecio(Float.valueOf(this.txtCrudPrecio.getText()));
-            producto.setPrecioVenta(Float.valueOf(this.txtCrudPrecioVenta.getText()));
+            listaIngredientes.setProduccionId(Integer.parseInt( this.txtCrudCodigo.getText() ));
+            listaIngredientes.setMateriaPrimaId(Integer.parseInt( this.txtCrudMateriaPrima.getText() ));
+            listaIngredientes.setCantidad(Float.parseFloat( this.txtCrudCantidad.getText() ));
+            listaIngredientes.setCosto(Integer.parseInt( this.txtCrudCosto.getText() ));
         }catch (NumberFormatException ex ){
             JOptionPane.showMessageDialog(null,"Error : " + 
                     ex.getMessage());
         }
        
-        return producto;
+        return listaIngredientes;
     }
-    public void cargarTabla(ArrayList<Producto> lista){
+    public void cargarTabla(ArrayList<ListaIngredientes> lista){
         
         DefaultTableModel dtmTabla =(DefaultTableModel)this.jTablePrincipal.getModel();
-        // eliminar los datos que exinten en el modelo de la tabla antes de agregar los datos 
+        // eliminar los datos que existen en el modelo de la tabla antes de agregar los datos 
         if (dtmTabla.getRowCount() != 0)
             {
               int d = dtmTabla.getRowCount();
@@ -77,25 +71,23 @@ public class PanelProducto extends javax.swing.JFrame {
             }
         this.jTablePrincipal.setModel(dtmTabla);
         
-        Iterator <Producto> iterador = lista.iterator();
+        Iterator <ListaIngredientes> iterador = lista.iterator();
         
         while(iterador.hasNext()){
-            Producto producto = iterador.next();
+            ListaIngredientes listaIngredientes = iterador.next();
             dtmTabla.addRow(new Object[]
               {
-              producto.getId(),
-              producto.getNombre(),
-              producto.getDescripcion(),
-              producto.getPrecio(),
-              producto.getCantidad(),
-              producto.getPrecioVenta()
+              listaIngredientes.getProduccionId(),
+              listaIngredientes.getMateriaPrimaId(),
+              listaIngredientes.getCantidad(),
+              listaIngredientes.getCosto()
               });
         }
         this.jTablePrincipal.setModel(dtmTabla);
     }
     
     private void selecionTabla(){
-        // agregar metodeo de escucha a la tabla 
+        // agregar metodo de escucha a la tabla 
         this.jTablePrincipal.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
            if (this.jTablePrincipal.getSelectedRow()!= -1){
                int fila  = jTablePrincipal.getSelectedRow();
@@ -124,11 +116,10 @@ public class PanelProducto extends javax.swing.JFrame {
             
             case "Agregar" -> {
                 this.txtCrudCodigo.setEnabled(true);
-                this.txtCrudNombre.setEnabled(true);
-                this.txtAreaCrudDescripcion.setEnabled(true);
-                this.txtCrudPrecio.setEnabled(true);
+                this.txtCrudMateriaPrima.setEnabled(true);
                 this.txtCrudCantidad.setEnabled(true);
-                this.txtCrudPrecioVenta.setEnabled(true);
+                this.txtCrudCosto.setEnabled(true);
+                
                 this.btnCrudAplicar.setText(operacion);
                 this.btnCrudAplicar.setEnabled(true);
                 this.btnCrudCancelar.setEnabled(true);
@@ -136,11 +127,10 @@ public class PanelProducto extends javax.swing.JFrame {
             
             case "Editar" -> {
                 this.txtCrudCodigo.setEnabled(false);
-                this.txtCrudNombre.setEnabled(true);
-                this.txtAreaCrudDescripcion.setEnabled(true);
-                this.txtCrudPrecio.setEnabled(true);
+                this.txtCrudMateriaPrima.setEnabled(true);
                 this.txtCrudCantidad.setEnabled(true);
-                this.txtCrudPrecioVenta.setEnabled(true);
+                this.txtCrudCosto.setEnabled(true);
+                
                 this.btnCrudAplicar.setText(operacion);
                 this.btnCrudAplicar.setEnabled(true);
                 this.btnCrudCancelar.setEnabled(true);
@@ -148,11 +138,10 @@ public class PanelProducto extends javax.swing.JFrame {
             
             case "Eliminar" -> {
                 this.txtCrudCodigo.setEnabled(false);
-                this.txtCrudNombre.setEnabled(false);
-                this.txtAreaCrudDescripcion.setEnabled(false);
-                this.txtCrudPrecio.setEnabled(false);
+                this.txtCrudMateriaPrima.setEnabled(false);
                 this.txtCrudCantidad.setEnabled(false);
-                this.txtCrudPrecioVenta.setEnabled(false);
+                this.txtCrudCosto.setEnabled(false);
+                
                 this.btnCrudAplicar.setText(operacion);
                 this.btnCrudAplicar.setEnabled(true);
                 this.btnCrudCancelar.setEnabled(true);
@@ -160,22 +149,20 @@ public class PanelProducto extends javax.swing.JFrame {
             
             default -> {
                 this.txtCrudCodigo.setText("");
-                this.txtCrudNombre.setText("");
-                this.txtAreaCrudDescripcion.setText("");
-                this.txtCrudPrecio.setText("");
+                this.txtCrudMateriaPrima.setText("");
                 this.txtCrudCantidad.setText("");
-                this.txtCrudPrecioVenta.setText("");
+                this.txtCrudCosto.setText("");
+                
                 this.txtBuscar.setText("");
                 this.txtAreaDescripcion.setText("");
                 this.lblNombreSelect.setText("");
                 this.etiquetaCodigoSelect.setText("");
                 
                 this.txtCrudCodigo.setEnabled(false);
-                this.txtCrudNombre.setEnabled(false);
-                this.txtAreaCrudDescripcion.setEnabled(false);
-                this.txtCrudPrecio.setEnabled(false);
+                this.txtCrudMateriaPrima.setEnabled(false);
                 this.txtCrudCantidad.setEnabled(false);
-                this.txtCrudPrecioVenta.setEnabled(false);
+                this.txtCrudCosto.setEnabled(false);
+                
                 this.btnCrudAplicar.setEnabled(false);
                 this.btnCrudCancelar.setEnabled(false);
                 this.btnCrudAplicar.setText("Aplicar");
@@ -186,11 +173,9 @@ public class PanelProducto extends javax.swing.JFrame {
     
     private void setearDatos(){
         this.txtCrudCodigo.setText(this.datosParaMostrar[0]);
-        this.txtCrudNombre.setText(this.datosParaMostrar[1]);
-        this.txtAreaCrudDescripcion.setText(this.datosParaMostrar[2]);
-        this.txtCrudPrecio.setText(this.datosParaMostrar[3]);
-        this.txtCrudCantidad.setText(this.datosParaMostrar[4]);
-        this.txtCrudPrecioVenta.setText(this.datosParaMostrar[5]);
+        this.txtCrudMateriaPrima.setText(this.datosParaMostrar[1]);
+        this.txtCrudCantidad.setText(this.datosParaMostrar[2]);
+        this.txtCrudCosto.setText(this.datosParaMostrar[3]);
     }
     
     public String[] datosBuscar(){
@@ -199,9 +184,9 @@ public class PanelProducto extends javax.swing.JFrame {
         String clave ;
         String valor = this.txtBuscar.getText();
         if (this.cajaTipoBusquedad.getSelectedIndex() == 1){
-            clave = "id";
+            clave = "produccion_id";
         }else {
-            clave = "nombre";
+            clave = "materia_prima_id";
         }
         datos[0] = clave;
         datos[1] = valor;
@@ -231,18 +216,13 @@ public class PanelProducto extends javax.swing.JFrame {
         lblCrudCodigo = new javax.swing.JLabel();
         txtCrudCodigo = new javax.swing.JTextField();
         lblCrudNombre = new javax.swing.JLabel();
-        txtCrudNombre = new javax.swing.JTextField();
+        txtCrudMateriaPrima = new javax.swing.JTextField();
         lblCrudCantidad = new javax.swing.JLabel();
-        txtCrudPrecioVenta = new javax.swing.JTextField();
-        lblCrudlPrecio = new javax.swing.JLabel();
+        txtCrudCosto = new javax.swing.JTextField();
         txtCrudCantidad = new javax.swing.JTextField();
         lblCrudPrecioVenta = new javax.swing.JLabel();
-        txtCrudPrecio = new javax.swing.JTextField();
         btnCrudAplicar = new javax.swing.JButton();
         btnCrudCancelar = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtAreaCrudDescripcion = new javax.swing.JTextArea();
-        lblCrudDescripcion = new javax.swing.JLabel();
         panelBuscar = new javax.swing.JPanel();
         cajaTipoBusquedad = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
@@ -275,14 +255,14 @@ public class PanelProducto extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nombre", "Descripción", "Precio", "Cantidad", "Precio Venta"
+                "Id de Produccion", "Id de Materia Prima", "Cantidad", "Costo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -300,8 +280,6 @@ public class PanelProducto extends javax.swing.JFrame {
             jTablePrincipal.getColumnModel().getColumn(1).setResizable(false);
             jTablePrincipal.getColumnModel().getColumn(2).setResizable(false);
             jTablePrincipal.getColumnModel().getColumn(3).setResizable(false);
-            jTablePrincipal.getColumnModel().getColumn(4).setResizable(false);
-            jTablePrincipal.getColumnModel().getColumn(5).setResizable(false);
         }
 
         panelProductoSelect.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Selección ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -353,29 +331,24 @@ public class PanelProducto extends javax.swing.JFrame {
         jPanelCrud.setToolTipText("");
 
         lblCrudCodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblCrudCodigo.setText("Código:");
+        lblCrudCodigo.setText("Id de Produccion:");
 
         txtCrudCodigo.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
 
         lblCrudNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblCrudNombre.setText("Nombre:");
+        lblCrudNombre.setText("Id de Materia Prima:");
 
-        txtCrudNombre.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        txtCrudMateriaPrima.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
 
         lblCrudCantidad.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCrudCantidad.setText("Cantidad:");
 
-        txtCrudPrecioVenta.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-
-        lblCrudlPrecio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblCrudlPrecio.setText("Precio:");
+        txtCrudCosto.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
 
         txtCrudCantidad.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
 
         lblCrudPrecioVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblCrudPrecioVenta.setText("Precio V. :");
-
-        txtCrudPrecio.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        lblCrudPrecioVenta.setText("Costo:");
 
         btnCrudAplicar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnCrudAplicar.setText("Aplicar");
@@ -388,13 +361,6 @@ public class PanelProducto extends javax.swing.JFrame {
             }
         });
 
-        txtAreaCrudDescripcion.setColumns(20);
-        txtAreaCrudDescripcion.setRows(5);
-        jScrollPane3.setViewportView(txtAreaCrudDescripcion);
-
-        lblCrudDescripcion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblCrudDescripcion.setText("Descripción:");
-
         javax.swing.GroupLayout jPanelCrudLayout = new javax.swing.GroupLayout(jPanelCrud);
         jPanelCrud.setLayout(jPanelCrudLayout);
         jPanelCrudLayout.setHorizontalGroup(
@@ -405,11 +371,7 @@ public class PanelProducto extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
                         .addComponent(lblCrudNombre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCrudNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
-                        .addComponent(lblCrudDescripcion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCrudMateriaPrima, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
                         .addComponent(lblCrudCodigo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -417,52 +379,37 @@ public class PanelProducto extends javax.swing.JFrame {
                     .addGroup(jPanelCrudLayout.createSequentialGroup()
                         .addComponent(lblCrudPrecioVenta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCrudPrecioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelCrudLayout.createSequentialGroup()
-                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanelCrudLayout.createSequentialGroup()
-                                .addComponent(lblCrudlPrecio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtCrudPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelCrudLayout.createSequentialGroup()
-                                .addComponent(lblCrudCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCrudCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 2, Short.MAX_VALUE))
+                        .addComponent(txtCrudCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
                         .addComponent(btnCrudAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCrudCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCrudCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelCrudLayout.createSequentialGroup()
+                        .addComponent(lblCrudCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtCrudCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelCrudLayout.setVerticalGroup(
             jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCrudLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCrudCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudCodigo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCrudNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCrudMateriaPrima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudNombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCrudDescripcion)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCrudlPrecio)
-                    .addComponent(txtCrudPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCrudCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCrudPrecioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCrudCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudPrecioVenta))
-                .addGap(18, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrudAplicar)
                     .addComponent(btnCrudCancelar))
@@ -473,7 +420,7 @@ public class PanelProducto extends javax.swing.JFrame {
         panelBuscar.setToolTipText("");
 
         cajaTipoBusquedad.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        cajaTipoBusquedad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Codigo Producto" }));
+        cajaTipoBusquedad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id de Produccion", "Id de Materia Prima" }));
 
         btnBuscar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnBuscar.setText("Buscar");
@@ -669,8 +616,10 @@ public class PanelProducto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PanelProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PanelListaIngredientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         
@@ -678,7 +627,7 @@ public class PanelProducto extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new PanelProducto().setVisible(true);
+            new PanelListaIngredientes().setVisible(true);
         });
     }
 
@@ -696,27 +645,22 @@ public class PanelProducto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelCrud;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTablePrincipal;
     private javax.swing.JLabel lblCodigoSelect;
     private javax.swing.JLabel lblCrudCantidad;
     private javax.swing.JLabel lblCrudCodigo;
-    private javax.swing.JLabel lblCrudDescripcion;
     private javax.swing.JLabel lblCrudNombre;
     private javax.swing.JLabel lblCrudPrecioVenta;
-    private javax.swing.JLabel lblCrudlPrecio;
     private javax.swing.JLabel lblNombreSelect;
     private javax.swing.JPanel panelBuscar;
     private javax.swing.JPanel panelDescripcion;
     private javax.swing.JPanel panelGeneral;
     private javax.swing.JPanel panelProductoSelect;
-    private javax.swing.JTextArea txtAreaCrudDescripcion;
     private javax.swing.JTextArea txtAreaDescripcion;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCrudCantidad;
     private javax.swing.JTextField txtCrudCodigo;
-    private javax.swing.JTextField txtCrudNombre;
-    private javax.swing.JTextField txtCrudPrecio;
-    private javax.swing.JTextField txtCrudPrecioVenta;
+    private javax.swing.JTextField txtCrudCosto;
+    private javax.swing.JTextField txtCrudMateriaPrima;
     // End of variables declaration//GEN-END:variables
 }

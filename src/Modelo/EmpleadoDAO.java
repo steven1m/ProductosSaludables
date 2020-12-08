@@ -74,7 +74,8 @@ public class EmpleadoDAO {
                 empleado.setDireccion("direccion");
                 empleado.setCargo("cargi");
                 empleado.setTelefono("telefono");
-                empleado.setSalario(rs.getFloat("salario") );
+                empleado.setSalario(rs.getFloat("salario"));
+                lista.add(empleado);
             }
 
         }catch(SQLException ex){

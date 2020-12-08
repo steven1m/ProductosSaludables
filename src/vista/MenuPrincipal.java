@@ -1,6 +1,5 @@
 package vista;
 
-
 import Controlador.ControladorCatalogo;
 import Controlador.ControladorCategoriaMateriaPrima;
 import Controlador.ControladorClientes;
@@ -10,6 +9,8 @@ import Controlador.ControladorProducto;
 import Controlador.ControladorTipoPago;
 import Controlador.ControladorProveedor;
 import Controlador.ControladorFactura;
+import Controlador.ControladorListaIngredientes;
+import Controlador.ControladorMateriaPrima;
 
 import Modelo.ProveedorDAO;
 import Modelo.ProduccionDAO;
@@ -21,6 +22,8 @@ import Modelo.ProductoDAO;
 import Modelo.ServidorChat;
 import Modelo.TipoPagoDAO;
 import Modelo.FacturaDAO;
+import Modelo.ListaIngredientesDAO;
+import Modelo.MateriaPrimaDAO;
         
 import java.awt.Color;
 import java.awt.Font;
@@ -183,6 +186,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuControlProductos.add(MenuItemProduccion);
 
         jMenuItem2.setText("Ingredientes");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         menuControlProductos.add(jMenuItem2);
 
         jMenuItem3.setText("jMenuItem3");
@@ -193,6 +201,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuControlMateriaPrima.setText("Control Materia Prima");
 
         jMenuItem4.setText("Materia Prima");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         menuControlMateriaPrima.add(jMenuItem4);
 
         jMenuBar1.add(menuControlMateriaPrima);
@@ -373,6 +386,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         FacturaDAO modeloFactura = new FacturaDAO();
         ControladorFactura controlFactura = new ControladorFactura(modeloFactura, panelFactura);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        PanelListaIngredientes panelListaIngredientes = new PanelListaIngredientes();
+        ListaIngredientesDAO modeloListaIngredientes = new ListaIngredientesDAO();
+        ControladorListaIngredientes controladorListaIngredientes = new ControladorListaIngredientes(modeloListaIngredientes, panelListaIngredientes);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        PanelMateriaPrima panelMateriaPrima = new PanelMateriaPrima();
+        MateriaPrimaDAO materiaPrimaDAO = new MateriaPrimaDAO();
+        ControladorMateriaPrima controladorMateriaPrima = new ControladorMateriaPrima(materiaPrimaDAO, panelMateriaPrima);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     
     

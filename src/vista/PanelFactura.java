@@ -36,7 +36,7 @@ public class PanelFactura extends javax.swing.JFrame {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
      public void agregarListener( ActionListener listener){
-        
+        this.btnAgregar.addActionListener(listener);
         this.BtnAplicar.addActionListener(listener);
         this.btnBuscar.addActionListener(listener);
         this.btnActualizar.addActionListener(listener);

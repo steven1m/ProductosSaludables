@@ -14,14 +14,14 @@ public class MateriaPrima {
     private String nombre;
     private String descripcion;
     private float precio;
-    private float cantidad;
+    private int cantidad;
     private int categoriaId;
     private int proveedorId;
 
     public MateriaPrima() {
     }
 
-    public MateriaPrima(int id, String nombre, String descripcion, float precio, float cantidad, int categoriaId, int proveedorId) {
+    public MateriaPrima(int id, String nombre, String descripcion, float precio, int cantidad, int categoriaId, int proveedorId) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -63,11 +63,11 @@ public class MateriaPrima {
         this.precio = precio;
     }
 
-    public float getCantidad() {
+    public int getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(float cantidad) {
+    public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
 

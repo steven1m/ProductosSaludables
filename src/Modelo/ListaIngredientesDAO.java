@@ -22,7 +22,7 @@ public class ListaIngredientesDAO {
         int resultado = 0;
         Connection con = null;
         PreparedStatement ps;
-        String sentencia = "INSERT INTO public.ingredientes(producto_id, materia_prima_id, cantidad, costo) "
+        String sentencia = "INSERT INTO public.lista_ingredientes(produccion_id, materia_prima_id, cantidad, costo) "
                 + "VALUES (?, ?, ?, ?)";
         
         try{
@@ -42,7 +42,7 @@ public class ListaIngredientesDAO {
         return resultado;
     }
     
-    public ArrayList<ListaIngredientes> leer(int id){
+    public ArrayList<ListaIngredientes> leer(String clave, String valor){
         ArrayList <ListaIngredientes>lista = new ArrayList<>();
         Connection con = null;
         PreparedStatement ps = null;
@@ -50,14 +50,24 @@ public class ListaIngredientesDAO {
         
         try{
             con = Conexion.getConnection();
-            String sentencia = "SELECT * FROM ingredientes ORDER BY id";            
+            String sentencia;
+            
+            if ("".equals(clave) || "".equals(valor)){
+                sentencia = "SELECT * FROM lista_ingredientes;";
+            }else if("produccion_id".equals(clave)) {
+                sentencia = "SELECT * FROM lista_ingredientes WHERE produccion_id = ?;";
+                
+            }else{
+                sentencia = "SELECT * FROM lista_ingredientes where materia_prima_id = ?;";
+            }
+            
             ps = con.prepareStatement(sentencia);
             rs = ps.executeQuery();
                         
             ListaIngredientes ingredientes = null;
             while(rs.next()){
                 ingredientes = new ListaIngredientes();
-                ingredientes.setProduccionId(rs.getInt("producto_id"));
+                ingredientes.setProduccionId(rs.getInt("produccion_id"));
                 ingredientes.setMateriaPrimaId(rs.getInt("materia_prima_id"));
                 ingredientes.setCantidad(rs.getFloat("cantidad"));
                 ingredientes.setCosto(rs.getFloat("costo"));

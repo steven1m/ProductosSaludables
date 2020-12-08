@@ -87,7 +87,8 @@ public class ControladorProveedor implements ActionListener{
                 eliminarProveedor(Integer.valueOf(this.panelProveedor.getCrudCodigo()));
                
             }else if (e.getActionCommand().equalsIgnoreCase("Actualizar")){
-               buscarProveedor("", "");
+                JOptionPane.showMessageDialog(null, "se va actualizar la tabla");
+                buscarProveedor("", "");
                
             }else if (e.getActionCommand().equalsIgnoreCase("Buscar")){
                 String[] datosBuscar = this.panelProveedor.datosBuscar();
