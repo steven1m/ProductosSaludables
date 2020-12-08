@@ -54,7 +54,7 @@ public class PanelFactura extends javax.swing.JFrame {
             
             factura.setId(Integer.parseInt(this.panelOpcionId.getText()));
             factura.setClienteId(this.txtNumeroFactura.getText());
-            //factura.setFecha(this.txtDescripcion.getText()); // casting de String a DateSQL
+            //factura.setFecha(this.txtDescripcion.getText()); // casting de String a Date
             factura.setEmpleadoId(Integer.parseInt(this.txtCantidad.getText()));
             factura.setPadoId(Integer.parseInt(this.txtPrecio.getText()));
             factura.setTipoVentaId(Integer.parseInt(this.txtPrecioVenta.getText()));

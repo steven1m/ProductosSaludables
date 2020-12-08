@@ -19,15 +19,15 @@ public class ClienteDAO {
           int resultado = 0;
         Connection con ;
         PreparedStatement ps;
-        String sentencia = "INSERT INTO cliente( id, nombre ,apellido ,telefono ,"
-                + "direccion,correo,razon_social) "
-                + " VALUES (?, ?, ?,?,?,?,?);";
+        String sentencia = "INSERT INTO cliente( id, nombre, apellido, telefono,"
+                + " direccion, correo, razon_social) "
+                + " VALUES (?, ?, ?, ?, ?, ?, ?);";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
             
-            ps.setString(1, cliente.getId());
+            ps.setInt(1, Integer.parseInt( cliente.getId() ));
             ps.setString(2, cliente.getNombre());
             ps.setString(3, cliente.getApellido());
             ps.setString(4, cliente.getTelefono());
