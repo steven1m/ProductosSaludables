@@ -125,7 +125,7 @@
                 <Column editable="false" title="Producto" type="java.lang.String"/>
                 <Column editable="false" title="Cantidad" type="java.lang.Integer"/>
                 <Column editable="false" title="Precio und" type="java.lang.Integer"/>
-                <Column editable="false" title="Sub. Total" type="java.lang.Double"/>
+                <Column editable="false" title="Sub. Total" type="java.lang.Float"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -248,7 +248,7 @@
                   <EmptySpace pref="180" max="32767" attributes="0"/>
                   <Component id="jLabel2" min="-2" pref="81" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="cajaTotal" min="-2" pref="120" max="-2" attributes="0"/>
+                  <Component id="txtTotal" min="-2" pref="120" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -258,7 +258,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="cajaTotal" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTotal" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -267,7 +267,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="cajaTotal">
+        <Component class="javax.swing.JTextField" name="txtTotal">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -318,7 +318,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="etiqueta_factura" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="txtFacturaId" min="-2" pref="160" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -327,11 +327,11 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="etiquetaCliente" pref="365" max="32767" attributes="0"/>
-                              <Component id="etiqueta_cajero" max="32767" attributes="0"/>
+                              <Component id="txtClienteId" pref="365" max="32767" attributes="0"/>
+                              <Component id="txtEmpleadoId" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButton8" min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="btnCargarCliente" min="-2" pref="48" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Component id="boxTipoVenta" min="-2" pref="152" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -353,23 +353,23 @@
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="etiquetaNumCaja" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="etiqueta_factura" max="32767" attributes="0"/>
+                              <Component id="txtFacturaId" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="etiqueta_cajero" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="txtEmpleadoId" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="etiquetaCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtClienteId" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButton8" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="btnCargarCliente" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="boxTipoVenta" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -388,7 +388,7 @@
             <Property name="text" type="java.lang.String" value="Factura:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="etiqueta_factura">
+        <Component class="javax.swing.JLabel" name="txtFacturaId">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -409,7 +409,7 @@
             <Property name="text" type="java.lang.String" value="Cajero:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="etiqueta_cajero">
+        <Component class="javax.swing.JLabel" name="txtEmpleadoId">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -430,7 +430,7 @@
             <Property name="text" type="java.lang.String" value="Cliente:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="etiquetaCliente">
+        <Component class="javax.swing.JLabel" name="txtClienteId">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -443,7 +443,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton8">
+        <Component class="javax.swing.JButton" name="btnCargarCliente">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>

@@ -20,7 +20,12 @@ import vista.Facturacion;
 public class ControladorFacturacion implements ActionListener{
 
     
-    private Facturacion facturacion;
+    private final Facturacion facturacion;
+
+    public ControladorFacturacion(Facturacion facturacion) {
+        this.facturacion = facturacion;
+        setListeners();
+    }
    
     
     @Override

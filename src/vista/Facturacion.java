@@ -1,8 +1,10 @@
 
 package vista;
 
+import Modelo.Factura;
 import Modelo.Producto;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -38,6 +40,27 @@ public class Facturacion extends javax.swing.JFrame {
         this.btnFinalizarVenta.addActionListener(listener);
         this.btnAumentarCantidad.addActionListener(listener);
     }
+    
+    public void calcularTotal (){
+        
+        DefaultTableModel dtmTabla =(DefaultTableModel)this.jTablePrincipal.getModel();
+        float total = 0;
+        if (dtmTabla.getRowCount() != 0)
+            {
+              int filas = dtmTabla.getRowCount();
+              for (int i = 0; i < filas; i++)
+                {
+                  try{
+                      float valor = Float.parseFloat(dtmTabla.getValueAt(filas, 4).toString());
+                      total = total + valor;
+                  }catch(NumberFormatException ex){
+                      JOptionPane.showMessageDialog(null, ex.getMessage());
+                  }
+                    
+                }
+              this.txtTotal.setText(String.valueOf(total));
+            }
+    }
             
          
     public void agregarProductoTabla(Producto producto, int cantidad){
@@ -65,7 +88,25 @@ public class Facturacion extends javax.swing.JFrame {
         this.jTablePrincipal.setModel(dtmTabla);
     }
 
-    
+    public Factura crearObjetoFactura(){
+        Factura factura = new Factura();
+        try{
+            
+            factura.setId(Integer.valueOf(this.txtFacturaId.getText()));
+            factura.setClienteId(this.txtClienteId.getText());
+            factura.setEmpleadoId(Integer.valueOf(this.txtEmpleadoId.getText()));
+            factura.setPadoId(Integer.valueOf(this.txtFacturaId.getText()));
+            int tipoVenta = this.boxTipoVenta.getSelectedIndex();
+            factura.setTipoVentaId(tipoVenta);
+            factura.setFecha(new Date());
+            
+        }catch (NumberFormatException ex ){
+            JOptionPane.showMessageDialog(null,"Error : " + 
+                    ex.getMessage());
+        }
+       
+        return factura;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,17 +122,17 @@ public class Facturacion extends javax.swing.JFrame {
         bntBuscarProducto = new javax.swing.JButton();
         btnCancelarVenta = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        cajaTotal = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnFinalizarVenta = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        etiqueta_factura = new javax.swing.JLabel();
+        txtFacturaId = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        etiqueta_cajero = new javax.swing.JLabel();
+        txtEmpleadoId = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        etiquetaCliente = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        txtClienteId = new javax.swing.JLabel();
+        btnCargarCliente = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         etiquetaNumCaja = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -122,7 +163,7 @@ public class Facturacion extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -185,8 +226,8 @@ public class Facturacion extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(203, 240, 220));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        cajaTotal.setEditable(false);
-        cajaTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtTotal.setEditable(false);
+        txtTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Total");
@@ -199,7 +240,7 @@ public class Facturacion extends javax.swing.JFrame {
                 .addContainerGap(180, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(cajaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -207,7 +248,7 @@ public class Facturacion extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cajaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -221,26 +262,26 @@ public class Facturacion extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Factura:");
 
-        etiqueta_factura.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        etiqueta_factura.setText(" ");
-        etiqueta_factura.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtFacturaId.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtFacturaId.setText(" ");
+        txtFacturaId.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Cajero:");
 
-        etiqueta_cajero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        etiqueta_cajero.setText(" ");
-        etiqueta_cajero.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtEmpleadoId.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtEmpleadoId.setText(" ");
+        txtEmpleadoId.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Cliente:");
 
-        etiquetaCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        etiquetaCliente.setText(" ");
-        etiquetaCliente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtClienteId.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtClienteId.setText(" ");
+        txtClienteId.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/client.png"))); // NOI18N
+        btnCargarCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnCargarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/client.png"))); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Caja:");
@@ -267,7 +308,7 @@ public class Facturacion extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(etiqueta_factura, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFacturaId, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -275,10 +316,10 @@ public class Facturacion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(etiquetaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-                            .addComponent(etiqueta_cajero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtClienteId, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                            .addComponent(txtEmpleadoId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCargarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
                         .addComponent(boxTipoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -296,19 +337,19 @@ public class Facturacion extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel12)
                             .addComponent(etiquetaNumCaja)
-                            .addComponent(etiqueta_factura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtFacturaId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(etiqueta_cajero, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtEmpleadoId, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(etiquetaCliente)))
+                            .addComponent(txtClienteId)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCargarCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(boxTipoVenta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
@@ -463,16 +504,12 @@ public class Facturacion extends javax.swing.JFrame {
     private javax.swing.JButton btnAumentarCantidad;
     private javax.swing.JButton btnBorrarProducto;
     private javax.swing.JButton btnCancelarVenta;
+    private javax.swing.JButton btnCargarCliente;
     private javax.swing.JButton btnCargarVenta;
     private javax.swing.JButton btnFinalizarVenta;
     private javax.swing.JButton btnRestarCantidad;
     private javax.swing.JTextField cajaCantidadProdFact;
-    private javax.swing.JTextField cajaTotal;
-    private javax.swing.JLabel etiquetaCliente;
     private javax.swing.JLabel etiquetaNumCaja;
-    private javax.swing.JLabel etiqueta_cajero;
-    private javax.swing.JLabel etiqueta_factura;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
@@ -488,6 +525,10 @@ public class Facturacion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTablePrincipal;
     private javax.swing.JTextField txtCantidadProd;
+    private javax.swing.JLabel txtClienteId;
     private javax.swing.JTextField txtCodigoProd;
+    private javax.swing.JLabel txtEmpleadoId;
+    private javax.swing.JLabel txtFacturaId;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
