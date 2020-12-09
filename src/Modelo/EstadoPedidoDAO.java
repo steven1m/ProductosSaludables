@@ -22,7 +22,7 @@ public class EstadoPedidoDAO {
         int resultado = 0;
         Connection con ;
         PreparedStatement ps;
-        String sentencia = "INSERT INTO estado_pedido (id, descripcion)"
+        String sentencia = "INSERT INTO estado_pedido(id, descripcion)"
                 + " VALUES (?, ?);";
         
         try{

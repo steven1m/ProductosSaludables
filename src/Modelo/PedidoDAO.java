@@ -82,7 +82,7 @@ public class PedidoDAO {
                 pedido.setFechaDespacho(rs.getString("fecha_despacho"));
                 pedido.setEmpleadoId(rs.getInt("empleado_id"));
                 pedido.setClienteId(rs.getString("cliente_id"));
-                pedido.setEstadoPedidoId(rs.getInt("estado_pedido"));
+                pedido.setEstadoPedidoId(rs.getInt("estado_pedido_id"));
                 pedido.setFacturaId(rs.getInt("factura_id"));
                 lista.add(pedido);
                 

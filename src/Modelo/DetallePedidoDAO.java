@@ -19,7 +19,7 @@ public class DetallePedidoDAO {
         int resultado = 0;
         Connection con ;
         PreparedStatement ps;
-        String sentencia = "INSERT INTO public.detalle_pedido( pedido_id, producto_id, cantidad, precio"
+        String sentencia = "INSERT INTO public.detalle_pedido(pedido_id, producto_id, cantidad, precio)"
                 + " VALUES (?, ?, ?, ?);";
          
         try{

@@ -288,14 +288,14 @@ public class PanelPedido extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nombre", "Descripción", "Precio", "Cantidad", "Precio Venta"
+                "Código", "Fecha pedido", "Fecha despacho", "Id Empleado", "Id Cliente", "Estado Pedido", "Id Factura"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -310,9 +310,6 @@ public class PanelPedido extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTablePrincipal);
         if (jTablePrincipal.getColumnModel().getColumnCount() > 0) {
             jTablePrincipal.getColumnModel().getColumn(0).setResizable(false);
-            jTablePrincipal.getColumnModel().getColumn(1).setResizable(false);
-            jTablePrincipal.getColumnModel().getColumn(2).setResizable(false);
-            jTablePrincipal.getColumnModel().getColumn(3).setResizable(false);
             jTablePrincipal.getColumnModel().getColumn(4).setResizable(false);
             jTablePrincipal.getColumnModel().getColumn(5).setResizable(false);
         }
