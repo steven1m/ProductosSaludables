@@ -50,7 +50,7 @@ public class PanelPedido extends javax.swing.JFrame {
             
             pedido.setId(Integer.parseInt(this.txtCrudCodigo.getText()));
             pedido.setFechaPedido(this.jDatePedido.getDate());
-            pedido.setFechaPedido(this.jDateDespacho.getDate());
+            pedido.setFechaDespacho(this.jDateDespacho.getDate());
             pedido.setEmpleadoId(Integer.parseInt(this.txtCrudEmpleadoId.getText()));
             pedido.setClienteId(this.txtCrudClienteId.getText());
             pedido.setEstadoPedidoId(Integer.parseInt(this.txtCrudEstadoPedido.getText()));

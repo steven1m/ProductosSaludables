@@ -24,7 +24,7 @@ public class PedidoDAO {
         Connection con ;
         PreparedStatement ps;
         String sentencia = "INSERT INTO pedido(id, fecha_pedido, fecha_despacho," 
-                +" empleado_id, cliente_id, estado_pedido, factura_id)"
+                +" empleado_id, cliente_id, estado_pedido_id, factura_id)"
                 + " VALUES (?, ?, ?, ?, ?, ?, ?)";
         
         try{
@@ -32,12 +32,12 @@ public class PedidoDAO {
             ps = con.prepareStatement(sentencia);
             ps.setInt(1, pedido.getId());
             
-            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd-MM-yyyy");
-            String fp = sdf.format(pedido.getFechaPedido());
-            ps.setString(2, fp);
+            /*java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd-MM-yyyy");
+            String fp = sdf.format(pedido.getFechaPedido()); */
+            ps.setDate(2, (java.sql.Date) pedido.getFechaPedido());
             
-            String fd = sdf.format(pedido.getFechaDespacho());
-            ps.setString(3, fd);
+            //String fd = sdf.format(pedido.getFechaDespacho());
+            //ps.setObject(3, pedido.getFechaDespacho());
             
             ps.setInt(4, pedido.getEmpleadoId());
             ps.setInt(5, Integer.valueOf( pedido.getClienteId() ));

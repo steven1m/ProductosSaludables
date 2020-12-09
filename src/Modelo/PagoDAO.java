@@ -35,6 +35,7 @@ public class PagoDAO {
             String currentTime = sdf.format(pago.getFecha());
             
             ps.setString(3, currentTime);
+            
             ps.setInt(4, pago.getTipoPagoId());
             ps.setInt(5, pago.getEmpleadoId());
             
