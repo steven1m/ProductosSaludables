@@ -16,6 +16,7 @@ import Controlador.ControladorEmpleado;
 import Controlador.ControladorEstadoPedido;
 import Controlador.ControladorPago;
 import Controlador.ControladorDetallePedido;
+import Controlador.ControladorTipoVenta;
 
 import Modelo.ProveedorDAO;
 import Modelo.ProduccionDAO;
@@ -34,6 +35,7 @@ import Modelo.EmpleadoDAO;
 import Modelo.EstadoPedidoDAO;
 import Modelo.PagoDAO;
 import Modelo.DetallePedidoDAO;
+import Modelo.TipoVentaDAO;
         
 import java.awt.Color;
 import java.awt.Font;
@@ -94,6 +96,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
@@ -306,6 +309,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem10);
 
+        jMenuItem14.setText("Tipo de Venta");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem14);
+
         jMenu6.setText("Pedidos");
 
         jMenuItem11.setText("Pedidos");
@@ -496,6 +507,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ControladorDetallePedido controladorDetallePedido = new ControladorDetallePedido(detallePedidoDAO, panelDetallePedido);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        // TODO add your handling code here:
+        PanelTipoVenta panelTipoVenta = new PanelTipoVenta();
+        TipoVentaDAO tipoVentaDAO = new TipoVentaDAO();
+        ControladorTipoVenta controladorTipoVenta = new ControladorTipoVenta(tipoVentaDAO, panelTipoVenta);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
     
     
     
@@ -561,6 +579,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

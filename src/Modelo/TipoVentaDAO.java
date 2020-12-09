@@ -23,7 +23,7 @@ public class TipoVentaDAO {
         int resultado = 0;
         Connection con = null;
         PreparedStatement ps;
-        String sentencia = "INSERT INTO public.tipo_pago(id, descripcion) "
+        String sentencia = "INSERT INTO public.tipo_venta(id, descripcion) "
                 + "VALUES (?, ?)";
         
         try{
@@ -51,7 +51,7 @@ public class TipoVentaDAO {
             con = Conexion.getConnection();
             String sentencia = "";
             
-            sentencia = "SELECT * FROM tipo_pago ORDER BY id";            
+            sentencia = "SELECT * FROM tipo_venta ORDER BY id";            
                                  
             ps = con.prepareStatement(sentencia);
             
@@ -77,7 +77,7 @@ public class TipoVentaDAO {
         int resultado = 0;
          Connection con ;
         PreparedStatement ps ;
-        String sentencia = "UPDATE public.tipo_pago SET id=?, descripcion=?";
+        String sentencia = "UPDATE public.tipo_venta SET id=?, descripcion=?";
         
         try{
             con = Conexion.getConnection();
@@ -98,7 +98,7 @@ public class TipoVentaDAO {
         int resultado = 0;
           Connection con ;
         PreparedStatement ps ;
-        String sentencia = "DELETE FROM public.tipo_pago "
+        String sentencia = "DELETE FROM public.tipo_venta "
                 + "WHERE id=?";
         
         try{
