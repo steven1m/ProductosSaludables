@@ -5,6 +5,7 @@
  */
 package vista;
 
+import Modelo.Producto;
 import java.awt.event.ActionListener;
 
 
@@ -31,6 +32,9 @@ public class Produccion extends javax.swing.JFrame {
       
   }
 
+  private void agregarProducto(Producto producto){
+      
+  }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -116,7 +120,7 @@ public class Produccion extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bntBuscarProductoFact, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCancelarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,10 +173,9 @@ public class Produccion extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(etiqueta_cajero, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         cajaCodigoProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -193,10 +196,10 @@ public class Produccion extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnBorrarPro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnBorrarPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete_delete_exit_1577.png"))); // NOI18N
+        btnBorrarPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete_delete_exit_1577.png"))); // NOI18N
 
         btnMenosPro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnMenosPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrowdown_flech_1539.png"))); // NOI18N
+        btnMenosPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrowdown_flech_1539.png"))); // NOI18N
 
         cajaCantidadProdFact.setEditable(false);
         cajaCantidadProdFact.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -204,7 +207,7 @@ public class Produccion extends javax.swing.JFrame {
         cajaCantidadProdFact.setText("0");
 
         btnMasProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnMasProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/uparrow_arriba_1538.png"))); // NOI18N
+        btnMasProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/uparrow_arriba_1538.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -214,7 +217,7 @@ public class Produccion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cajaCantidadProdFact)
-                    .addComponent(btnBorrarPro, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                    .addComponent(btnBorrarPro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnMenosPro, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -262,8 +265,7 @@ public class Produccion extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_finVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(btn_finVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

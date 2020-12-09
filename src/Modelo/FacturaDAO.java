@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,8 +36,9 @@ public class FacturaDAO {
             ps.setInt(5, factura.getTipoVentaId());
             java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String currentTime = sdf.format(factura.getFecha());
+            Date fecha = new Date();
             ps.setString(6, currentTime);
-            
+            ps.setDate(6, (java.sql.Date) fecha);
             resultado = ps.executeUpdate();
             
         }catch(SQLException ex){

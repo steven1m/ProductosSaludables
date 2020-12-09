@@ -6,7 +6,6 @@
 package vista;
 
 import Modelo.Factura;
-import Modelo.Producto;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -36,7 +35,7 @@ public class PanelFactura extends javax.swing.JFrame {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
      public void agregarListener( ActionListener listener){
-        this.btnAgregar.addActionListener(listener);
+       
         this.BtnAplicar.addActionListener(listener);
         this.btnBuscar.addActionListener(listener);
         this.btnActualizar.addActionListener(listener);
@@ -53,11 +52,11 @@ public class PanelFactura extends javax.swing.JFrame {
         try{
             
             factura.setId(Integer.valueOf(this.txtCrudId.getText()));
-            factura.setClienteId(this.txtClienteId.getText());
-            factura.setEmpleadoId(Integer.valueOf(this.txtEmpleadoId.getText()));
-            factura.setPadoId(Integer.valueOf(this.txtPagoId.getText()));
-            factura.setTipoVentaId(Integer.valueOf(this.txtTipoVentaId.getText()));
-            factura.setFecha(this.jDateFecha.getDate());
+            factura.setClienteId(this.txtCrudClienteId.getText());
+            factura.setEmpleadoId(Integer.valueOf(this.txtCrudEmpleadoId.getText()));
+            factura.setPadoId(Integer.valueOf(this.txtCrudPagoId.getText()));
+            factura.setTipoVentaId(Integer.valueOf(this.txtCrudTipoVentaId.getText()));
+            factura.setFecha(this.jDateCrudFecha.getDate());
             
         }catch (NumberFormatException ex ){
             JOptionPane.showMessageDialog(null,"Error : " + 
@@ -121,37 +120,15 @@ public class PanelFactura extends javax.swing.JFrame {
        });
     }
       public void operacionesCrud (String operacion){
-        switch (operacion){
+       
+          switch (operacion){
             
-            case "Agregar" : {
-                this.txtCrudId.setEnabled(true);
-                this.txtClienteId.setEnabled(true);
-                this.txtEmpleadoId.setEnabled(true);
-                this.txtPagoId.setEnabled(true);
-                this.txtTipoVentaId.setEnabled(true);
-                
-                this.BtnAplicar.setText(operacion);
-                this.BtnAplicar.setEnabled(true);
-                this.btnCancelar.setEnabled(true);
-            }
-            
-            case "Editar" : {
+              case "Eliminar" : {
                 this.txtCrudId.setEnabled(false);
-                this.txtClienteId.setEnabled(true);
-                this.txtEmpleadoId.setEnabled(true);
-                this.txtPagoId.setEnabled(true);
-                this.txtTipoVentaId.setEnabled(true);
-                this.BtnAplicar.setText(operacion);
-                this.BtnAplicar.setEnabled(true);
-                this.btnCancelar.setEnabled(true);
-            }
-            
-            case "Eliminar" : {
-                this.txtCrudId.setEnabled(false);
-                this.txtClienteId.setEnabled(false);
-                this.txtEmpleadoId.setEnabled(false);
-                this.txtPagoId.setEnabled(false);
-                this.txtTipoVentaId.setEnabled(false);
+                this.txtCrudClienteId.setEnabled(false);
+                this.txtCrudEmpleadoId.setEnabled(false);
+                this.txtCrudPagoId.setEnabled(false);
+                this.txtCrudTipoVentaId.setEnabled(false);
                 this.BtnAplicar.setText(operacion);
                 this.BtnAplicar.setEnabled(true);
                 this.btnCancelar.setEnabled(true);
@@ -159,20 +136,20 @@ public class PanelFactura extends javax.swing.JFrame {
             
             default : {
                 this.txtCrudId.setText("");
-                this.txtClienteId.setText("");
-                this.txtEmpleadoId.setText("");
-                this.txtPagoId.setText("");
-                this.txtTipoVentaId.setText("");
+                this.txtCrudClienteId.setText("");
+                this.txtCrudEmpleadoId.setText("");
+                this.txtCrudPagoId.setText("");
+                this.txtCrudTipoVentaId.setText("");
                 this.txtBuscar.setText("");
                 this.txtAreaDescripcion.setText("");
                 this.lblNombreSelectProd.setText("");
                 this.lblCodigoSelectProd.setText("");
                 
                 this.txtCrudId.setEnabled(false);
-                this.txtClienteId.setEnabled(false);
-                this.txtEmpleadoId.setEnabled(false);
-                this.txtPagoId.setEnabled(false);
-                this.txtTipoVentaId.setEnabled(false);
+                this.txtCrudClienteId.setEnabled(false);
+                this.txtCrudEmpleadoId.setEnabled(false);
+                this.txtCrudPagoId.setEnabled(false);
+                this.txtCrudTipoVentaId.setEnabled(false);
                 this.BtnAplicar.setEnabled(false);
                 this.btnCancelar.setEnabled(false);
                 this.BtnAplicar.setText("Aplicar");
@@ -181,11 +158,11 @@ public class PanelFactura extends javax.swing.JFrame {
     }
        private void setearDatos(){
         this.txtCrudId.setText(this.datosFactura[0]);
-        this.txtClienteId.setText(this.datosFactura[1]);
-        this.txtEmpleadoId.setText(this.datosFactura[2]);
-        this.txtPagoId.setText(this.datosFactura[3]);
-        this.txtTipoVentaId.setText(this.datosFactura[4]);
-        this.jDateFecha.setDateFormatString(this.datosFactura[5]);
+        this.txtCrudClienteId.setText(this.datosFactura[1]);
+        this.txtCrudEmpleadoId.setText(this.datosFactura[2]);
+        this.txtCrudPagoId.setText(this.datosFactura[3]);
+        this.txtCrudTipoVentaId.setText(this.datosFactura[4]);
+        this.jDateCrudFecha.setDateFormatString(this.datosFactura[5]);
     }
     
     public String[] datosBuscar(){
@@ -213,7 +190,6 @@ public class PanelFactura extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel11 = new javax.swing.JPanel();
-        btnEditar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableFactura = new javax.swing.JTable();
         panelFacturaSelect = new javax.swing.JPanel();
@@ -225,22 +201,21 @@ public class PanelFactura extends javax.swing.JFrame {
         lblCrudCodigo = new javax.swing.JLabel();
         txtCrudId = new javax.swing.JTextField();
         lblCrudNombre = new javax.swing.JLabel();
-        txtClienteId = new javax.swing.JTextField();
+        txtCrudClienteId = new javax.swing.JTextField();
         lblCrudCantidad = new javax.swing.JLabel();
-        txtTipoVentaId = new javax.swing.JTextField();
+        txtCrudTipoVentaId = new javax.swing.JTextField();
         lblCrudlPrecio = new javax.swing.JLabel();
-        txtPagoId = new javax.swing.JTextField();
+        txtCrudPagoId = new javax.swing.JTextField();
         lblCrudPrecioVenta = new javax.swing.JLabel();
-        txtEmpleadoId = new javax.swing.JTextField();
+        txtCrudEmpleadoId = new javax.swing.JTextField();
         BtnAplicar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lblCrudPrecioVenta1 = new javax.swing.JLabel();
-        jDateFecha = new com.toedter.calendar.JDateChooser();
+        jDateCrudFecha = new com.toedter.calendar.JDateChooser();
         panelBuscar = new javax.swing.JPanel();
         cajaTipoBusquedad = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
-        btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         panelDescripcion = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -251,15 +226,6 @@ public class PanelFactura extends javax.swing.JFrame {
 
         jPanel11.setBackground(new java.awt.Color(203, 240, 220));
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Factura", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
-
-        btnEditar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        btnEditar.setText("Editar");
-        btnEditar.setToolTipText("");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
 
         jScrollPane2.setToolTipText("");
 
@@ -348,22 +314,22 @@ public class PanelFactura extends javax.swing.JFrame {
         lblCrudNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCrudNombre.setText("Id Cliente:");
 
-        txtClienteId.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        txtCrudClienteId.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
 
         lblCrudCantidad.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCrudCantidad.setText("Id Pago:");
 
-        txtTipoVentaId.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        txtCrudTipoVentaId.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
 
         lblCrudlPrecio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCrudlPrecio.setText("Id Empleado:");
 
-        txtPagoId.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        txtCrudPagoId.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
 
         lblCrudPrecioVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCrudPrecioVenta.setText("Id Tipo Venta:");
 
-        txtEmpleadoId.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        txtCrudEmpleadoId.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
 
         BtnAplicar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         BtnAplicar.setText("Aplicar");
@@ -395,29 +361,28 @@ public class PanelFactura extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
                         .addComponent(lblCrudNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtClienteId, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCrudClienteId, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelCrudLayout.createSequentialGroup()
                         .addComponent(lblCrudCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPagoId, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCrudPagoId, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
                         .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCrudPrecioVenta)
                             .addComponent(lblCrudPrecioVenta1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtTipoVentaId, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
-                            .addComponent(lblCrudCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtCrudId, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
-                            .addComponent(lblCrudlPrecio)
-                            .addGap(11, 11, 11)
-                            .addComponent(txtEmpleadoId, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jDateCrudFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCrudTipoVentaId, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
+                        .addComponent(lblCrudCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCrudId, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblCrudlPrecio)
+                        .addGap(11, 11, 11)
+                        .addComponent(txtCrudEmpleadoId, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelCrudLayout.setVerticalGroup(
@@ -429,24 +394,24 @@ public class PanelFactura extends javax.swing.JFrame {
                     .addComponent(lblCrudCodigo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtClienteId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCrudClienteId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudNombre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCrudlPrecio)
-                    .addComponent(txtEmpleadoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCrudEmpleadoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPagoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCrudPagoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTipoVentaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCrudTipoVentaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudPrecioVenta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblCrudPrecioVenta1)
-                    .addComponent(jDateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateCrudFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
@@ -488,15 +453,6 @@ public class PanelFactura extends javax.swing.JFrame {
                 .addComponent(btnBuscar)
                 .addContainerGap())
         );
-
-        btnAgregar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        btnAgregar.setText("Agregar");
-        btnAgregar.setToolTipText("Agregar un nuevo producto al inventario");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
 
         btnEliminar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
@@ -552,8 +508,6 @@ public class PanelFactura extends javax.swing.JFrame {
                         .addComponent(panelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                            .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                             .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -571,12 +525,8 @@ public class PanelFactura extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(btnAgregar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnActualizar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnEditar)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnEliminar))
                             .addComponent(panelBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(panelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -607,21 +557,6 @@ public class PanelFactura extends javax.swing.JFrame {
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnActualizarActionPerformed
-
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-        operacionesCrud("");
-        operacionesCrud("Agregar");
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
-        operacionesCrud("");
-        if (this.jTableFactura.getSelectedRow()!= -1){
-            operacionesCrud("Editar");
-            setearDatos();
-        }
-    }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
@@ -675,13 +610,11 @@ public class PanelFactura extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAplicar;
     private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JComboBox<String> cajaTipoBusquedad;
-    private com.toedter.calendar.JDateChooser jDateFecha;
+    private com.toedter.calendar.JDateChooser jDateCrudFecha;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanelCrud;
     private javax.swing.JScrollPane jScrollPane1;
@@ -702,10 +635,10 @@ public class PanelFactura extends javax.swing.JFrame {
     private javax.swing.JPanel panelFacturaSelect;
     private javax.swing.JTextArea txtAreaDescripcion;
     private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtClienteId;
+    private javax.swing.JTextField txtCrudClienteId;
+    private javax.swing.JTextField txtCrudEmpleadoId;
     private javax.swing.JTextField txtCrudId;
-    private javax.swing.JTextField txtEmpleadoId;
-    private javax.swing.JTextField txtPagoId;
-    private javax.swing.JTextField txtTipoVentaId;
+    private javax.swing.JTextField txtCrudPagoId;
+    private javax.swing.JTextField txtCrudTipoVentaId;
     // End of variables declaration//GEN-END:variables
 }
