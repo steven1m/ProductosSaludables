@@ -56,7 +56,7 @@ public class PanelFactura extends javax.swing.JFrame {
             factura.setEmpleadoId(Integer.valueOf(this.txtCrudEmpleadoId.getText()));
             factura.setPadoId(Integer.valueOf(this.txtCrudPagoId.getText()));
             factura.setTipoVentaId(Integer.valueOf(this.txtCrudTipoVentaId.getText()));
-            factura.setFecha(this.jDateCrudFecha.getDate());
+            factura.setFecha(String.valueOf( this.jDateCrudFecha.getDate() ));
             
         }catch (NumberFormatException ex ){
             JOptionPane.showMessageDialog(null,"Error : " + 

@@ -13,24 +13,14 @@ import java.util.Date;
  */
 public class Pedido {
     private int id;
-    private Date fechaPedido;
-    private Date fechaDespacho;
+    private String fechaPedido;
+    private String fechaDespacho;
     private int empleadoId;
     private String clienteId;
     private int estadoPedidoId;
     private int facturaId;
 
     public Pedido() {
-    }
-
-    public Pedido(int id, Date fechaPedido, Date fechaDespacho, int empleadoId, String clienteId, int estadoPedidoId, int facturaId) {
-        this.id = id;
-        this.fechaPedido = fechaPedido;
-        this.fechaDespacho = fechaDespacho;
-        this.empleadoId = empleadoId;
-        this.clienteId = clienteId;
-        this.estadoPedidoId = estadoPedidoId;
-        this.facturaId = facturaId;
     }
 
     public int getId() {
@@ -41,19 +31,19 @@ public class Pedido {
         this.id = id;
     }
 
-    public Date getFechaPedido() {
+    public String getFechaPedido() {
         return fechaPedido;
     }
 
-    public void setFechaPedido(Date fechaPedido) {
+    public void setFechaPedido(String fechaPedido) {
         this.fechaPedido = fechaPedido;
     }
 
-    public Date getFechaDespacho() {
+    public String getFechaDespacho() {
         return fechaDespacho;
     }
 
-    public void setFechaDespacho(Date fechaDespacho) {
+    public void setFechaDespacho(String fechaDespacho) {
         this.fechaDespacho = fechaDespacho;
     }
 

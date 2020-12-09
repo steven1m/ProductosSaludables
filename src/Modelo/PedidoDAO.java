@@ -31,14 +31,7 @@ public class PedidoDAO {
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
             ps.setInt(1, pedido.getId());
-            
-            /*java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd-MM-yyyy");
-            String fp = sdf.format(pedido.getFechaPedido()); */
-            ps.setDate(2, (java.sql.Date) pedido.getFechaPedido());
-            
-            //String fd = sdf.format(pedido.getFechaDespacho());
-            //ps.setObject(3, pedido.getFechaDespacho());
-            
+            ps.setString(2, pedido.getFechaPedido());
             ps.setInt(4, pedido.getEmpleadoId());
             ps.setInt(5, Integer.valueOf( pedido.getClienteId() ));
             ps.setInt(6, pedido.getEstadoPedidoId());
@@ -84,8 +77,8 @@ public class PedidoDAO {
             while(rs.next()){
                 pedido = new Pedido();
                 pedido.setId(rs.getInt("id"));
-                pedido.setFechaPedido(rs.getDate("fecha_pedido"));
-                pedido.setFechaDespacho(rs.getDate("fecha_despacho"));
+                pedido.setFechaPedido(rs.getString("fecha_pedido"));
+                pedido.setFechaDespacho(rs.getString("fecha_despacho"));
                 pedido.setEmpleadoId(rs.getInt("empleado_id"));
                 pedido.setClienteId(rs.getString("cliente_id"));
                 pedido.setEstadoPedidoId(rs.getInt("estado_pedido"));
@@ -113,13 +106,9 @@ public class PedidoDAO {
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
             
-            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            ps.setString(1, pedido.getFechaPedido());
             
-            String fechaPedido = sdf.format(pedido.getFechaPedido());
-            ps.setString(1, fechaPedido);
-            
-            String fechaDespacho = sdf.format(pedido.getFechaDespacho());
-            ps.setString(2, fechaDespacho);
+            ps.setString(2, pedido.getFechaDespacho());
             
             ps.setInt(3, pedido.getEmpleadoId());
             ps.setInt(4, Integer.valueOf( pedido.getClienteId() ));

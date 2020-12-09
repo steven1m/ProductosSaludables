@@ -17,18 +17,9 @@ public class Factura {
     private int empleadoId;
     private int padoId;
     private int tipoVentaId;
-    private Date fecha;
+    private String fecha;
 
     public Factura() {
-    }
-
-    public Factura(int id, String clienteId, int empleadoId, int padoId, int tipoVentaId, Date fecha) {
-        this.id = id;
-        this.clienteId = clienteId;
-        this.empleadoId = empleadoId;
-        this.padoId = padoId;
-        this.tipoVentaId = tipoVentaId;
-        this.fecha = fecha;
     }
 
     public int getId() {
@@ -71,11 +62,11 @@ public class Factura {
         this.tipoVentaId = tipoVentaId;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
     

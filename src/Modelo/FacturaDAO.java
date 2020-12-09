@@ -34,11 +34,9 @@ public class FacturaDAO {
             ps.setInt(3, factura.getEmpleadoId());
             ps.setFloat(4, factura.getPadoId());
             ps.setInt(5, factura.getTipoVentaId());
-            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String currentTime = sdf.format(factura.getFecha());
-            Date fecha = new Date();
-            ps.setString(6, currentTime);
-            ps.setDate(6, (java.sql.Date) fecha);
+            
+            ps.setString(6, factura.getFecha());
+            
             resultado = ps.executeUpdate();
             
         }catch(SQLException ex){
@@ -83,7 +81,7 @@ public class FacturaDAO {
                 factura.setEmpleadoId(rs.getInt("empleado_id"));
                 factura.setPadoId(rs.getInt("pago_id"));
                 factura.setTipoVentaId(rs.getInt("tipo_venta_id"));
-                factura.setFecha(rs.getDate("fecha"));
+                factura.setFecha(rs.getString("fecha"));
                 lista.add(factura);
                 
             }
@@ -113,10 +111,8 @@ public class FacturaDAO {
             ps.setInt(4, factura.getPadoId());
             ps.setFloat(5, factura.getTipoVentaId());
             
-            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String currentTime = sdf.format(factura.getFecha());
+            ps.setString(6, factura.getFecha());
             
-            ps.setString(6, currentTime);
             ps.setInt(7, factura.getId());
             
             resultado = ps.executeUpdate();
