@@ -32,6 +32,7 @@ public class PedidoDAO {
             ps = con.prepareStatement(sentencia);
             ps.setInt(1, pedido.getId());
             ps.setString(2, pedido.getFechaPedido());
+            ps.setString(3, pedido.getFechaDespacho());
             ps.setInt(4, pedido.getEmpleadoId());
             ps.setInt(5, Integer.valueOf( pedido.getClienteId() ));
             ps.setInt(6, pedido.getEstadoPedidoId());

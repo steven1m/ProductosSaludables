@@ -119,27 +119,57 @@ public class PanelFactura extends javax.swing.JFrame {
             }
        });
     }
+      
       public void operacionesCrud (String operacion){
        
           switch (operacion){
             
-              case "Eliminar" : {
+              case "Agregar" -> {
+                this.txtCrudId.setEnabled(true);
+                this.txtCrudClienteId.setEnabled(true);
+                this.txtCrudEmpleadoId.setEnabled(true);
+                this.txtCrudPagoId.setEnabled(true);
+                this.txtCrudTipoVentaId.setEnabled(true);
+                this.jDateCrudFecha.setEnabled(true);
+                
+                this.BtnAplicar.setText(operacion);
+                this.BtnAplicar.setEnabled(true);
+                this.btnCancelar.setEnabled(true);
+            }
+              
+              case "Editar" -> {
+                this.txtCrudId.setEnabled(false);
+                this.txtCrudClienteId.setEnabled(true);
+                this.txtCrudEmpleadoId.setEnabled(true);
+                this.txtCrudPagoId.setEnabled(true);
+                this.txtCrudTipoVentaId.setEnabled(true);
+                this.jDateCrudFecha.setEnabled(true);
+                
+                this.BtnAplicar.setText(operacion);
+                this.BtnAplicar.setEnabled(true);
+                this.btnCancelar.setEnabled(true);
+            }
+              
+              case "Eliminar" -> {
                 this.txtCrudId.setEnabled(false);
                 this.txtCrudClienteId.setEnabled(false);
                 this.txtCrudEmpleadoId.setEnabled(false);
                 this.txtCrudPagoId.setEnabled(false);
                 this.txtCrudTipoVentaId.setEnabled(false);
+                this.jDateCrudFecha.setEnabled(false);
+                
                 this.BtnAplicar.setText(operacion);
                 this.BtnAplicar.setEnabled(true);
                 this.btnCancelar.setEnabled(true);
             }
             
-            default : {
+            default -> {
                 this.txtCrudId.setText("");
                 this.txtCrudClienteId.setText("");
                 this.txtCrudEmpleadoId.setText("");
                 this.txtCrudPagoId.setText("");
                 this.txtCrudTipoVentaId.setText("");
+                
                 this.txtBuscar.setText("");
                 this.txtAreaDescripcion.setText("");
                 this.lblNombreSelectProd.setText("");
@@ -150,12 +180,15 @@ public class PanelFactura extends javax.swing.JFrame {
                 this.txtCrudEmpleadoId.setEnabled(false);
                 this.txtCrudPagoId.setEnabled(false);
                 this.txtCrudTipoVentaId.setEnabled(false);
+                this.jDateCrudFecha.setEnabled(false);
+                
                 this.BtnAplicar.setEnabled(false);
                 this.btnCancelar.setEnabled(false);
                 this.BtnAplicar.setText("Aplicar");
             }
         }
     }
+      
        private void setearDatos(){
         this.txtCrudId.setText(this.datosFactura[0]);
         this.txtCrudClienteId.setText(this.datosFactura[1]);
@@ -216,10 +249,12 @@ public class PanelFactura extends javax.swing.JFrame {
         cajaTipoBusquedad = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
-        btnEliminar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         panelDescripcion = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaDescripcion = new javax.swing.JTextArea();
+        btnEliminar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -287,7 +322,7 @@ public class PanelFactura extends javax.swing.JFrame {
                 .addComponent(lblNombreSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblNombreSelectProd, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         panelFacturaSelectLayout.setVerticalGroup(
             panelFacturaSelectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -454,12 +489,12 @@ public class PanelFactura extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnEliminar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        btnEliminar.setText("Eliminar");
-        btnEliminar.setToolTipText("");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        btnAgregar.setText("Agregar");
+        btnAgregar.setToolTipText("");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
@@ -486,7 +521,27 @@ public class PanelFactura extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnActualizar.setText("ACTUALIZAR");
+        btnEliminar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setToolTipText("");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnEditar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        btnEditar.setText("Editar");
+        btnEditar.setToolTipText("");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnActualizar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setToolTipText("");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
@@ -506,10 +561,13 @@ public class PanelFactura extends javax.swing.JFrame {
                         .addComponent(panelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(panelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                            .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelCrud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -517,21 +575,24 @@ public class PanelFactura extends javax.swing.JFrame {
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelFacturaSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(btnActualizar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEliminar))
-                            .addComponent(panelBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jPanelCrud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelCrud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelFacturaSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addComponent(btnAgregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnActualizar))
+                    .addComponent(panelBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -554,9 +615,16 @@ public class PanelFactura extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnActualizarActionPerformed
+        operacionesCrud("");
+        operacionesCrud("Agregar");
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        operacionesCrud("");
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
@@ -567,10 +635,18 @@ public class PanelFactura extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
         operacionesCrud("");
-    }//GEN-LAST:event_btnCancelarActionPerformed
+        if (this.jTableFactura.getSelectedRow()!= -1){
+            operacionesCrud("Editar");
+            setearDatos();
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -610,8 +686,10 @@ public class PanelFactura extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAplicar;
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JComboBox<String> cajaTipoBusquedad;
     private com.toedter.calendar.JDateChooser jDateCrudFecha;

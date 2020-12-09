@@ -25,6 +25,7 @@ public class EmpleadoDAO {
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
+            
             ps.setInt(1, empleado.getId());
             ps.setString(2, empleado.getNombre());
             ps.setString(3, empleado.getApellido());
@@ -49,10 +50,11 @@ public class EmpleadoDAO {
         PreparedStatement ps;
         ResultSet rs;
         String sentencia;
+        
         if (id == 0){
             sentencia ="SELECT * FROM empleado;";
         }else {
-            sentencia ="SELECT * FROM empleado where id=? order by id;";
+            sentencia ="SELECT * FROM empleado where id=?;";
         }
         
         try{

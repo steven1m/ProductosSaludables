@@ -29,8 +29,9 @@ public class FacturaDAO {
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
+            
             ps.setInt(1, factura.getId());
-            ps.setString(2, factura.getClienteId());
+            ps.setInt(2, Integer.valueOf( factura.getClienteId() ));
             ps.setInt(3, factura.getEmpleadoId());
             ps.setFloat(4, factura.getPadoId());
             ps.setInt(5, factura.getTipoVentaId());
@@ -106,7 +107,7 @@ public class FacturaDAO {
             ps = con.prepareStatement(sentencia);
             
             ps.setInt(1, factura.getId());
-            ps.setString(2, factura.getClienteId());
+            ps.setInt(2, Integer.valueOf( factura.getClienteId() ));
             ps.setInt(3, factura.getEmpleadoId());
             ps.setInt(4, factura.getPadoId());
             ps.setFloat(5, factura.getTipoVentaId());

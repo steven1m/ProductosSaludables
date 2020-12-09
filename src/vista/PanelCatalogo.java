@@ -18,7 +18,7 @@ public class PanelCatalogo extends javax.swing.JFrame {
     private final  String[] datosCatalogo;
     
     public PanelCatalogo() {
-        this.datosCatalogo = new String[3];
+        this.datosCatalogo = new String[1];
         initComponents();
         iniciarVentana();
     }
@@ -42,16 +42,12 @@ public class PanelCatalogo extends javax.swing.JFrame {
        return this.txtCrudCodigo.getText();
     }
     
-    public String getCrudProveedor (){
-       return this.txtCrudProveedor.getText();
-    }
-    
     public Catalogo crearObjetoCatalogo(){
         Catalogo catalogo = new Catalogo();
         try{
             
             catalogo.setId(Integer.parseInt(this.txtCrudCodigo.getText()));
-            catalogo.setProveedorId(Integer.parseInt(this.txtCrudProveedor.getText()));
+            //catalogo.setProveedorId(Integer.parseInt(this.txtCrudProveedor.getText()));
             catalogo.setDescripcion(this.txtAreaCrudDescripcion.getText());
             
         }catch (NumberFormatException ex ){
@@ -82,7 +78,7 @@ public class PanelCatalogo extends javax.swing.JFrame {
             dtmCatalogo.addRow(new Object[]
               {
               catalogo.getId(),
-              catalogo.getProveedorId(),
+              //catalogo.getProveedorId(),
               catalogo.getDescripcion(),
               
               });
@@ -120,7 +116,6 @@ public class PanelCatalogo extends javax.swing.JFrame {
             
             case "Agregar" -> {
                 this.txtCrudCodigo.setEnabled(true);
-                this.txtCrudProveedor.setEnabled(true);
                 this.txtAreaCrudDescripcion.setEnabled(true);
                 
                 this.btnCrudAplicar.setText(operacion);
@@ -130,7 +125,6 @@ public class PanelCatalogo extends javax.swing.JFrame {
             
             case "Editar" -> {
                 this.txtCrudCodigo.setEnabled(false);
-                this.txtCrudProveedor.setEnabled(true);
                 this.txtAreaCrudDescripcion.setEnabled(true);
                 
                 this.btnCrudAplicar.setText(operacion);
@@ -140,7 +134,6 @@ public class PanelCatalogo extends javax.swing.JFrame {
             
             case "Eliminar" -> {
                 this.txtCrudCodigo.setEnabled(false);
-                this.txtCrudProveedor.setEnabled(false);
                 this.txtAreaCrudDescripcion.setEnabled(false);
                
                 this.btnCrudAplicar.setText(operacion);
@@ -150,7 +143,6 @@ public class PanelCatalogo extends javax.swing.JFrame {
             
             default -> {
                 this.txtCrudCodigo.setText("");
-                this.txtCrudProveedor.setText("");
                 this.txtAreaCrudDescripcion.setText("");
                
                 this.txtBuscar.setText("");
@@ -159,7 +151,6 @@ public class PanelCatalogo extends javax.swing.JFrame {
                 this.lblCodigoSelectCatalogo.setText("");
                 
                 this.txtCrudCodigo.setEnabled(false);
-                this.txtCrudProveedor.setEnabled(false);
                 this.txtAreaCrudDescripcion.setEnabled(false);
                 
                 this.btnCrudAplicar.setEnabled(false);
@@ -171,8 +162,7 @@ public class PanelCatalogo extends javax.swing.JFrame {
     
     private void setearDatos(){
         this.txtCrudCodigo.setText(this.datosCatalogo[0]);
-        this.txtCrudProveedor.setText(this.datosCatalogo[1]);
-        this.txtAreaCrudDescripcion.setText(this.datosCatalogo[2]);
+        this.txtAreaCrudDescripcion.setText(this.datosCatalogo[1]);
         
     }
     
@@ -213,8 +203,6 @@ public class PanelCatalogo extends javax.swing.JFrame {
         jPanelCrud = new javax.swing.JPanel();
         lblCrudCodigo = new javax.swing.JLabel();
         txtCrudCodigo = new javax.swing.JTextField();
-        lblCrudNombre = new javax.swing.JLabel();
-        txtCrudProveedor = new javax.swing.JTextField();
         btnCrudAplicar = new javax.swing.JButton();
         btnCrudCancelar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -331,11 +319,6 @@ public class PanelCatalogo extends javax.swing.JFrame {
 
         txtCrudCodigo.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
 
-        lblCrudNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblCrudNombre.setText("Proveedor:");
-
-        txtCrudProveedor.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-
         btnCrudAplicar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnCrudAplicar.setText("Aplicar");
 
@@ -370,15 +353,9 @@ public class PanelCatalogo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCrudCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelCrudLayout.createSequentialGroup()
-                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCrudDescripcion)
-                            .addComponent(lblCrudNombre))
+                        .addComponent(lblCrudDescripcion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelCrudLayout.createSequentialGroup()
-                                .addComponent(txtCrudProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane3))))
+                        .addComponent(jScrollPane3)))
                 .addContainerGap())
         );
         jPanelCrudLayout.setVerticalGroup(
@@ -388,11 +365,7 @@ public class PanelCatalogo extends javax.swing.JFrame {
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCrudCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudCodigo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCrudProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCrudNombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(37, 37, 37)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCrudDescripcion)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -631,7 +604,6 @@ public class PanelCatalogo extends javax.swing.JFrame {
     private javax.swing.JLabel lblCodigoSelectCatalogo;
     private javax.swing.JLabel lblCrudCodigo;
     private javax.swing.JLabel lblCrudDescripcion;
-    private javax.swing.JLabel lblCrudNombre;
     private javax.swing.JLabel lblNombreSelect;
     private javax.swing.JLabel lblNombreSelectCatalogo;
     private javax.swing.JPanel panelBuscar;
@@ -642,6 +614,5 @@ public class PanelCatalogo extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAreaDescripcionCatalogo;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCrudCodigo;
-    private javax.swing.JTextField txtCrudProveedor;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,18 +9,16 @@ public class Catalogo {
     
     private int id;
     private String descripcion;
-    private int proveedorId;
+    //private int proveedorId;
     
-    public Catalogo(int id, String descripcion, int proveedorId) {
+    public Catalogo(int id, String descripcion) {
         this.id = id;
         this.descripcion = descripcion;
-        this.proveedorId = proveedorId;
+        //this.proveedorId = proveedorId;
     }
 
     public Catalogo() {
-        this.id = 0;
-        this.descripcion = "";
-        this.proveedorId = 0;  
+        this.id = 0; 
     }
 
     public int getId() {
@@ -37,14 +35,6 @@ public class Catalogo {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public int getProveedorId() {
-        return proveedorId;
-    }
-
-    public void setProveedorId(int proveedorId) {
-        this.proveedorId = proveedorId;
     }
     
         

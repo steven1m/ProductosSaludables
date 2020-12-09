@@ -38,10 +38,6 @@ public class PanelEmpleado extends javax.swing.JFrame {
         this.btnCrudAplicar.addActionListener(listener);
         this.btnBuscar.addActionListener(listener);
         this.btnActualizar.addActionListener(listener);
-        this.btnEditar.addActionListener(listener);
-        this.btnEliminar.addActionListener(listener);
-        this.btnCrudCancelar.addActionListener(listener);
-        this.btnAgregar.addActionListener(listener);
     }
     
     public String getId(){
@@ -60,6 +56,7 @@ public class PanelEmpleado extends javax.swing.JFrame {
             empleado.setCargo(this.txtCargo.getText());
             empleado.setCorreo(this.txtCorreo.getText());
             empleado.setSalario(Float.valueOf(this.txtSalario.getText()));
+            
         }catch (NumberFormatException ex ){
             JOptionPane.showMessageDialog(null,"Error : " + 
                     ex.getMessage());
@@ -125,10 +122,41 @@ public class PanelEmpleado extends javax.swing.JFrame {
             }
        });
     }
+      
        public void operacionesCrud (String operacion){
         switch (operacion){
             
-            case "Agregar" : {
+            case "Agregar" -> {
+                this.txtId.setEnabled(true);
+                this.txtNombre.setEnabled(true);
+                this.txtApellido.setEnabled(true);
+                this.txtDireccion.setEnabled(true);
+                this.txtTelefono.setEnabled(true);
+                this.txtCargo.setEnabled(true);
+                this.txtCorreo.setEnabled(true);
+                this.txtSalario.setEnabled(true);
+                
+                this.btnCrudAplicar.setText(operacion);
+                this.btnCrudAplicar.setEnabled(true);
+                this.btnCrudCancelar.setEnabled(true);
+            }
+            
+            case "Editar" -> {
+                this.txtId.setEnabled(false);
+                this.txtNombre.setEnabled(true);
+                this.txtApellido.setEnabled(true);
+                this.txtDireccion.setEnabled(true);
+                this.txtTelefono.setEnabled(true);
+                this.txtCargo.setEnabled(true);
+                this.txtCorreo.setEnabled(true);
+                this.txtSalario.setEnabled(true);
+                
+                this.btnCrudAplicar.setText(operacion);
+                this.btnCrudAplicar.setEnabled(true);
+                this.btnCrudCancelar.setEnabled(true);
+            }
+            
+            case "Eliminar" -> {
                 this.txtId.setEnabled(false);
                 this.txtNombre.setEnabled(false);
                 this.txtApellido.setEnabled(false);
@@ -137,40 +165,13 @@ public class PanelEmpleado extends javax.swing.JFrame {
                 this.txtCargo.setEnabled(false);
                 this.txtCorreo.setEnabled(false);
                 this.txtSalario.setEnabled(false);
+                
                 this.btnCrudAplicar.setText(operacion);
                 this.btnCrudAplicar.setEnabled(true);
                 this.btnCrudCancelar.setEnabled(true);
             }
             
-            case "Editar" : {
-                this.txtId.setEnabled(false);
-                this.txtNombre.setEnabled(false);
-                this.txtApellido.setEnabled(false);
-                this.txtDireccion.setEnabled(false);
-                this.txtTelefono.setEnabled(false);
-                this.txtCargo.setEnabled(false);
-                this.txtCorreo.setEnabled(false);
-                this.txtSalario.setEnabled(false);
-                this.btnCrudAplicar.setText(operacion);
-                this.btnCrudAplicar.setEnabled(true);
-                this.btnCrudCancelar.setEnabled(true);
-            }
-            
-            case "Eliminar" : {
-                this.txtId.setEnabled(false);
-                this.txtNombre.setEnabled(false);
-                this.txtApellido.setEnabled(false);
-                this.txtDireccion.setEnabled(false);
-                this.txtTelefono.setEnabled(false);
-                this.txtCargo.setEnabled(false);
-                this.txtCorreo.setEnabled(false);
-                this.txtSalario.setEnabled(false);
-                this.btnCrudAplicar.setText(operacion);
-                this.btnCrudAplicar.setEnabled(true);
-                this.btnCrudCancelar.setEnabled(true);
-            }
-            
-            default : {
+            default -> {
                 this.txtId.setText("");
                 this.txtNombre.setText("");
                 this.txtApellido.setText("");
@@ -190,6 +191,7 @@ public class PanelEmpleado extends javax.swing.JFrame {
                 this.txtCargo.setEnabled(false);
                 this.txtCorreo.setEnabled(false);
                 this.txtSalario.setEnabled(false);
+                
                 this.btnCrudAplicar.setEnabled(false);
                 this.btnCrudCancelar.setEnabled(false);
                 this.btnCrudAplicar.setText("Aplicar");
@@ -438,6 +440,11 @@ public class PanelEmpleado extends javax.swing.JFrame {
         lblCrudlPrecio.setText("Telefono");
 
         txtCorreo.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreoActionPerformed(evt);
+            }
+        });
 
         lblCrudPrecioVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCrudPrecioVenta.setText("Cargo");
@@ -460,10 +467,17 @@ public class PanelEmpleado extends javax.swing.JFrame {
         lblCrudDescripcion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCrudDescripcion.setText("Direccion");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Apellido");
 
+        txtApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Salario");
+
+        txtSalario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanelCrudLayout = new javax.swing.GroupLayout(jPanelCrud);
         jPanelCrud.setLayout(jPanelCrudLayout);
@@ -472,10 +486,6 @@ public class PanelEmpleado extends javax.swing.JFrame {
             .addGroup(jPanelCrudLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
-                        .addComponent(lblCrudNombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
                         .addComponent(lblCrudCodigo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -492,25 +502,24 @@ public class PanelEmpleado extends javax.swing.JFrame {
                         .addComponent(lblCrudDescripcion)
                         .addGap(27, 27, 27)
                         .addComponent(txtDireccion))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
+                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCrudNombre)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtSalario)
+                            .addComponent(txtApellido)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)))
                     .addGroup(jPanelCrudLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(40, 40, 40)
-                        .addComponent(txtApellido))
+                        .addComponent(lblCrudCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelCrudLayout.createSequentialGroup()
-                        .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanelCrudLayout.createSequentialGroup()
-                                .addComponent(lblCrudlPrecio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelCrudLayout.createSequentialGroup()
-                                .addComponent(lblCrudCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 2, Short.MAX_VALUE))
-                    .addGroup(jPanelCrudLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(48, 48, 48)
-                        .addComponent(txtSalario)))
+                        .addComponent(lblCrudlPrecio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelCrudLayout.setVerticalGroup(
@@ -528,19 +537,19 @@ public class PanelEmpleado extends javax.swing.JFrame {
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(21, 21, 21)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblCrudDescripcion)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCrudlPrecio)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCrudlPrecio))
+                .addGap(14, 14, 14)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -548,7 +557,7 @@ public class PanelEmpleado extends javax.swing.JFrame {
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudPrecioVenta))
-                .addGap(18, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrudAplicar)
                     .addComponent(btnCrudCancelar))
@@ -583,7 +592,7 @@ public class PanelEmpleado extends javax.swing.JFrame {
             .addGroup(panelGeneralLayout.createSequentialGroup()
                 .addGroup(panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelGeneralLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelProductoSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -650,6 +659,10 @@ public class PanelEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
         operacionesCrud("");
     }//GEN-LAST:event_btnCrudCancelarActionPerformed
+
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoActionPerformed
 
     /**
      * @param args the command line arguments

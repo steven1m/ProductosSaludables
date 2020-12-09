@@ -19,17 +19,17 @@ public class DetallePedidoDAO {
         int resultado = 0;
         Connection con ;
         PreparedStatement ps;
-        String sentencia = "INSERT INTO public.catalogo( pedidoId,precio ,cantidad "
-                + "producto_id ) "
-                + "VALUES (?, ?, ?,?);";
-        
+        String sentencia = "INSERT INTO public.detalle_pedido( pedido_id, producto_id, cantidad, precio"
+                + " VALUES (?, ?, ?, ?);";
+         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(detalle.getPedidoId()));
-            ps.setString(1, String.valueOf(detalle.getProductoId()));
-            ps.setString(3, String.valueOf(detalle.getCantidad()));
-             ps.setString(3, String.valueOf(detalle.getPrecio()));
+            
+            ps.setInt(1, detalle.getPedidoId());
+            ps.setInt(2, detalle.getProductoId());
+            ps.setInt(3, detalle.getCantidad());
+            ps.setFloat(4, detalle.getPrecio());
             
             resultado = ps.executeUpdate();
             
@@ -41,33 +41,35 @@ public class DetallePedidoDAO {
         return resultado;
     }
     
-    public ArrayList <DetallePedido> leer (int id){
+    public ArrayList <DetallePedido> leer (String clave, String valor){
         ArrayList <DetallePedido>  lista = new ArrayList<>();
         Connection con ;
         PreparedStatement ps;
         ResultSet rs;
         String sentencia;
-        if (id == -1){
-            sentencia ="SELECT * FROM detallePedido.catalogo;";
-        }else {
-            sentencia ="SELECT * FROM public.detallePedido WHERE pedidoId=?;";
-        }
+        
+        if ("".equals(clave) || "".equals(valor)){
+                sentencia = "SELECT * FROM detalle_pedido;";
+            }else if("pedido id".equals(clave)) {
+                sentencia = "SELECT * FROM detalle_pedido WHERE pedido_id = ?;";
+                
+            }else{
+                sentencia = "SELECT * FROM detalle_pedido WHERE producto_id = ?;";
+            }
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            if (id != -1){
-               ps.setString(1, String.valueOf(id));
-            }
+            
             
             rs = ps.executeQuery();
 
             while (rs.next()){
                 DetallePedido Dpedido = new DetallePedido();
-                Dpedido.setPedidoId(rs.getInt("pedidoId"));
+                Dpedido.setPedidoId(rs.getInt("pedido_id"));
+                Dpedido.setProductoId(rs.getInt("producto_id"));
                 Dpedido.setCantidad(rs.getInt("cantidad"));
-                Dpedido.setPrecio(rs.getInt("precio"));
-                Dpedido.setProductoId(rs.getInt("productoId"));
+                Dpedido.setPrecio(rs.getFloat("precio"));
             }
 
         }catch(SQLException ex){
@@ -81,17 +83,16 @@ public class DetallePedidoDAO {
         int resultado = 0;
         Connection con ;
         PreparedStatement ps ;
-        String sentencia = "UPDATE public.detallePedido SET  precio=?, cantidad=? "
-                + "productoId=? "
-                + "WHERE id=?;";
+        String sentencia = "UPDATE public.detalle_pedido SET pedido_id, producto_id, cantidad, precio"
+                + " WHERE id=?;";
         
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(detalle.getPedidoId()));
-            ps.setString(2, String.valueOf(detalle.getProductoId()));
-            ps.setString(3, String.valueOf(detalle.getPrecio()));
-             ps.setString(4, String.valueOf(detalle.getCantidad()));
+            ps.setInt(1, detalle.getPedidoId());
+            ps.setInt(2, detalle.getProductoId());
+            ps.setInt(3, detalle.getCantidad());
+            ps.setFloat(4, detalle.getPrecio());
             
             resultado = ps.executeUpdate();
             
@@ -106,8 +107,8 @@ public class DetallePedidoDAO {
         int resultado = 0;
          Connection con ;
         PreparedStatement ps ;
-        String sentencia = "DELETE FROM detallePedido.catalogo "
-                + "WHERE id=?";
+        String sentencia = "DELETE FROM detalle_pedido"
+                + " WHERE id=?";
         
         try{
             con = Conexion.getConnection();
