@@ -69,7 +69,7 @@ public class ProductoDAO {
             ps = con.prepareStatement(sentencia);
             
             if (!"".equals(clave) && !"".equals(valor) ){
-                ps.setString(1, valor);
+                ps.setInt(1, Integer.parseInt(valor));
             }
             rs = ps.executeQuery();
                         
@@ -86,9 +86,9 @@ public class ProductoDAO {
                 
             }
         }
-        catch(SQLException ex){
-            JOptionPane.showMessageDialog(null,"Código : " + 
-                        ex.getErrorCode() + "\nError :" + ex.getMessage());
+        catch(SQLException | NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, 
+                        "Error :" + ex.getMessage());
         }
         return lista;
     }
