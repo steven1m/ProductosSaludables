@@ -81,7 +81,7 @@ public class PagoDAO {
                 pago.setId(rs.getInt("id"));
                 pago.setValor(rs.getFloat("valor"));
                 
-                pago.setFecha(rs.getDate("fecha"));
+                pago.setFecha(rs.getString("fecha"));
                 
                 pago.setTipoPagoId(rs.getInt("tipo_pago_id"));
                 pago.setEmpleadoId(rs.getInt("empleado_id"));
@@ -111,9 +111,7 @@ public class PagoDAO {
             ps.setInt(1, pago.getId());
             ps.setFloat(2, pago.getValor());
             
-            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String currentTime = sdf.format(pago.getFecha());
-            ps.setString(3, currentTime);
+            ps.setString(3, pago.getFecha());
             
             ps.setInt(4, pago.getTipoPagoId());
             ps.setFloat(5, pago.getEmpleadoId());

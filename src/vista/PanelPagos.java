@@ -52,7 +52,7 @@ public class PanelPagos extends javax.swing.JFrame {
             
             pago.setId(Integer.valueOf(this.txtCrudCodigo.getText()));
             pago.setValor(Float.valueOf( this.txtCrudValor.getText() ));
-            pago.setFecha(this.jDateFecha.getDate());
+            pago.setFecha(String.valueOf(this.jDateFecha.getDate()) );
             pago.setTipoPagoId(Integer.valueOf(this.txtCrudTipoPago.getText()));
             pago.setEmpleadoId(Integer.valueOf(this.txtCrudEmpleadoId.getText()));
             

@@ -14,14 +14,14 @@ import java.util.Date;
 public class Pago {
     private int id;
     private float valor;
-    private Date fecha;
+    private String fecha;
     private int tipoPagoId;
     private int empleadoId;
 
     public Pago() {
     }
 
-    public Pago(int id, float valor, Date fecha, int tipoPagoId, int empleadoId) {
+    public Pago(int id, float valor, String fecha, int tipoPagoId, int empleadoId) {
         this.id = id;
         this.valor = valor;
         this.fecha = fecha;
@@ -45,11 +45,11 @@ public class Pago {
         this.valor = valor;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
