@@ -29,7 +29,7 @@ public class PanelFactura extends javax.swing.JFrame {
         this.setTitle("Facturas");
         
         selecionTabla(); 
-        this.BtnAplicar.setEnabled(true);
+        this.BtnCargar.setEnabled(true);
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
@@ -39,6 +39,7 @@ public class PanelFactura extends javax.swing.JFrame {
         this.btnEliminar.addActionListener(listener);
         this.btnBuscar.addActionListener(listener);
         this.btnActualizar.addActionListener(listener);
+        this.BtnCargar.addActionListener(listener);
     }
     
     public int getCrudCodigo(){
@@ -121,7 +122,7 @@ public class PanelFactura extends javax.swing.JFrame {
                this.lblNombreSelectProd.setText(this.jTableFactura.getValueAt
                                                 (fila, 1).toString());
                
-               this.BtnAplicar.setEnabled(true);
+               this.BtnCargar.setEnabled(true);
                
             }
        });
@@ -165,7 +166,7 @@ public class PanelFactura extends javax.swing.JFrame {
         txtBuscar = new javax.swing.JTextField();
         btnEliminar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
-        BtnAplicar = new javax.swing.JButton();
+        BtnCargar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -315,9 +316,9 @@ public class PanelFactura extends javax.swing.JFrame {
             }
         });
 
-        BtnAplicar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        BtnAplicar.setText("Cargar");
-        BtnAplicar.setToolTipText("Aplicar la operacion selecionada ");
+        BtnCargar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        BtnCargar.setText("Cargar");
+        BtnCargar.setToolTipText("Aplicar la operacion selecionada ");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -330,7 +331,7 @@ public class PanelFactura extends javax.swing.JFrame {
                         .addComponent(panelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BtnAplicar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BtnCargar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
@@ -346,7 +347,7 @@ public class PanelFactura extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(BtnAplicar)
+                        .addComponent(BtnCargar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -487,7 +488,7 @@ public class PanelFactura extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnAplicar;
+    private javax.swing.JButton BtnCargar;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;

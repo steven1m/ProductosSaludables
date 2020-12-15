@@ -73,7 +73,7 @@
                           <Component id="panelBuscar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="BtnAplicar" max="32767" attributes="0"/>
+                              <Component id="BtnCargar" max="32767" attributes="0"/>
                               <Component id="btnActualizar" max="32767" attributes="0"/>
                               <Component id="btnEliminar" min="-2" pref="123" max="-2" attributes="0"/>
                           </Group>
@@ -94,7 +94,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="BtnAplicar" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtnCargar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -371,7 +371,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="BtnAplicar">
+        <Component class="javax.swing.JButton" name="BtnCargar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Aharoni" size="14" style="0"/>
