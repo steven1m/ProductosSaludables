@@ -45,6 +45,9 @@ public class ControladorFacturacion implements ActionListener{
             listaDetalle.forEach(detalle -> {
                 this.modeloDetalle.crear(detalle);
             });
+            
+            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
+            this.facturacion.limparPanel();
         }
     }
     

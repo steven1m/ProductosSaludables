@@ -529,9 +529,6 @@
               <Image iconType="3" name="/Imagenes/uparrow_arriba_1538.png"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAumentarCantidadActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -91,6 +91,34 @@ public class Facturacion extends javax.swing.JFrame {
         }
         
     }
+    
+    public void limparPanel(){
+        this.txtCantidadIncremento.setText("");
+        this.txtCantidadProd.setText("");
+        this.txtCodigoProd.setText("");
+        this.txtIdCliente.setText("");
+        this.txtIdEmpleado.setText("");
+        try{
+            int nuevoNumFact = Integer.parseInt(this.txtIdFactura.getText());
+            this.txtIdFactura.setText(String.valueOf(nuevoNumFact+1));
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        
+        this.txtTotal.setText("");
+        
+        DefaultTableModel dtmProductos =(DefaultTableModel)this.jTablePrincipal.getModel();
+         
+        if (dtmProductos.getRowCount() != 0)
+            {
+              int d = dtmProductos.getRowCount();
+              for (int y = 0; y < d; y++)
+                {
+                  dtmProductos.removeRow(0);
+                }
+            }
+        this.jTablePrincipal.setModel(dtmProductos);
+    }
 
     public void setListeners(ActionListener listener){
         this.bntBuscarProducto.addActionListener(listener);
@@ -439,11 +467,6 @@ public class Facturacion extends javax.swing.JFrame {
 
         btnAumentarCantidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAumentarCantidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/uparrow_arriba_1538.png"))); // NOI18N
-        btnAumentarCantidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAumentarCantidadActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -547,11 +570,6 @@ public class Facturacion extends javax.swing.JFrame {
     private void txtIdEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdEmpleadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdEmpleadoActionPerformed
-
-    private void btnAumentarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAumentarCantidadActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnAumentarCantidadActionPerformed
 
     /**
      * @param args the command line arguments
