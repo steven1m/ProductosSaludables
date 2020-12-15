@@ -159,7 +159,7 @@ public class FacturaDAO {
             rs = ps.executeQuery();
             
             while (rs.next()){
-                id = rs.getInt("id");
+                id = rs.getInt(1);
             }
         }catch(SQLException ex){
             

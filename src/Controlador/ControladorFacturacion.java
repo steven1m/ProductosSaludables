@@ -55,7 +55,7 @@ public class ControladorFacturacion implements ActionListener{
     private void numeroFactura(){
         int num = this.modeloFactura.numeroFactura();
         if (num != 0 ){
-            this.facturacion.getTxtIdFactura().setText(String.valueOf(num));
+            this.facturacion.getTxtIdFactura().setText(String.valueOf(num+1));
         }else {
              this.facturacion.getTxtIdFactura().setText(String.valueOf(1));
         }
