@@ -37,8 +37,6 @@ public class ControladorFacturacion implements ActionListener{
     
     
     private void finalizarVenta(Factura factura, ArrayList<DetalleFactura> listaDetalle){
-        
-        
         int resultado = this.modeloFactura.crear(factura);
         
         if (resultado != 0 )
@@ -89,6 +87,7 @@ public class ControladorFacturacion implements ActionListener{
                     this.facturacion.listaDetalleFactura());
             
         }else if (e.getActionCommand().equalsIgnoreCase("Agregar")){
+            
             String clave = this.facturacion.getCodigoProducto();
             int cantidad = this.facturacion.getCantidad();
            
