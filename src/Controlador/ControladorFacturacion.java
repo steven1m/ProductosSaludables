@@ -99,6 +99,19 @@ public class ControladorFacturacion implements ActionListener{
         }else if (e.getActionCommand().equalsIgnoreCase("Cargar venta")){
 
             
+        }else if (e.getActionCommand().equalsIgnoreCase("aumentar")){
+            
+            if (this.facturacion.getjTablePrincipal().getSelectedRow()!= -1){
+               
+               int fila  = this.facturacion.getjTablePrincipal().getSelectedRow();
+               String clave = this.facturacion.getjTablePrincipal().
+                                        getValueAt(fila, 0).toString();
+                
+                int cantidad = this.facturacion.getCantidadIncremento();
+                agregarProducto (buscarProducto("id", clave), cantidad+1);
+            }
+            
+            
         }
     }
 }

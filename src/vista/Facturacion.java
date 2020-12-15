@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -21,18 +23,51 @@ public class Facturacion extends javax.swing.JFrame {
        initComponents();
        iniciarVentana();
     }
+
+    
+    
+    
     
     private void iniciarVentana(){
         this.setLocationRelativeTo(null);
         this.setTitle("Panel Facturacion");
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.btnAumentarCantidad.setActionCommand("aumentar");
+        this.btnRestarCantidad.setActionCommand("restar");
+        this.btnBorrarProducto.setActionCommand("borrar");
+        selecionTabla();
+    }
+    
+    private void selecionTabla(){
+        
+        this.jTablePrincipal.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
+           if (this.jTablePrincipal.getSelectedRow()!= -1){
+               int fila  = jTablePrincipal.getSelectedRow();
+               this.txtCantidadIncremento.setText(this.jTablePrincipal.getValueAt
+                                               (fila, 2).toString());
+            }
+       });
+    }
+    
+    public JTable getjTablePrincipal() {
+        return jTablePrincipal;
     }
     
     public int getCantidad(){
         int cantidad = 0;
         try{
             cantidad = Integer.parseInt(this.txtCantidadProd.getText());
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        return cantidad;
+    }
+    
+     public int getCantidadIncremento(){
+        int cantidad = 0;
+        try{
+            cantidad = Integer.parseInt(this.txtCantidadIncremento.getText());
         }catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
@@ -96,6 +131,8 @@ public class Facturacion extends javax.swing.JFrame {
                     }else {
                         int nuevaCantida = tempoCant + cantidad;
                         dtmTabla.setValueAt(nuevaCantida, contador, 2);
+                        float subTotal = nuevaCantida * producto.getPrecio();
+                        dtmTabla.setValueAt(subTotal, contador, 4);
                     }
                     estado = false;
                 }
@@ -115,7 +152,7 @@ public class Facturacion extends javax.swing.JFrame {
             contador ++;
         }while (estado);
 
-        
+        calcularTotal();
         
         this.jTablePrincipal.setModel(dtmTabla);
     }
@@ -194,7 +231,7 @@ public class Facturacion extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         btnBorrarProducto = new javax.swing.JButton();
         btnRestarCantidad = new javax.swing.JButton();
-        cajaCantidadProdFact = new javax.swing.JTextField();
+        txtCantidadIncremento = new javax.swing.JTextField();
         btnAumentarCantidad = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -393,13 +430,18 @@ public class Facturacion extends javax.swing.JFrame {
         btnRestarCantidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnRestarCantidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrowdown_flech_1539.png"))); // NOI18N
 
-        cajaCantidadProdFact.setEditable(false);
-        cajaCantidadProdFact.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cajaCantidadProdFact.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        cajaCantidadProdFact.setText("0");
+        txtCantidadIncremento.setEditable(false);
+        txtCantidadIncremento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtCantidadIncremento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCantidadIncremento.setText("0");
 
         btnAumentarCantidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAumentarCantidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/uparrow_arriba_1538.png"))); // NOI18N
+        btnAumentarCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAumentarCantidadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -408,7 +450,7 @@ public class Facturacion extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cajaCantidadProdFact)
+                    .addComponent(txtCantidadIncremento)
                     .addComponent(btnBorrarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -421,7 +463,7 @@ public class Facturacion extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cajaCantidadProdFact, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCantidadIncremento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAumentarCantidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -504,6 +546,11 @@ public class Facturacion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdEmpleadoActionPerformed
 
+    private void btnAumentarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAumentarCantidadActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnAumentarCantidadActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -523,7 +570,6 @@ public class Facturacion extends javax.swing.JFrame {
     private javax.swing.JButton btnCargarVenta;
     private javax.swing.JButton btnFinalizarVenta;
     private javax.swing.JButton btnRestarCantidad;
-    private javax.swing.JTextField cajaCantidadProdFact;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
@@ -536,6 +582,7 @@ public class Facturacion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTablePrincipal;
+    private javax.swing.JTextField txtCantidadIncremento;
     private javax.swing.JTextField txtCantidadProd;
     private javax.swing.JTextField txtCodigoProd;
     private javax.swing.JTextField txtIdCliente;
