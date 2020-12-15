@@ -108,7 +108,7 @@ public class ControladorFacturacion implements ActionListener{
                                         getValueAt(fila, 0).toString();
                 
                 int cantidad = this.facturacion.getCantidadIncremento();
-                agregarProducto (buscarProducto("id", clave), cantidad+1);
+                agregarProducto (buscarProducto("id", clave), 1);
             }
             
             

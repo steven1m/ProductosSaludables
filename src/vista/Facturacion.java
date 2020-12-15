@@ -102,7 +102,7 @@ public class Facturacion extends javax.swing.JFrame {
               for (int i = 0; i < filas; i++)
                 {
                   try{
-                      float valor = Float.parseFloat(dtmTabla.getValueAt(filas, 4).toString());
+                      float valor = Float.parseFloat(dtmTabla.getValueAt(i, 4).toString());
                       total = total + valor;
                   }catch(NumberFormatException ex){
                       JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -185,7 +185,7 @@ public class Facturacion extends javax.swing.JFrame {
             factura.setClienteId(this.txtIdCliente.getText());
             factura.setEmpleadoId(Integer.valueOf(this.txtIdEmpleado.getText()));
             factura.setPagoId(Integer.valueOf(this.txtIdFactura.getText()));
-            int tipoVenta = this.boxTipoVenta.getSelectedIndex();
+            int tipoVenta = this.boxTipoVenta.getSelectedIndex() + 1;
             factura.setTipoVentaId(tipoVenta);
             factura.setFecha(new Date().toString());
         
