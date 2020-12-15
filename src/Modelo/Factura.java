@@ -15,7 +15,7 @@ public class Factura {
     private int id;
     private String clienteId;
     private int empleadoId;
-    private int padoId;
+    private int pagoId;
     private int tipoVentaId;
     private String fecha;
 
@@ -46,12 +46,12 @@ public class Factura {
         this.empleadoId = empleadoId;
     }
 
-    public int getPadoId() {
-        return padoId;
+    public int getPagoId() {
+        return pagoId;
     }
 
-    public void setPadoId(int padoId) {
-        this.padoId = padoId;
+    public void setPagoId(int padoId) {
+        this.pagoId = padoId;
     }
 
     public int getTipoVentaId() {

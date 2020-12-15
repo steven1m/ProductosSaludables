@@ -33,7 +33,7 @@ public class FacturaDAO {
             ps.setInt(1, factura.getId());
             ps.setInt(2, Integer.valueOf( factura.getClienteId() ));
             ps.setInt(3, factura.getEmpleadoId());
-            ps.setFloat(4, factura.getPadoId());
+            ps.setFloat(4, factura.getPagoId());
             ps.setInt(5, factura.getTipoVentaId());
             
             ps.setString(6, factura.getFecha());
@@ -80,7 +80,7 @@ public class FacturaDAO {
                 factura.setId(rs.getInt("id"));
                 factura.setClienteId(rs.getString("cliente_id"));
                 factura.setEmpleadoId(rs.getInt("empleado_id"));
-                factura.setPadoId(rs.getInt("pago_id"));
+                factura.setPagoId(rs.getInt("pago_id"));
                 factura.setTipoVentaId(rs.getInt("tipo_venta_id"));
                 factura.setFecha(rs.getString("fecha"));
                 lista.add(factura);
@@ -109,7 +109,7 @@ public class FacturaDAO {
             ps.setInt(1, factura.getId());
             ps.setInt(2, Integer.valueOf( factura.getClienteId() ));
             ps.setInt(3, factura.getEmpleadoId());
-            ps.setInt(4, factura.getPadoId());
+            ps.setInt(4, factura.getPagoId());
             ps.setFloat(5, factura.getTipoVentaId());
             
             ps.setString(6, factura.getFecha());

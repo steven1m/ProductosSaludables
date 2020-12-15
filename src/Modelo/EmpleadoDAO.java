@@ -70,12 +70,12 @@ public class EmpleadoDAO {
             while (rs.next()){
                 Empleado empleado = new Empleado();
                 empleado.setId(rs.getInt("id"));
-                empleado.setNombre("nombre");
-                empleado.setApellido("apellido");
-                empleado.setCorreo("telefono");
-                empleado.setDireccion("direccion");
-                empleado.setCargo("correo");
-                empleado.setTelefono("cargo");
+                empleado.setNombre(rs.getString("nombre"));
+                empleado.setApellido(rs.getString("apellido"));
+                empleado.setCorreo(rs.getString("correo"));
+                empleado.setDireccion(rs.getString("direccion"));
+                empleado.setCargo(rs.getString("cargo"));
+                empleado.setTelefono(rs.getString("telefono"));
                 empleado.setSalario(rs.getFloat("salario"));
                 lista.add(empleado);
             }
@@ -105,7 +105,7 @@ public class EmpleadoDAO {
             ps.setString(5, empleado.getCorreo());
             ps.setString(6, empleado.getCargo());
             ps.setFloat(7, empleado.getSalario());
-            ps.setInt(7, empleado.getId());
+            ps.setInt(8, empleado.getId());
             
             resultado = ps.executeUpdate();
             
@@ -126,7 +126,7 @@ public class EmpleadoDAO {
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(id));
+            ps.setInt(1, id);
             
             resultado = ps.executeUpdate();
         }catch(SQLException ex){

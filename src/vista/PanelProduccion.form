@@ -75,7 +75,7 @@
                                   <Component id="btnEditar" min="-2" pref="181" max="-2" attributes="0"/>
                                   <Component id="btnEliminar" min="-2" pref="181" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="btnLeer" alignment="1" min="-2" pref="181" max="-2" attributes="0"/>
+                              <Component id="btnActualizar" alignment="1" min="-2" pref="181" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jScrollPane2" max="32767" attributes="0"/>
@@ -100,7 +100,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="btnAgregar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnLeer" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -454,7 +454,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btn_buscarProd" min="-2" pref="159" max="-2" attributes="0"/>
+                          <Component id="btnBuscar" min="-2" pref="159" max="-2" attributes="0"/>
                           <Component id="txtBuscar" min="-2" pref="159" max="-2" attributes="0"/>
                           <Component id="cajaTipoBusquedad" min="-2" pref="159" max="-2" attributes="0"/>
                       </Group>
@@ -469,7 +469,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txtBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btn_buscarProd" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -492,7 +492,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_buscarProd">
+            <Component class="javax.swing.JButton" name="btnBuscar">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Aharoni" size="14" style="0"/>
@@ -578,7 +578,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btnLeer">
+        <Component class="javax.swing.JButton" name="btnActualizar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Aharoni" size="14" style="0"/>

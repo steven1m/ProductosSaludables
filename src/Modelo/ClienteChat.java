@@ -46,7 +46,7 @@ public class ClienteChat extends JFrame implements ActionListener{
     }
     
     // se conecta al servidor, obtiene flujos, procesa la conexión
-    public void ejecutarClienteChat() throws IOException
+    public void ejecutarClienteChat()
     {
         try 
         {   
@@ -94,13 +94,13 @@ public class ClienteChat extends JFrame implements ActionListener{
         {
             try // lee el mensaje y lo muestra
             {
-                FileWriter archivo = new FileWriter("src/Archivos/chat-s.txt",true);
+                FileWriter archivo = new FileWriter("src/Archivo/chat-s.txt",true);
                 
                 mensaje = ( String ) entrada.readObject(); // lee nuevo mensaje
                 
                 PrintWriter pw = new PrintWriter(archivo);
                 
-                pw.println("en cliente chat: "+mensaje); // Escribir mensaje 
+                pw.println(mensaje); // Escribir mensaje 
                 
                 if (archivo!=null){
                     archivo.close();

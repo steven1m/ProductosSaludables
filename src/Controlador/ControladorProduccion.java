@@ -19,11 +19,13 @@ public class ControladorProduccion implements ActionListener{
     public ControladorProduccion(ProduccionDAO modeloProduccion, PanelProduccion vistaProduccion) {
         this.modeloProduccion = modeloProduccion;
         this.vistaProduccion = vistaProduccion;
-        
-        this.vistaProduccion.agregarlistenerAgregar(this);
-        vistaProduccion.agregarlistenerAplicar(this);
-        vistaProduccion.agregarlistenerLeer(this);
+        setListeners();
         buscarProduccion("", "");
+    }
+    
+    private void setListeners(){
+        
+        this.vistaProduccion.agregarListener(this);
     }
     
     private void agregarProduccion (Produccion produccion){

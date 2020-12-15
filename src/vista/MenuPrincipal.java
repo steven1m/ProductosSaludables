@@ -1,6 +1,7 @@
 package vista;
 
-import Controlador.ControladorCatalogo;
+import Controlador.*;
+/*import Controlador.ControladorCatalogo;
 import Controlador.ControladorCategoriaMateriaPrima;
 import Controlador.ControladorClientes;
 import Controlador.ControladorDetalleCatalogo;
@@ -16,9 +17,9 @@ import Controlador.ControladorEmpleado;
 import Controlador.ControladorEstadoPedido;
 import Controlador.ControladorPago;
 import Controlador.ControladorDetallePedido;
-import Controlador.ControladorTipoVenta;
-
-import Modelo.ProveedorDAO;
+import Controlador.ControladorTipoVenta; */
+import Modelo.*;
+/*import Modelo.ProveedorDAO;
 import Modelo.ProduccionDAO;
 import Modelo.CatalogoDAO;
 import Modelo.CategoriaMateriaPrimaDAO;
@@ -35,7 +36,7 @@ import Modelo.EmpleadoDAO;
 import Modelo.EstadoPedidoDAO;
 import Modelo.PagoDAO;
 import Modelo.DetallePedidoDAO;
-import Modelo.TipoVentaDAO;
+import Modelo.TipoVentaDAO; */
         
 import java.awt.Color;
 import java.awt.Font;
@@ -80,7 +81,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         MenuItemProduccion = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         menuControlMateriaPrima = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -147,6 +147,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Ventas"));
 
         jButton1.setText("ventas");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -211,9 +216,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         menuControlProductos.add(jMenuItem2);
-
-        jMenuItem3.setText("jMenuItem3");
-        menuControlProductos.add(jMenuItem3);
 
         jMenuBar1.add(menuControlProductos);
 
@@ -439,9 +441,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnchatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnchatActionPerformed
         // TODO add your handling code here:
-        ServidorChat aplicacion = new ServidorChat(); // crea el servidor
+        /*ServidorChat aplicacion = new ServidorChat(); // crea el servidor
         aplicacion.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-        aplicacion.ejecutarServidor(); // ejecuta la aplicación servidor
+        aplicacion.ejecutarServidor(); // ejecuta la aplicación servidor */
     }//GEN-LAST:event_btnchatActionPerformed
 
     private void AdminProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminProveedoresActionPerformed
@@ -514,6 +516,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ControladorTipoVenta controladorTipoVenta = new ControladorTipoVenta(tipoVentaDAO, panelTipoVenta);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Facturacion facturacion = new Facturacion();
+        ControladorFacturacion controladorFacturacion = new ControladorFacturacion(facturacion);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
     
     
@@ -581,7 +589,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;

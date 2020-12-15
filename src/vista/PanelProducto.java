@@ -63,6 +63,7 @@ public class PanelProducto extends javax.swing.JFrame {
        
         return producto;
     }
+    
     public void cargarTabla(ArrayList<Producto> lista){
         
         DefaultTableModel dtmTabla =(DefaultTableModel)this.jTablePrincipal.getModel();

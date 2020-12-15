@@ -73,17 +73,18 @@ public class ProveedorDAO {
             }
             
             rs = ps.executeQuery();
-
+            
+            Proveedor proveedor;
             while (rs.next()){
-                Proveedor proveedor = new Proveedor();
+                proveedor = new Proveedor();
                 proveedor.setId(rs.getInt("id"));
-                proveedor.setNit("nit");
-                proveedor.setRazonSocial("razonSocial");
-                proveedor.setDireccion("direccion");
-                proveedor.setCorreo("correo");
-                proveedor.setTelefono("telefono");
-                proveedor.setDescripcion("descripcion");
-                proveedor.setEncargado("encargado");
+                proveedor.setNit(rs.getString("nit"));
+                proveedor.setRazonSocial(rs.getString("razon_social"));
+                proveedor.setDireccion(rs.getString("direccion"));
+                proveedor.setCorreo(rs.getString("correo"));
+                proveedor.setTelefono(rs.getString("telefono"));
+                proveedor.setDescripcion(rs.getString("descripcion"));
+                proveedor.setEncargado(rs.getString("encargado"));
                 proveedor.setCatalogoID(rs.getInt("catalogo_id"));
                 lista.add(proveedor);
             }

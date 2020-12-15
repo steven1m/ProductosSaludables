@@ -61,16 +61,11 @@ public class PanelProduccion extends javax.swing.JFrame {
         return produccion;
     }
     
-    public void agregarlistenerAgregar(ActionListener listener){
-        btnAgregar.addActionListener(listener);
-    }
-    
-    public void agregarlistenerAplicar(ActionListener listener){
-        btnCrudAplicar.addActionListener(listener);
-    }
-    
-    public void agregarlistenerLeer(ActionListener listener){
-        btnLeer.addActionListener(listener);
+    public void agregarListener(ActionListener listener){
+        
+        this.btnCrudAplicar.addActionListener(listener);
+        this.btnBuscar.addActionListener(listener);
+        this.btnActualizar.addActionListener(listener);
     }
     
     public void operacionesCrud(String operacion){
@@ -240,14 +235,14 @@ public class PanelProduccion extends javax.swing.JFrame {
         txtCrudCosto = new javax.swing.JTextField();
         panelBuscar = new javax.swing.JPanel();
         cajaTipoBusquedad = new javax.swing.JComboBox<>();
-        btn_buscarProd = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         panelDescripcion = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaDescripcion = new javax.swing.JTextArea();
-        btnLeer = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -438,8 +433,8 @@ public class PanelProduccion extends javax.swing.JFrame {
         cajaTipoBusquedad.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         cajaTipoBusquedad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Codigo Producto" }));
 
-        btn_buscarProd.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        btn_buscarProd.setText("Buscar");
+        btnBuscar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        btnBuscar.setText("Buscar");
 
         txtBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -450,7 +445,7 @@ public class PanelProduccion extends javax.swing.JFrame {
             .addGroup(panelBuscarLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_buscarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cajaTipoBusquedad, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -462,7 +457,7 @@ public class PanelProduccion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_buscarProd)
+                .addComponent(btnBuscar)
                 .addContainerGap())
         );
 
@@ -505,8 +500,8 @@ public class PanelProduccion extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnLeer.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        btnLeer.setText("Actualizar");
+        btnActualizar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+        btnActualizar.setText("Actualizar");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -525,7 +520,7 @@ public class PanelProduccion extends javax.swing.JFrame {
                                 .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnLeer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane2)
                     .addComponent(panelProductoSelect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -545,7 +540,7 @@ public class PanelProduccion extends javax.swing.JFrame {
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addComponent(btnAgregar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnLeer)
+                                .addComponent(btnActualizar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnEditar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -640,13 +635,13 @@ public class PanelProduccion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCrudAplicar;
     private javax.swing.JButton btnCrudCancelar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnLeer;
-    private javax.swing.JButton btn_buscarProd;
     private javax.swing.JComboBox<String> cajaTipoBusquedad;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanelCrud;

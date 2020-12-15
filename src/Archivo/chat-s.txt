@@ -1,0 +1,6 @@
+en cliente chat: SERVIDOR>>> Conexion exitosa
+en cliente chat: SERVIDOR>>> hola 
+en cliente chat: SERVIDOR>>> ok
+SERVIDOR>>> Conexion exitosa
+SERVIDOR>>> hola, soy un servidor
+SERVIDOR>>> enseguida atendemos su solicitud

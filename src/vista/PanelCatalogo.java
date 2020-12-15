@@ -78,7 +78,7 @@ public class PanelCatalogo extends javax.swing.JFrame {
             dtmCatalogo.addRow(new Object[]
               {
               catalogo.getId(),
-              //catalogo.getProveedorId(),
+              catalogo.getProveedorId(),
               catalogo.getDescripcion(),
               
               });
@@ -117,6 +117,7 @@ public class PanelCatalogo extends javax.swing.JFrame {
             case "Agregar" -> {
                 this.txtCrudCodigo.setEnabled(true);
                 this.txtAreaCrudDescripcion.setEnabled(true);
+                this.txtCrudProveedor.setEnabled(true);
                 
                 this.btnCrudAplicar.setText(operacion);
                 this.btnCrudAplicar.setEnabled(true);
@@ -126,6 +127,7 @@ public class PanelCatalogo extends javax.swing.JFrame {
             case "Editar" -> {
                 this.txtCrudCodigo.setEnabled(false);
                 this.txtAreaCrudDescripcion.setEnabled(true);
+                this.txtCrudProveedor.setEnabled(false);
                 
                 this.btnCrudAplicar.setText(operacion);
                 this.btnCrudAplicar.setEnabled(true);
@@ -135,6 +137,7 @@ public class PanelCatalogo extends javax.swing.JFrame {
             case "Eliminar" -> {
                 this.txtCrudCodigo.setEnabled(false);
                 this.txtAreaCrudDescripcion.setEnabled(false);
+                this.txtCrudProveedor.setEnabled(false);
                
                 this.btnCrudAplicar.setText(operacion);
                 this.btnCrudAplicar.setEnabled(true);
@@ -144,6 +147,7 @@ public class PanelCatalogo extends javax.swing.JFrame {
             default -> {
                 this.txtCrudCodigo.setText("");
                 this.txtAreaCrudDescripcion.setText("");
+                this.txtCrudProveedor.setText("");
                
                 this.txtBuscar.setText("");
                 this.txtAreaDescripcionCatalogo.setText("");
@@ -208,6 +212,8 @@ public class PanelCatalogo extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txtAreaCrudDescripcion = new javax.swing.JTextArea();
         lblCrudDescripcion = new javax.swing.JLabel();
+        lblCrudCodigo1 = new javax.swing.JLabel();
+        txtCrudProveedor = new javax.swing.JTextField();
         panelBuscar = new javax.swing.JPanel();
         cajaTipoBusquedad = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
@@ -337,25 +343,34 @@ public class PanelCatalogo extends javax.swing.JFrame {
         lblCrudDescripcion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblCrudDescripcion.setText("Descripción:");
 
+        lblCrudCodigo1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblCrudCodigo1.setText("Id Proveedor:");
+
+        txtCrudProveedor.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanelCrudLayout = new javax.swing.GroupLayout(jPanelCrud);
         jPanelCrud.setLayout(jPanelCrudLayout);
         jPanelCrudLayout.setHorizontalGroup(
             jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCrudLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
-                        .addComponent(lblCrudCodigo)
-                        .addGap(36, 36, 36)
-                        .addComponent(txtCrudCodigo))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
+                    .addGroup(jPanelCrudLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(btnCrudAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCrudCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelCrudLayout.createSequentialGroup()
+                        .addComponent(lblCrudCodigo1)
+                        .addGap(9, 9, 9)
+                        .addComponent(txtCrudProveedor))
+                    .addGroup(jPanelCrudLayout.createSequentialGroup()
                         .addComponent(lblCrudDescripcion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3)))
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCrudLayout.createSequentialGroup()
+                        .addComponent(lblCrudCodigo)
+                        .addGap(46, 46, 46)
+                        .addComponent(txtCrudCodigo)))
                 .addContainerGap())
         );
         jPanelCrudLayout.setVerticalGroup(
@@ -365,11 +380,15 @@ public class PanelCatalogo extends javax.swing.JFrame {
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCrudCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudCodigo))
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCrudDescripcion)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCrudProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCrudCodigo1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrudAplicar)
                     .addComponent(btnCrudCancelar))
@@ -380,7 +399,7 @@ public class PanelCatalogo extends javax.swing.JFrame {
         panelBuscar.setToolTipText("");
 
         cajaTipoBusquedad.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
-        cajaTipoBusquedad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Proveedor" }));
+        cajaTipoBusquedad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Proveedor", "Descripcion" }));
 
         btnBuscar.setFont(new java.awt.Font("Aharoni", 0, 14)); // NOI18N
         btnBuscar.setText("Buscar");
@@ -603,6 +622,7 @@ public class PanelCatalogo extends javax.swing.JFrame {
     private javax.swing.JLabel lblCodigoSelect;
     private javax.swing.JLabel lblCodigoSelectCatalogo;
     private javax.swing.JLabel lblCrudCodigo;
+    private javax.swing.JLabel lblCrudCodigo1;
     private javax.swing.JLabel lblCrudDescripcion;
     private javax.swing.JLabel lblNombreSelect;
     private javax.swing.JLabel lblNombreSelectCatalogo;
@@ -614,5 +634,6 @@ public class PanelCatalogo extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAreaDescripcionCatalogo;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCrudCodigo;
+    private javax.swing.JTextField txtCrudProveedor;
     // End of variables declaration//GEN-END:variables
 }

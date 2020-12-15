@@ -73,9 +73,10 @@ public class PanelProveedor extends javax.swing.JFrame {
        
         return proveedor;
     }
+    
     public void cargarTablaProveedor(ArrayList<Proveedor> lista){
         
-        DefaultTableModel dtmProveedor =(DefaultTableModel)this.jTableProveedor.getModel();
+        DefaultTableModel dtmProveedor = (DefaultTableModel)this.jTableProveedor.getModel();
         // eliminar los datos que existen en el modelo de la tabla antes de agregar los datos 
         if (dtmProveedor.getRowCount() != 0)
             {
@@ -108,7 +109,7 @@ public class PanelProveedor extends javax.swing.JFrame {
     }
     
     private void selecionTabla(){
-        // agregar metodeo de escucha a la tabla 
+        // agregar metodo de escucha a la tabla 
         this.jTableProveedor.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
            if (this.jTableProveedor.getSelectedRow()!= -1){
                int fila  = jTableProveedor.getSelectedRow();

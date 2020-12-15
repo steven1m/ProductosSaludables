@@ -21,8 +21,8 @@ public class CatalogoDAO {
         int resultado = 0;
         Connection con ;
         PreparedStatement ps;
-        String sentencia = "INSERT INTO public.catalogo( id, descripcion, )"
-                + " VALUES (?, ?);";
+        String sentencia = "INSERT INTO public.catalogo( id, descripcion, proveedor_id )"
+                + " VALUES (?, ?, ?);";
         
         //System.out.println(catalogo.getProveedorId());
         try{
@@ -30,7 +30,7 @@ public class CatalogoDAO {
             ps = con.prepareStatement(sentencia);
             ps.setInt(1, catalogo.getId());
             ps.setString(2, catalogo.getDescripcion());
-            //ps.setInt(3, catalogo.getProveedorId());
+            ps.setInt(3, catalogo.getProveedorId());
             
             resultado = ps.executeUpdate();
             
@@ -71,7 +71,7 @@ public class CatalogoDAO {
                 Catalogo catalogo = new Catalogo();
                 catalogo.setId(rs.getInt("id"));
                 catalogo.setDescripcion(rs.getString("descripcion"));
-                //catalogo.setProveedorId(rs.getInt("proveedor_id"));
+                catalogo.setProveedorId(rs.getInt("proveedor_id"));
                 lista.add(catalogo);
             }
 

@@ -1,0 +1,3 @@
+en server chat: CLIENTE>>> hola soy un recliente
+CLIENTE>>> hola, soy un cliente
+CLIENTE>>> ok

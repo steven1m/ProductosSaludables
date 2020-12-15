@@ -80,11 +80,12 @@ public class DetalleCatalogoDAO {
             while (rs.next()){
                 DetalleCatalogo detalle = new DetalleCatalogo();
                 detalle.setId(rs.getInt("id"));
-                detalle.setCatalogoId(rs.getInt("catalogoId"));
+                detalle.setCatalogoId(rs.getInt("catalogo_id"));
                 detalle.setNombre(rs.getString("nombre"));
                 detalle.setDescripcion(rs.getString("descripcion"));
                 detalle.setPrecio(rs.getFloat("precio"));
-                detalle.setMateriaPrimaId(rs.getInt("materiaPrimaId"));
+                detalle.setMateriaPrimaId(rs.getInt("materia_prima_id"));
+                lista.add(detalle);
             }
 
         }catch(SQLException ex){

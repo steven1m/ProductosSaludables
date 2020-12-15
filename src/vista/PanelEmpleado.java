@@ -20,7 +20,7 @@ public class PanelEmpleado extends javax.swing.JFrame {
     private final String[] datosProducto;
     
     public PanelEmpleado() {
-        this.datosProducto = new String[6];
+        this.datosProducto = new String[8];
         initComponents();
         iniciarVentana();
     }
@@ -51,10 +51,10 @@ public class PanelEmpleado extends javax.swing.JFrame {
             empleado.setId(Integer.valueOf(this.txtId.getText()));
             empleado.setNombre(this.txtNombre.getText());
             empleado.setApellido(this.txtApellido.getText());
-            empleado.setDireccion(this.txtDireccion.getText());
             empleado.setTelefono(this.txtTelefono.getText());
-            empleado.setCargo(this.txtCargo.getText());
+            empleado.setDireccion(this.txtDireccion.getText());
             empleado.setCorreo(this.txtCorreo.getText());
+            empleado.setCargo(this.txtCargo.getText());
             empleado.setSalario(Float.valueOf(this.txtSalario.getText()));
             
         }catch (NumberFormatException ex ){
@@ -111,7 +111,7 @@ public class PanelEmpleado extends javax.swing.JFrame {
                                                 (fila, 2).toString());*/
                
                
-               for (int i = 0; i < 6; i++){
+               for (int i = 0; i < 8; i++){
                    this.datosProducto[i] = 
                            this.jTableEmpleado.getValueAt(fila, i).toString();
                }
@@ -204,8 +204,8 @@ public class PanelEmpleado extends javax.swing.JFrame {
         this.txtId.setText(this.datosProducto[0]);
         this.txtNombre.setText(this.datosProducto[1]);
         this.txtApellido.setText(this.datosProducto[2]);
-        this.txtDireccion.setText(this.datosProducto[3]);
-        this.txtTelefono.setText(this.datosProducto[4]);
+        this.txtTelefono.setText(this.datosProducto[3]);
+        this.txtDireccion.setText(this.datosProducto[4]);
         this.txtCorreo.setText(this.datosProducto[5]);
         this.txtCargo.setText(this.datosProducto[6]);
         this.txtSalario.setText(this.datosProducto[7]);
@@ -537,19 +537,15 @@ public class PanelEmpleado extends javax.swing.JFrame {
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(21, 21, 21)
-                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblCrudDescripcion)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudlPrecio))
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblCrudDescripcion)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -557,6 +553,10 @@ public class PanelEmpleado extends javax.swing.JFrame {
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCrudPrecioVenta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrudAplicar)
@@ -592,7 +592,7 @@ public class PanelEmpleado extends javax.swing.JFrame {
             .addGroup(panelGeneralLayout.createSequentialGroup()
                 .addGroup(panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelGeneralLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelProductoSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

@@ -38,53 +38,33 @@ public class ControladorFactura implements ActionListener{
         this.PanelFactura.agregarListener(this);
     }
     
-    private void agregarFactura (Factura factura){
-       int resultado = modeloFactura.crear(factura);
-       if (resultado != 0){
-           JOptionPane.showMessageDialog(null, "Operacion Exitosa");
-           this.PanelFactura.operacionesCrud("");
-           buscarFactura("", "");
-       }
-    }
-   
-    private void editarFactura (Factura factura){
-       int resultado = modeloFactura.actualizar(factura);
-       if (resultado != 0){
-           JOptionPane.showMessageDialog(null, "Operacion Exitosa");
-           this.PanelFactura.operacionesCrud("");
-           buscarFactura("", "");
-       }
-    }
+    
     
     private void eliminarlFactura (int codigo){
         int resultado = this.modeloFactura.borrar(codigo);
-       if (resultado != 0){
-           JOptionPane.showMessageDialog(null, "Operacion Exitosa");
-           this.PanelFactura.operacionesCrud("");
-           buscarFactura("", "");
-       }
+        if (resultado != 0){
+            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
+            buscarFactura("", "");
+        }
     }
     
     private void buscarFactura (String clave, String valor){
         ArrayList<Factura> lista = this.modeloFactura.leer(clave, valor);
         this.PanelFactura.cargarTablaFactura(lista);
-        this.PanelFactura.operacionesCrud("");
        
     }
     
     @Override
         public void actionPerformed(ActionEvent e) {
             
-            if(e.getActionCommand().equalsIgnoreCase("Agregar") ){
-                
-                agregarFactura(this.PanelFactura.crearObjetoFactura());
-               
-            }else if (e.getActionCommand().equalsIgnoreCase("Editar")){
-                editarFactura(this.PanelFactura.crearObjetoFactura());
-               
-            }else if (e.getActionCommand().equalsIgnoreCase("Eliminar")){
-                eliminarlFactura(Integer.valueOf(this.PanelFactura.getCrudCodigo()));
-               
+            if (e.getActionCommand().equalsIgnoreCase("Eliminar")){
+                if (this.PanelFactura.getCrudCodigo() != 0){
+                    int opcion = JOptionPane.showInternalConfirmDialog(null, "Desea eliminar? ", 
+                            "Eliminar Producto", JOptionPane.YES_OPTION);
+                    if (opcion == 0){
+                        eliminarlFactura(this.PanelFactura.getCrudCodigo());
+                    }
+                }
             }else if (e.getActionCommand().equalsIgnoreCase("Actualizar")){
                buscarFactura("", "");
                

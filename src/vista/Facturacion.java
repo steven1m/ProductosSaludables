@@ -16,8 +16,15 @@ public class Facturacion extends javax.swing.JFrame {
    
     
     public Facturacion() {
-        
        initComponents();
+       iniciarVentana();
+    }
+    
+    private void iniciarVentana(){
+        this.setLocationRelativeTo(null);
+        this.setTitle("Panel Facturacion");
+        this.setVisible(true);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     
     public int getCantidad(){
@@ -95,12 +102,12 @@ public class Facturacion extends javax.swing.JFrame {
             factura.setId(Integer.valueOf(this.txtFacturaId.getText()));
             factura.setClienteId(this.txtClienteId.getText());
             factura.setEmpleadoId(Integer.valueOf(this.txtEmpleadoId.getText()));
-            factura.setPadoId(Integer.valueOf(this.txtFacturaId.getText()));
+            factura.setPagoId(Integer.valueOf(this.txtFacturaId.getText()));
             int tipoVenta = this.boxTipoVenta.getSelectedIndex();
             factura.setTipoVentaId(tipoVenta);
-            factura.setFecha(new Date());
+            factura.setFecha(new Date().toString());
             
-        }catch (NumberFormatException ex ){
+        }catch (NumberFormatException ex ){ 
             JOptionPane.showMessageDialog(null,"Error : " + 
                     ex.getMessage());
         }
@@ -190,7 +197,6 @@ public class Facturacion extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         bntBuscarProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        bntBuscarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/preview_search_find_locate_1551.png"))); // NOI18N
         bntBuscarProducto.setText("Buscar Prod.");
         bntBuscarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,7 +205,6 @@ public class Facturacion extends javax.swing.JFrame {
         });
 
         btnCancelarVenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnCancelarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/shopping-basket-remove256_24901.png"))); // NOI18N
         btnCancelarVenta.setText("Cancelar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -281,7 +286,6 @@ public class Facturacion extends javax.swing.JFrame {
         txtClienteId.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnCargarCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnCargarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/client.png"))); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Caja:");
@@ -375,10 +379,10 @@ public class Facturacion extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnBorrarProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnBorrarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete_delete_exit_1577.png"))); // NOI18N
+        btnBorrarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delete_delete_exit_1577.png"))); // NOI18N
 
         btnRestarCantidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnRestarCantidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrowdown_flech_1539.png"))); // NOI18N
+        btnRestarCantidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arrowdown_flech_1539.png"))); // NOI18N
 
         cajaCantidadProdFact.setEditable(false);
         cajaCantidadProdFact.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -386,7 +390,7 @@ public class Facturacion extends javax.swing.JFrame {
         cajaCantidadProdFact.setText("0");
 
         btnAumentarCantidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnAumentarCantidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/uparrow_arriba_1538.png"))); // NOI18N
+        btnAumentarCantidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/uparrow_arriba_1538.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -396,7 +400,7 @@ public class Facturacion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cajaCantidadProdFact)
-                    .addComponent(btnBorrarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                    .addComponent(btnBorrarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRestarCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -494,7 +498,9 @@ public class Facturacion extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-      
+      java.awt.EventQueue.invokeLater(() -> {
+            new PanelProduccion().setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

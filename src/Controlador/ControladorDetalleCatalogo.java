@@ -61,6 +61,7 @@ public class ControladorDetalleCatalogo implements ActionListener{
         ArrayList<DetalleCatalogo> lista = this.modeloDetalleCatalogo.leer(clave, valor);
         this.panelDetalleCatalogo.cargarTabla(lista);
         this.panelDetalleCatalogo.operacionesCrud("");
+        System.err.println(lista.size());
        
     }
     

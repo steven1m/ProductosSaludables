@@ -9,12 +9,12 @@ public class Catalogo {
     
     private int id;
     private String descripcion;
-    //private int proveedorId;
+    private int proveedorId;
     
-    public Catalogo(int id, String descripcion) {
+    public Catalogo(int id, String descripcion, int proveedorId) {
         this.id = id;
         this.descripcion = descripcion;
-        //this.proveedorId = proveedorId;
+        this.proveedorId = proveedorId;
     }
 
     public Catalogo() {
@@ -36,6 +36,14 @@ public class Catalogo {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public int getProveedorId() {
+        return proveedorId;
+    }
+
+    public void setProveedorId(int proveedorId) {
+        this.proveedorId = proveedorId;
+    }
     
-        
+    
 }

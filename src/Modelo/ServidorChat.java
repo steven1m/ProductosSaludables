@@ -117,13 +117,13 @@ import javax.swing.JOptionPane;
         {
             try // lee el mensaje y lo muestra en pantalla
             {
-                FileWriter archivo = new FileWriter("src/Archivos/chat-c.txt",true);
+                FileWriter archivo = new FileWriter("src/Archivo/chat-c.txt",true);
                 
                 mensaje = ( String ) entrada.readObject(); // lee el nuevo mensaje
                 
                 PrintWriter pw = new PrintWriter(archivo);
                 
-                pw.println("en server chat: "+mensaje); // Escribir mensaje en el archivo de texto
+                pw.println(mensaje); // Escribir mensaje en el archivo de texto
                 
                     if (archivo!=null){
                         archivo.close();
@@ -177,5 +177,10 @@ import javax.swing.JOptionPane;
         campoIntroducir.setText( "" );
     }
 
+    public static void main(String[] args) {
+        ServidorChat aplicacion = new ServidorChat(); // crea el servidor
+        aplicacion.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        aplicacion.ejecutarServidor(); // ejecuta la aplicación servidor
+    }
    
 }

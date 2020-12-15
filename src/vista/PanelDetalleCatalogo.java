@@ -2,7 +2,7 @@
 package vista;
 
 import Modelo.DetalleCatalogo;
-import Modelo.Producto;
+import Modelo.DetalleCatalogoDAO;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,7 +26,7 @@ public class PanelDetalleCatalogo extends javax.swing.JFrame {
     
     private void iniciarVentana(){
         this.setLocationRelativeTo(null);
-        this.setTitle("Inventario de Productos");
+        this.setTitle("Detalle de Catalogos");
         operacionesCrud("");
         selecionTabla(); 
         this.setVisible(true);
