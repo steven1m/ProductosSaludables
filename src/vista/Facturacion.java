@@ -81,26 +81,41 @@ public class Facturacion extends javax.swing.JFrame {
          
     public void agregarProductoTabla(Producto producto, int cantidad){
         DefaultTableModel dtmTabla =(DefaultTableModel)this.jTablePrincipal.getModel();
-        
-//        if (dtmTabla.getRowCount() != 0)
-//            {
-//              int d = dtmTabla.getRowCount();
-//              for (int y = 0; y < d; y++)
-//                {
-//                  dtmTabla.removeRow(0);
-//                }
-//            }
+      
+        int filas = dtmTabla.getRowCount();
+        boolean estado = true;
+        int contador = 0;
+        do{
+            if ( contador != filas  ){
+                int tempoId = Integer.valueOf(dtmTabla.getValueAt(contador, 0).toString());
+                if (producto.getId() == tempoId ){
+                    int tempoCant = Integer.valueOf(dtmTabla.getValueAt(contador, 2).toString());
+                    
+                    if (producto.getCantidad() < (tempoCant + cantidad)){
+                        JOptionPane.showMessageDialog(null, "Stock insuficiente");
+                    }else {
+                        int nuevaCantida = tempoCant + cantidad;
+                        dtmTabla.setValueAt(nuevaCantida, contador, 2);
+                    }
+                    estado = false;
+                }
+            }else {
+                estado = false;
+                this.jTablePrincipal.setModel(dtmTabla);
+                float subTotal = producto.getPrecioVenta() * cantidad;
+                dtmTabla.addRow(new Object[]
+                      {
+                      producto.getId(),
+                      producto.getNombre(),
+                      cantidad,
+                      producto.getPrecioVenta(),
+                      subTotal
+                      });
+            }
+            contador ++;
+        }while (estado);
 
-        this.jTablePrincipal.setModel(dtmTabla);
-        float subTotal = producto.getPrecioVenta() * cantidad;
-        dtmTabla.addRow(new Object[]
-              {
-              producto.getId(),
-              producto.getNombre(),
-              cantidad,
-              producto.getPrecioVenta(),
-              subTotal
-              });
+        
         
         this.jTablePrincipal.setModel(dtmTabla);
     }
