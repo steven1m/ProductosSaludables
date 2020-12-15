@@ -104,7 +104,7 @@ public class ControladorFacturacion implements ActionListener{
             String clave = this.facturacion.getCodigoProducto();
             int cantidad = this.facturacion.getCantidad();
            
-            agregarProducto (buscarProducto("id", clave), cantidad);
+            agregarProducto(buscarProducto("id", clave), cantidad);
             
         }else if (e.getActionCommand().equalsIgnoreCase("Buscar Prod.")){
 

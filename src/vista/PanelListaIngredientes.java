@@ -18,7 +18,7 @@ public class PanelListaIngredientes extends javax.swing.JFrame {
     private final  String[] datosParaMostrar;
     
     public PanelListaIngredientes() {
-        this.datosParaMostrar = new String[3];
+        this.datosParaMostrar = new String[4];
         initComponents();
         iniciarVentana();
     }
@@ -99,7 +99,7 @@ public class PanelListaIngredientes extends javax.swing.JFrame {
                                                 (fila, 2).toString());
                
                
-               for (int i = 0; i < 6; i++){
+               for (int i = 0; i < 4; i++){
                    this.datosParaMostrar[i] = 
                            this.jTablePrincipal.getValueAt(fila, i).toString();
                }

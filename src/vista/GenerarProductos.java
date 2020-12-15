@@ -1,42 +1,98 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
 import Modelo.Producto;
 import java.awt.event.ActionListener;
-
-
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Cabrera
  */
 public class GenerarProductos extends javax.swing.JFrame {
 
-    
-   
-    
     public GenerarProductos() {
         
        initComponents();
        this.setVisible(true);
        this.setLocationRelativeTo(null);
     }
-
+    
+    public int getCantidad(){
+        int cantidad = 0;
+        try{
+            cantidad = Integer.parseInt(this.cajaCantidadProd.getText());
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        return cantidad;
+    }
+    
+    public String getCodigoProducto(){
+        String codigo = "";
+        try{
+            codigo = this.cajaCodigoProd.getText();
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        return codigo;
+    }
          
-  public void setListeners (ActionListener listener){
-      
-      this.btn_finVenta.addActionListener(listener);
-      this.btn_agregar.addActionListener(listener);
-      this.btnMasProd.addActionListener(listener);
-      
-  }
+    public void setListeners (ActionListener listener){
 
-  private void agregarProducto(Producto producto){
+        this.btn_finVenta.addActionListener(listener);
+        this.btn_agregar.addActionListener(listener);
+        this.btnMasProd.addActionListener(listener);
+
+    }
+    
+    public JTable getTablaProduccion() {
+        return tablaProduccion;
+    }
+
+    /*private void agregarProducto(Producto producto){
+
+    } */
+    
+    public void agregarProduccionTabla(Producto producto, int cantidad){
+        DefaultTableModel dtmTabla =(DefaultTableModel)this.tablaProduccion.getModel();
       
-  }
+        int filas = dtmTabla.getRowCount();
+        boolean estado = true;
+        int contador = 0;
+        do{
+            if ( contador != filas  ){
+                int tempoId = Integer.valueOf(dtmTabla.getValueAt(contador, 0).toString());
+                if (producto.getId() == tempoId ){
+                    int tempoCant = Integer.valueOf(dtmTabla.getValueAt(contador, 2).toString());
+                    
+                    if (producto.getCantidad() < (tempoCant + cantidad)){
+                        JOptionPane.showMessageDialog(null, "Stock insuficiente");
+                    }else {
+                        
+                    }
+                    estado = false;
+                }
+            }else {
+                estado = false;
+                this.tablaProduccion.setModel(dtmTabla);
+                float subTotal = producto.getPrecioVenta() * cantidad;
+                dtmTabla.addRow(new Object[]
+                      {
+                      producto.getId(),
+                      producto.getNombre(),
+                      cantidad
+                      //producto.getPrecioVenta(),
+                      //subTotal
+                      });
+            }
+            contador ++;
+        }while (estado);
+
+        //calcularTotal();
+        
+        this.tablaProduccion.setModel(dtmTabla);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,7 +104,7 @@ public class GenerarProductos extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaFactura = new javax.swing.JTable();
+        tablaProduccion = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         bntBuscarProductoFact = new javax.swing.JButton();
         btnCancelarVenta = new javax.swing.JButton();
@@ -71,20 +127,20 @@ public class GenerarProductos extends javax.swing.JFrame {
         setTitle("Nueva Venta");
         setBackground(new java.awt.Color(203, 240, 220));
 
-        tablaFactura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tablaFactura.setModel(new javax.swing.table.DefaultTableModel(
+        tablaProduccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        tablaProduccion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Producto", "Cantidad", "Stock Actual", "Stock Final"
+                "Id Producto", "Nombre", "Cantidad"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -95,12 +151,11 @@ public class GenerarProductos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tablaFactura);
-        if (tablaFactura.getColumnModel().getColumnCount() > 0) {
-            tablaFactura.getColumnModel().getColumn(0).setResizable(false);
-            tablaFactura.getColumnModel().getColumn(1).setResizable(false);
-            tablaFactura.getColumnModel().getColumn(2).setResizable(false);
-            tablaFactura.getColumnModel().getColumn(3).setResizable(false);
+        jScrollPane1.setViewportView(tablaProduccion);
+        if (tablaProduccion.getColumnModel().getColumnCount() > 0) {
+            tablaProduccion.getColumnModel().getColumn(0).setResizable(false);
+            tablaProduccion.getColumnModel().getColumn(1).setResizable(false);
+            tablaProduccion.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jPanel1.setBackground(new java.awt.Color(203, 240, 220));
@@ -440,6 +495,6 @@ public class GenerarProductos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaFactura;
+    private javax.swing.JTable tablaProduccion;
     // End of variables declaration//GEN-END:variables
 }

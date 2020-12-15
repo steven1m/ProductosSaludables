@@ -142,4 +142,56 @@ public class ProductoDAO {
         }
         return resultado;
     }
+    
+    public int actualizarCantidad(int id, int cantidad){
+        int resultado = 0;
+        
+        Connection con ;
+        PreparedStatement ps ;
+        String sentencia = "UPDATE public.producto SET cantidad=? WHERE id=?";
+        
+        try{
+            con = Conexion.getConnection();
+            ps = con.prepareStatement(sentencia);
+            
+            ps.setInt(1, cantidad);
+            ps.setInt(2, id);
+            
+            resultado = ps.executeUpdate();
+            
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error : " + 
+                    ex.getMessage());
+        }
+        
+        return resultado;
+    }
+    
+    public int leerCantidad(int id){
+        int cantidadActual = 0;
+        Connection con ;
+        PreparedStatement ps ;
+        ResultSet rs ;
+        
+        try{
+            con = Conexion.getConnection();
+            
+            String sentencia = "SELECT cantidad FROM producto where id=?";
+            ps = con.prepareStatement(sentencia);
+            
+            ps.setInt(1, id);
+            
+            rs = ps.executeQuery();
+                        
+            while(rs.next()){
+                cantidadActual = (rs.getInt("cantidad"));
+                
+            }
+        }
+        catch(SQLException | NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, 
+                        "Error :" + ex.getMessage());
+        }
+        return cantidadActual;
+    }
 }

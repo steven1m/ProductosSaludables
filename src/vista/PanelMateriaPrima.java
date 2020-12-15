@@ -56,7 +56,7 @@ public class PanelMateriaPrima extends javax.swing.JFrame {
             materiaPrima.setPrecio(Float.valueOf(this.txtCrudPrecio.getText()));
             materiaPrima.setCantidad(Integer.valueOf(this.txtCrudCantidad.getText()));
             materiaPrima.setCategoriaId(Integer.valueOf(this.txtCrudMateriaPrimaId.getText()));
-            materiaPrima.setProveedorId(Integer.valueOf(this.txtCrudMateriaPrimaId.getText()));
+            materiaPrima.setProveedorId(Integer.valueOf(this.txtCrudProveedorId.getText()));
         }catch (NumberFormatException ex ){
             JOptionPane.showMessageDialog(null,"Error : " + 
                     ex.getMessage());
@@ -173,7 +173,7 @@ public class PanelMateriaPrima extends javax.swing.JFrame {
                 this.txtCrudPrecio.setText("");
                 this.txtCrudCantidad.setText("");
                 this.txtCrudMateriaPrimaId.setText("");
-                this.txtCrudProveedorId.setEnabled(true);
+                this.txtCrudProveedorId.setText("");
                 
                 this.txtBuscar.setText("");
                 this.txtAreaDescripcion.setText("");
@@ -186,7 +186,7 @@ public class PanelMateriaPrima extends javax.swing.JFrame {
                 this.txtCrudPrecio.setEnabled(false);
                 this.txtCrudCantidad.setEnabled(false);
                 this.txtCrudMateriaPrimaId.setEnabled(false);
-                this.txtCrudProveedorId.setEnabled(true);
+                this.txtCrudProveedorId.setEnabled(false);
                 
                 this.btnCrudAplicar.setEnabled(false);
                 this.btnCrudCancelar.setEnabled(false);
@@ -289,14 +289,14 @@ public class PanelMateriaPrima extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nombre", "Descripción", "Precio", "Cantidad", "Precio Venta"
+                "Código", "Nombre", "Descripción", "Precio", "Cantidad", "Categoria", "Proveedor"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -316,6 +316,7 @@ public class PanelMateriaPrima extends javax.swing.JFrame {
             jTablePrincipal.getColumnModel().getColumn(3).setResizable(false);
             jTablePrincipal.getColumnModel().getColumn(4).setResizable(false);
             jTablePrincipal.getColumnModel().getColumn(5).setResizable(false);
+            jTablePrincipal.getColumnModel().getColumn(6).setResizable(false);
         }
 
         panelProductoSelect.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Selección ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N

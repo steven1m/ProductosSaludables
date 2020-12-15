@@ -76,7 +76,6 @@ public class ControladorListaIngredientes implements ActionListener{
                 eliminar(Integer.valueOf(this.panelListaIngredientes.getCrudCodigo()));
                
             }else if (e.getActionCommand().equalsIgnoreCase("Actualizar")){
-                JOptionPane.showMessageDialog(null, "se va actualizar la tabla");
                 buscar("", "");
                
             }else if (e.getActionCommand().equalsIgnoreCase("Buscar")){
