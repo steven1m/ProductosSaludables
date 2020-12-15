@@ -82,14 +82,15 @@ public class Facturacion extends javax.swing.JFrame {
     public void agregarProductoTabla(Producto producto, int cantidad){
         DefaultTableModel dtmTabla =(DefaultTableModel)this.jTablePrincipal.getModel();
         
-        if (dtmTabla.getRowCount() != 0)
-            {
-              int d = dtmTabla.getRowCount();
-              for (int y = 0; y < d; y++)
-                {
-                  dtmTabla.removeRow(0);
-                }
-            }
+//        if (dtmTabla.getRowCount() != 0)
+//            {
+//              int d = dtmTabla.getRowCount();
+//              for (int y = 0; y < d; y++)
+//                {
+//                  dtmTabla.removeRow(0);
+//                }
+//            }
+
         this.jTablePrincipal.setModel(dtmTabla);
         float subTotal = producto.getPrecioVenta() * cantidad;
         dtmTabla.addRow(new Object[]
@@ -301,6 +302,17 @@ public class Facturacion extends javax.swing.JFrame {
         boxTipoVenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         boxTipoVenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mostrador", "Pedido" }));
 
+        txtIdFactura.setText("1");
+
+        txtIdEmpleado.setText("1");
+        txtIdEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdEmpleadoActionPerformed(evt);
+            }
+        });
+
+        txtIdCliente.setText("1");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -472,6 +484,10 @@ public class Facturacion extends javax.swing.JFrame {
     private void bntBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntBuscarProductoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bntBuscarProductoActionPerformed
+
+    private void txtIdEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
