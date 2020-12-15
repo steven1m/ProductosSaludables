@@ -10,6 +10,8 @@ package Controlador;
  * @author ACER
  */
 
+import Modelo.DetalleFactura;
+import Modelo.DetalleFacturaDAO;
 import Modelo.FacturaDAO;
 import Modelo.Factura;
 import vista.PanelFactura;
@@ -25,8 +27,10 @@ public class ControladorFactura implements ActionListener{
     
     private final FacturaDAO modeloFactura;
     private final PanelFactura PanelFactura;
+    private final DetalleFacturaDAO modeloDetalle;
 
-    public ControladorFactura(FacturaDAO modeloFactura, PanelFactura PanelFactura) {
+    public ControladorFactura(FacturaDAO modeloFactura, PanelFactura PanelFactura, DetalleFacturaDAO modeloDetalle) {
+        this.modeloDetalle = modeloDetalle;
         this.modeloFactura = modeloFactura;
         this.PanelFactura = PanelFactura;
         setListeners();
@@ -42,7 +46,8 @@ public class ControladorFactura implements ActionListener{
     
     private void eliminarlFactura (int codigo){
         int resultado = this.modeloFactura.borrar(codigo);
-        if (resultado != 0){
+        int resultado2 = this.modeloDetalle.borrar(codigo);
+        if (resultado != 0 && resultado2 != 0){
             JOptionPane.showMessageDialog(null, "Operacion Exitosa");
             buscarFactura("", "");
         }
@@ -52,6 +57,11 @@ public class ControladorFactura implements ActionListener{
         ArrayList<Factura> lista = this.modeloFactura.leer(clave, valor);
         this.PanelFactura.cargarTablaFactura(lista);
        
+    }
+    
+    private void buscarDetalleFactura(int idFactura){
+        ArrayList <DetalleFactura> lista = this.modeloDetalle.leer(idFactura);
+        this.PanelFactura.cargarDetalleFactura(lista);
     }
     
     @Override
@@ -73,6 +83,9 @@ public class ControladorFactura implements ActionListener{
                String[] datosBuscar = this.PanelFactura.datosBuscar();
                 buscarFactura(datosBuscar[0], datosBuscar[1]);
                
+            }else if (e.getActionCommand().equalsIgnoreCase("Cargar")){
+               
+                buscarDetalleFactura(this.PanelFactura.getCrudCodigo());
             }
            
         }

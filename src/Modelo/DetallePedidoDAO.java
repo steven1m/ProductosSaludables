@@ -113,7 +113,7 @@ public class DetallePedidoDAO {
         try{
             con = Conexion.getConnection();
             ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(id));
+            ps.setInt(1, id);
             
             resultado = ps.executeUpdate();
         }catch(SQLException ex){

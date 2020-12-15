@@ -140,9 +140,6 @@ public class Facturacion extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtClienteId = new javax.swing.JLabel();
         btnCargarCliente = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        etiquetaNumCaja = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         boxTipoVenta = new javax.swing.JComboBox<>();
         txtCodigoProd = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
@@ -287,15 +284,6 @@ public class Facturacion extends javax.swing.JFrame {
 
         btnCargarCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setText("Caja:");
-
-        etiquetaNumCaja.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        etiquetaNumCaja.setText("001");
-        etiquetaNumCaja.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logofact.png"))); // NOI18N
-
         boxTipoVenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         boxTipoVenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mostrador", "Pedido" }));
 
@@ -311,13 +299,7 @@ public class Facturacion extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtFacturaId, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(etiquetaNumCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtFacturaId, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtClienteId, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
@@ -325,22 +307,17 @@ public class Facturacion extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnCargarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addComponent(boxTipoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18))
+                        .addComponent(boxTipoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel12)
-                            .addComponent(etiquetaNumCaja)
                             .addComponent(txtFacturaId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -463,7 +440,7 @@ public class Facturacion extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -515,11 +492,8 @@ public class Facturacion extends javax.swing.JFrame {
     private javax.swing.JButton btnFinalizarVenta;
     private javax.swing.JButton btnRestarCantidad;
     private javax.swing.JTextField cajaCantidadProdFact;
-    private javax.swing.JLabel etiquetaNumCaja;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

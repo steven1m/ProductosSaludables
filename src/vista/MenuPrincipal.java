@@ -1,48 +1,8 @@
 package vista;
 
 import Controlador.*;
-/*import Controlador.ControladorCatalogo;
-import Controlador.ControladorCategoriaMateriaPrima;
-import Controlador.ControladorClientes;
-import Controlador.ControladorDetalleCatalogo;
-import Controlador.ControladorProduccion;
-import Controlador.ControladorProducto;
-import Controlador.ControladorTipoPago;
-import Controlador.ControladorProveedor;
-import Controlador.ControladorFactura;
-import Controlador.ControladorListaIngredientes;
-import Controlador.ControladorMateriaPrima;
-import Controlador.ControladorPedido;
-import Controlador.ControladorEmpleado;
-import Controlador.ControladorEstadoPedido;
-import Controlador.ControladorPago;
-import Controlador.ControladorDetallePedido;
-import Controlador.ControladorTipoVenta; */
+
 import Modelo.*;
-/*import Modelo.ProveedorDAO;
-import Modelo.ProduccionDAO;
-import Modelo.CatalogoDAO;
-import Modelo.CategoriaMateriaPrimaDAO;
-import Modelo.ClienteDAO;
-import Modelo.DetalleCatalogoDAO;
-import Modelo.ProductoDAO;
-import Modelo.ServidorChat;
-import Modelo.TipoPagoDAO;
-import Modelo.FacturaDAO;
-import Modelo.ListaIngredientesDAO;
-import Modelo.MateriaPrimaDAO;
-import Modelo.PedidoDAO;
-import Modelo.EmpleadoDAO;
-import Modelo.EstadoPedidoDAO;
-import Modelo.PagoDAO;
-import Modelo.DetallePedidoDAO;
-import Modelo.TipoVentaDAO; */
-        
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -457,7 +417,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         PanelFactura panelFactura = new PanelFactura();
         FacturaDAO modeloFactura = new FacturaDAO();
-        ControladorFactura controlFactura = new ControladorFactura(modeloFactura, panelFactura);
+        DetalleFacturaDAO modeloDetalle = new DetalleFacturaDAO();
+        ControladorFactura controlFactura = new ControladorFactura(modeloFactura, panelFactura, modeloDetalle);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
