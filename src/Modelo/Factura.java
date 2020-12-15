@@ -22,6 +22,17 @@ public class Factura {
     public Factura() {
     }
 
+    public Factura(int id, String clienteId, int empleadoId, int pagoId, int tipoVentaId, String fecha) {
+        this.id = id;
+        this.clienteId = clienteId;
+        this.empleadoId = empleadoId;
+        this.pagoId = pagoId;
+        this.tipoVentaId = tipoVentaId;
+        this.fecha = fecha;
+    }
+    
+    
+
     public int getId() {
         return id;
     }

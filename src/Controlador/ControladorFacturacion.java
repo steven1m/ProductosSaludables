@@ -5,6 +5,10 @@
  */
 package Controlador;
 
+import Modelo.DetalleFactura;
+import Modelo.DetalleFacturaDAO;
+import Modelo.Factura;
+import Modelo.FacturaDAO;
 import Modelo.Producto;
 import Modelo.ProductoDAO;
 import java.awt.event.ActionEvent;
@@ -21,31 +25,27 @@ public class ControladorFacturacion implements ActionListener{
 
     
     private final Facturacion facturacion;
+    private final DetalleFacturaDAO modeloDetalle;
+    private final FacturaDAO modeloFactura;
 
-    public ControladorFacturacion(Facturacion facturacion) {
+    public ControladorFacturacion(Facturacion facturacion, DetalleFacturaDAO modeloDetalle, FacturaDAO modeloFactura) {
         this.facturacion = facturacion;
+        this.modeloDetalle = modeloDetalle;
+        this.modeloFactura = modeloFactura;
         setListeners();
     }
-   
     
-    @Override
-    public void actionPerformed(ActionEvent e) {
+    
+    private void finalizarVenta(Factura factura, ArrayList<DetalleFactura> listaDetalle){
         
-        if(e.getActionCommand().equalsIgnoreCase("Finalizar Venta") ){
-           
-            
-        }else if (e.getActionCommand().equalsIgnoreCase("Agregar")){
-            String clave = this.facturacion.getCodigoProducto();
-            int cantidad = this.facturacion.getCantidad();
-           
-            agregarProducto (buscarProducto("id", clave), cantidad);
-            
-        }else if (e.getActionCommand().equalsIgnoreCase("Buscar Prod.")){
-
-            
-        }else if (e.getActionCommand().equalsIgnoreCase("Cargar venta")){
-
-            
+        
+        int resultado = this.modeloFactura.crear(factura);
+        
+        if (resultado != 0 )
+        {
+            listaDetalle.forEach(detalle -> {
+                this.modeloDetalle.crear(detalle);
+            });
         }
     }
     
@@ -79,4 +79,27 @@ public class ControladorFacturacion implements ActionListener{
             
     } 
     
+    
+        @Override
+    public void actionPerformed(ActionEvent e) {
+        
+        if(e.getActionCommand().equalsIgnoreCase("Finalizar Venta") ){
+           
+            finalizarVenta(this.facturacion.crearObjetoFactura(), 
+                    this.facturacion.listaDetalleFactura());
+            
+        }else if (e.getActionCommand().equalsIgnoreCase("Agregar")){
+            String clave = this.facturacion.getCodigoProducto();
+            int cantidad = this.facturacion.getCantidad();
+           
+            agregarProducto (buscarProducto("id", clave), cantidad);
+            
+        }else if (e.getActionCommand().equalsIgnoreCase("Buscar Prod.")){
+
+            
+        }else if (e.getActionCommand().equalsIgnoreCase("Cargar venta")){
+
+            
+        }
+    }
 }
