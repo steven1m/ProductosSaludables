@@ -33,6 +33,7 @@ public class ControladorFacturacion implements ActionListener{
         this.modeloDetalle = modeloDetalle;
         this.modeloFactura = modeloFactura;
         setListeners();
+        numeroFactura();
     }
     
     
@@ -49,6 +50,15 @@ public class ControladorFacturacion implements ActionListener{
     
     private void setListeners (){
         this.facturacion.setListeners(this);
+    }
+    
+    private void numeroFactura(){
+        int num = this.modeloFactura.numeroFactura();
+        if (num != 0 ){
+            this.facturacion.getTxtIdFactura().setText(String.valueOf(num));
+        }else {
+             this.facturacion.getTxtIdFactura().setText(String.valueOf(1));
+        }
     }
     
     private ArrayList<Producto> buscarProducto(String clave, String valor){
@@ -106,9 +116,7 @@ public class ControladorFacturacion implements ActionListener{
                int fila  = this.facturacion.getjTablePrincipal().getSelectedRow();
                String clave = this.facturacion.getjTablePrincipal().
                                         getValueAt(fila, 0).toString();
-                
-                int cantidad = this.facturacion.getCantidadIncremento();
-                agregarProducto (buscarProducto("id", clave), 1);
+               agregarProducto (buscarProducto("id", clave), 1);
             }
             
             

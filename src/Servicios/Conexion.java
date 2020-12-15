@@ -47,7 +47,7 @@ public class Conexion {
                 Connection con = Conexion.getConnection();
                 con.close();                     
             }
-            catch (Exception ex){
+            catch (SQLException ex){
                 JOptionPane.showMessageDialog(null,"Error : " + 
                         ex.getMessage());
             }

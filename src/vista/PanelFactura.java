@@ -29,6 +29,7 @@ public class PanelFactura extends javax.swing.JFrame {
         this.setTitle("Facturas");
         
         selecionTabla(); 
+        this.BtnAplicar.setEnabled(true);
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
@@ -120,8 +121,8 @@ public class PanelFactura extends javax.swing.JFrame {
                this.lblNombreSelectProd.setText(this.jTableFactura.getValueAt
                                                 (fila, 1).toString());
                
-               this.BtnAplicar.setEnabled(false);
-               this.BtnAplicar.setText("Aplicar");
+               this.BtnAplicar.setEnabled(true);
+               
             }
        });
     }

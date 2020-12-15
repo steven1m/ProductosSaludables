@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
 
@@ -53,6 +54,12 @@ public class Facturacion extends javax.swing.JFrame {
     public JTable getjTablePrincipal() {
         return jTablePrincipal;
     }
+
+    public JTextField getTxtIdFactura() {
+        return txtIdFactura;
+    }
+    
+    
     
     public int getCantidad(){
         int cantidad = 0;
@@ -354,16 +361,11 @@ public class Facturacion extends javax.swing.JFrame {
         boxTipoVenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         boxTipoVenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mostrador", "Pedido" }));
 
-        txtIdFactura.setText("1");
-
-        txtIdEmpleado.setText("1");
         txtIdEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdEmpleadoActionPerformed(evt);
             }
         });
-
-        txtIdCliente.setText("1");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

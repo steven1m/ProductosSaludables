@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -143,5 +142,28 @@ public class FacturaDAO {
                     ex.getMessage());
         }
         return resultado;
+    }
+    
+    public int numeroFactura(){
+        int id = 0;
+        Connection con ;
+        PreparedStatement ps ;
+        ResultSet rs ;
+        String sentencia ="SELECT MAX(id) FROM factura";
+        
+        try{
+            
+            con = Conexion.getConnection();
+            
+            ps = con.prepareStatement(sentencia);
+            rs = ps.executeQuery();
+            
+            while (rs.next()){
+                id = rs.getInt("id");
+            }
+        }catch(SQLException ex){
+            
+        }
+        return id;
     }
 }
