@@ -55,10 +55,11 @@ public class DetalleFacturaDAO {
 
             while (rs.next()){
                 DetalleFactura detalleFactura = new DetalleFactura();
-                detalleFactura.setIdFactura(rs.getInt("factura_id "));
+                detalleFactura.setIdFactura(rs.getInt("factura_id"));
                 detalleFactura.setIdProducto(rs.getInt("producto_id"));
                 detalleFactura.setCantidad(rs.getInt("cantidad"));
                 detalleFactura.setPrecio(rs.getFloat("precio"));
+                lista.add(detalleFactura);
             }
 
         }catch(SQLException ex){

@@ -86,7 +86,7 @@ public class PanelFactura extends javax.swing.JFrame {
      
      public void cargarDetalleFactura(ArrayList<DetalleFactura> lista){
         
-        DefaultTableModel dtmDetalle =(DefaultTableModel)this.jTableFactura.getModel();
+        DefaultTableModel dtmDetalle =(DefaultTableModel)this.jTableDetalle.getModel();
         // eliminar los datos que exinten en el modelo de la tabla antes de agregar los datos 
         if (dtmDetalle.getRowCount() != 0)
             {
@@ -96,7 +96,7 @@ public class PanelFactura extends javax.swing.JFrame {
                   dtmDetalle.removeRow(0);
                 }
             }
-        this.jTableFactura.setModel(dtmDetalle);
+        this.jTableDetalle.setModel(dtmDetalle);
         
         Iterator <DetalleFactura> iterador = lista.iterator();
         
@@ -109,7 +109,7 @@ public class PanelFactura extends javax.swing.JFrame {
               detalle.getPrecio()
               });
         }
-        this.jTableFactura.setModel(dtmDetalle);
+        this.jTableDetalle.setModel(dtmDetalle);
     }
      
       private void selecionTabla(){
@@ -169,7 +169,7 @@ public class PanelFactura extends javax.swing.JFrame {
         BtnCargar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableDetalle = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -359,12 +359,9 @@ public class PanelFactura extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(203, 240, 220));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableDetalle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Producto", "Cantidad", "Precio"
@@ -385,11 +382,11 @@ public class PanelFactura extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        jScrollPane1.setViewportView(jTableDetalle);
+        if (jTableDetalle.getColumnModel().getColumnCount() > 0) {
+            jTableDetalle.getColumnModel().getColumn(0).setResizable(false);
+            jTableDetalle.getColumnModel().getColumn(1).setResizable(false);
+            jTableDetalle.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -497,7 +494,7 @@ public class PanelFactura extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableDetalle;
     private javax.swing.JTable jTableFactura;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblCodigoSelect;
