@@ -13,14 +13,16 @@ import java.awt.event.ActionListener;
  *
  * @author Cabrera
  */
-public class Produccion extends javax.swing.JFrame {
+public class GenerarProductos extends javax.swing.JFrame {
 
     
    
     
-    public Produccion() {
+    public GenerarProductos() {
         
        initComponents();
+       this.setVisible(true);
+       this.setLocationRelativeTo(null);
     }
 
          
@@ -54,7 +56,6 @@ public class Produccion extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         etiqueta_cajero = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         cajaCodigoProd = new javax.swing.JTextField();
         btn_agregar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -106,11 +107,9 @@ public class Produccion extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         bntBuscarProductoFact.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        bntBuscarProductoFact.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/preview_search_find_locate_1551.png"))); // NOI18N
         bntBuscarProductoFact.setText("Buscar Prod.");
 
         btnCancelarVenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnCancelarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/shopping-basket-remove256_24901.png"))); // NOI18N
         btnCancelarVenta.setText("Cancelar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -149,8 +148,6 @@ public class Produccion extends javax.swing.JFrame {
         etiqueta_cajero.setText("nom Cajero");
         etiqueta_cajero.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logofact.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -160,22 +157,16 @@ public class Produccion extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(etiqueta_cajero, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(etiqueta_cajero, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(etiqueta_cajero, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         cajaCodigoProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -313,8 +304,64 @@ public class Produccion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Produccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenerarProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        /* Create and display the form */
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+        // new ventas().setVisible(true);
+        }
+        });*/
+        //</editor-fold>
+
+        /* Create and display the form */
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+               // new ventas().setVisible(true);
+            }
+        //</editor-fold>
+        /* Create and display the form */
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+        // new ventas().setVisible(true);
+        }
+        });*/
+        //</editor-fold>
+
+        /* Create and display the form */
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+               // new ventas().setVisible(true);
+            }
+        //</editor-fold>
+        /* Create and display the form */
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+        // new ventas().setVisible(true);
+        }
+        });*/
+        //</editor-fold>
+
+        /* Create and display the form */
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+               // new ventas().setVisible(true);
+            }
+        //</editor-fold>
+        /* Create and display the form */
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+        // new ventas().setVisible(true);
+        }
+        });*/
+        //</editor-fold>
+
+        /* Create and display the form */
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+               // new ventas().setVisible(true);
+            }
         //</editor-fold>
         /* Create and display the form */
         /*java.awt.EventQueue.invokeLater(new Runnable() {
@@ -387,7 +434,6 @@ public class Produccion extends javax.swing.JFrame {
     private javax.swing.JTextField cajaCodigoProd;
     private javax.swing.JLabel etiqueta_cajero;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;

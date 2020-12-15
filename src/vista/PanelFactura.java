@@ -389,6 +389,7 @@ public class PanelFactura extends javax.swing.JFrame {
             jTableDetalle.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        jTextField1.setEditable(false);
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText("Detalle");
 
